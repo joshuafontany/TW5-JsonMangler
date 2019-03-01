@@ -29,9 +29,13 @@ https://joshuafontany.github.io/TW5-JsonManglerPlugin/
 This plugin is a work in progress; please report any issues on GitHub:
 https://github.com/joshuafontany/TW5-JsonMangerPlugin/issues
 
+!Installation
+
+{{$:/plugins/joshuafontany/jsonmangler/readme/Installation}}
+
 !Important Info
 
-<$list filter="[all[shadows+tiddlers]tag[$:/plugins/joshuafontany/jsonmangler/readme]sort{!!list}]" variable="currentTiddler">
+<$list filter="[all[shadows+tiddlers]tag[$:/plugins/joshuafontany/jsonmangler/readme]remove[$:/plugins/joshuafontany/jsonmangler/readme/Installation]sort{!!list}]" variable="currentTiddler">
 
 {{}}
 </$list>

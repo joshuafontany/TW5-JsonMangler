@@ -7,10 +7,33 @@ type: text/vnd.tiddlywiki
 
 ! {{$:/plugins/joshuafontany/jsonmangler/readme/Installation!!caption}}
 
-[[JsonMangler|$:/plugins/joshuafontany/jsonmangler]] requires the following excellent plugins: [[ModLoader|$:/plugins/ebalster/modloader]] by Evan Balster & [[Action-MakeTid|$:/plugins/matabele/action-maketid]] by Matabele. Thanks you two!
+[[JsonMangler|$:/plugins/joshuafontany/jsonmangler]] requires the following excellent plugins:
+
+* [[ModLoader|$:/plugins/ebalster/modloader]] by Evan Balster
+* [[Action-MakeTid|$:/plugins/matabele/action-maketid]] by Matabele. Thanks you two!
+
+!! Single-file .html wikis and plugins-as-packed-tiddler node served method
 
 Drag and drop the following links to install the plugins, then restart your server and(or) refresh your wiki.
 
 * $:/plugins/ebalster/modloader
 * $:/plugins/matabele/action-maketid
 * $:/plugins/joshuafontany/jsonmangler
+
+!! Folder-style node served plugin method
+
+Go to the <$link $to="">Json Mangler Github Release</$list> page and download the latest *.zip file.
+
+Place the *.zip file in your `.\TiddlyWiki5` directory, right click and select `Extract Here` (7zip) or `Extract to here` (Winzip).
+
+All of the required tiddlers will then be placed in the right folders within your `.\TiddlyWiki5\plugins` folder.
+
+Edit any wiki's `tiddlywiki.info` file to include the following in the `plugins` array.
+
+<$code>
+"joshuafontany/jsonmangler",
+"matabele/action-maketid",
+"ebalster/modloader"
+</$code>
+
+Finally, restart your server.
