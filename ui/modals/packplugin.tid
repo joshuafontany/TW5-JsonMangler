@@ -1,0 +1,99 @@
+created: 20190212023214404
+footer: <$button class="tc-btn-invisible tc-tiddlylink" tooltip="Close this modal window." message="tm-close-tiddler" param="$:/plugins/joshuafontany/jsonmangler/ui/modals/packplugin" actions="""<$action-deletetiddler $filter="[all[]prefix[$:/drafts/plugin]]" />"""> {{$:/core/images/cancel-button}} Cancel </$button>
+modified: 20190219035944366
+subtitle: <span class="jsonIcon">{{$:/plugins/joshuafontany/jsonmangler/icon}}</span> <span class="packpluginTitle">Confirm Plugin Packaging</span>
+tags: 
+title: $:/plugins/joshuafontany/jsonmangler/ui/modals/packplugin
+
+\define displayList()
+<div>
+<h3>New Tiddlers (<$count filter=<<packageList>>/>)</h3>
+<$list filter="[enlist<packageList>]" template="$:/core/ui/ListItemTemplate"/>
+</div>
+<div>
+<h3>Tiddlers to Remove (<$count filter=<<removeList>>/>)</h3>
+<$list filter="[enlist[$(removeList)$]]" template="$:/core/ui/ListItemTemplate"/>
+</div>
+<div style="position: relative;">
+
+<$reveal type="nomatch" state=<<qualify "$:/state/reveal/new-plugin-subtiddlers">> text="show"><h3><$button class="tc-btn-invisible tc-btn-dropdown" style="padding: 0.2em; " set=<<qualify "$:/state/reveal/new-plugin-subtiddlers">> setTo="show"> Existing Plugin Tiddlers (<$count filter="[<state>get[target]plugintiddlers[]]" />){{$:/core/images/down-arrow}}</$button></h3>
+</$reveal>
+
+<$reveal type="match" state=<<qualify "$:/state/reveal/new-plugin-subtiddlers">> text="show" ><h3><$button class="tc-btn-invisible tc-btn-dropdown" style="padding: 0.2em; " set=<<qualify "$:/state/reveal/new-plugin-subtiddlers">> setTo="hide"> Existing Plugin Tiddlers (<$count filter="[<state>get[target]plugintiddlers[]]" />){{$:/core/images/left-arrow}}</$button></h3><div><$list filter="[<state>get[target]plugintiddlers[]]" template="$:/core/ui/ListItemTemplate"/></div>
+</$reveal>
+
+</div>
+\end
+
+\define ptEdit()
+<$edit-text tiddler="$(state)$" field="target-type"></$edit-text><span style="position: relative;"><$button popup=<<qualify "$:/state/popup/new-plugin-type">> class="tc-btn-invisible tc-btn-dropdown" style="padding: 0.2em; ">{{$:/core/images/down-arrow}}</$button><$reveal state=<<qualify "$:/state/popup/new-plugin-type">> type="popup" position="below" ><div class="tc-block-dropdown tc-edit-type-dropdown"><div class="tc-menu-list-item"><$button class="tc-btn-invisible tc-tiddlylink" actions="""<$action-setfield $tiddler="$(state)$" $field="target-type" $value="plugin"/>""" >Plugin</$button></div><div class="tc-menu-list-item"><$button class="tc-btn-invisible tc-tiddlylink" actions="""<$action-setfield $tiddler="$(state)$" $field="target-type" $value="theme"/>""" >Theme</$button></div></div></$reveal></span>
+\end
+
+\define commitActions()
+<$list variable="removeIndex" filter="[enlist<removeList>encodeindex[]addprefix[/tiddlers/]]">
+<$action-setfield $tiddler=<<draft>> $index=<<removeIndex>> />
+</$list>
+<$list variable="thisIndex" filter="[enlist<packageList>encodeindex[]addprefix[/tiddlers/]]">
+<$list variable="thisValue" filter="[<thisIndex>removeprefix[/tiddlers/]decodeindex[]encodetiddler[]]">
+<$action-setfield $tiddler=<<draft>> $index=<<thisIndex>> $value=<<thisValue>> />
+</$list>
+</$list>
+<$action-setfield $tiddler="$(state)$" $field="new-title" $value={{$(draft)$!!draft-title}} />
+<$action-setfield $tiddler="$(draft)$" $field="draft.of" $value={{$(state)$!!new-title}} />
+<$action-setfield $tiddler="$(draft)$" $field="draft.title" $value={{$(state)$!!new-title}} />
+<$action-setfield $tiddler="$(draft)$" $field="type" $value="application/json" />
+<$action-setfield $tiddler="$(draft)$" $field="plugin-type" $value={{$(state)$!!target-type}} />
+<$action-deletefield $tiddler="$(draft)$" draft-of draft-title />
+<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
+<$action-sendmessage $message="tm-save-tiddler" $param="$(draft)$" />
+</$navigator>
+<$action-deletetiddler $filter="[all[]prefix[$:/drafts/plugin]]" />
+<$action-deletetiddler $tiddler=<<state>> />
+<$action-sendmessage $message="tm-close-tiddler" $param="$:/plugins/joshuafontany/jsonmangler/ui/modals/packplugin" />
+\end
+
+\define titleEdit()
+<$list filter="[<draft>contains:draft-of[$:/plugins/joshuafontany/jsonmangler/skeletons/plugin]]" >
+<$edit-text tiddler=<<draft>> field="draft-title" size="40"></$edit-text>
+</$list>
+<$list filter="[<draft>!contains:draft-of[$:/plugins/joshuafontany/jsonmangler/skeletons/plugin]]" >
+<$link to={{$(draft)$!!draft-of}}><$text text={{$(draft)$!!draft-of}}/></$link>
+</$list>
+\end
+
+<div class="plugin-table">
+<$tiddler tiddler=<<draft>>>
+
+<div style="float:left; margin-right: 2em;;">
+
+!!<$button class="tc-btn-invisible tc-tiddlylink" tooltip="Commits all changes. YOU CANNOT UNDO THIS." message="tm-close-tiddler" param="$:/plugins/joshuafontany/jsonmangler/ui/modals/packplugin" actions=<<commitActions>> >
+{{$:/core/images/save-button}} Commit
+</$button>
+
+!!<$button class="tc-btn-invisible tc-tiddlylink" tooltip="Close this modal window." message="tm-close-tiddler" param="$:/plugins/joshuafontany/jsonmangler/ui/modals/packplugin" actions="""<$action-deletetiddler $filter="[all[]prefix[$:/drafts/plugin]]" />"""> {{$:/core/images/cancel-button}} Cancel </$button>
+
+</div>
+<h3>
+
+!!!<<.poptip "Plugin Title:" "Must begin with `$:/plugins/`">>
+
+<<titleEdit>>
+
+</h3>
+<div style="clear:both;"/>
+
+|!Field (*//required//) |!Value |!Modifications|
+| <<.poptip "''author''" "Your name here">> |<$edit-text tiddler=<<draft>> field="author"></$edit-text> |^<<displayList>>|
+| <<.poptip "''core-version''" "Minimum supported core version">> |<$edit-text tiddler=<<draft>> field="core-version"></$edit-text> |~|
+| <<.poptip "''dependents''" "Space separated list of dependent plugins (use square brackets for titles containing spaces)">> |<$edit-text tiddler=<<draft>> field="dependents"></$edit-text> |~|
+|<<.poptip "''description''" "Plugin description in the sidebar (keep it short)">> |<$edit-text tiddler=<<draft>> field="description"></$edit-text> |~|
+|<<.poptip "''list''" "The tabs to show when this tiddler is open (readme licence etc), where titles are relative to the root plugin tiddler title">> |<$edit-text tiddler=<<draft>> field="list"></$edit-text> |~|
+|<<.poptip "''plugin-type*''" "Either 'plugin' for a regular plugin, 'theme' for a theme, or 'language' for a language pack, but this can be set to any value">> |<<ptEdit>> |~|
+|<<.poptip "''source''" "Plugin information or source location (github, etc)">> |<$edit-text tiddler=<<draft>> field="source"></$edit-text> |~|
+|<<.poptip "''theme-name''" "Plugin name (only needed for themes)">> |<$edit-text tiddler=<<draft>> field="name"></$edit-text> |~|
+|<<.poptip "''type*''" "Automatically set to 'application/json'">> | `application/json`|~|
+|<<.poptip "''version''" "Set to the version number of the plugin (eg '0.0.1')">> |<$edit-text tiddler=<<draft>> field="version"></$edit-text> |~|
+|||~|
+
+</$tiddler>
+</div>

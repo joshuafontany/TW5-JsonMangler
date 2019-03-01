@@ -1,0 +1,11 @@
+{
+	"title": "$:/plugins/joshuafontany/jsonmangler",
+	"description": "Complex JSON Support & Tools",
+    "dependents": "$:/plugins/ebalster/modloader $:/plugins/matabele/action-maketid",
+	"author": "Joshua Fontany",
+	"version": "2.0.3",
+	"core-version": ">=5.1.19",
+	"source": "https://github.com/joshuafontany/TW5-JsonManglerPlugin",
+	"plugin-type": "plugin",
+    "list": "readme license"
+}

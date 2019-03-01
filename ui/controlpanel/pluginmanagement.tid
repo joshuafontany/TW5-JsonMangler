@@ -1,0 +1,8 @@
+caption: Plugin Management
+created: 20190214060656162
+modified: 20190214061549387
+tags: $:/tags/ControlPanel
+title: $:/plugins/joshuafontany/jsonmangler/ui/controlpanel/pluginmanagement
+type: text/vnd.tiddlywiki
+
+<<tabs "[[$:/plugins/joshuafontany/jsonmangler/ui/controlpanel/packplugin]] [[$:/plugins/joshuafontany/jsonmangler/ui/controlpanel/unpackplugin]]" "$:/plugins/joshuafontany/jsonmangler/ui/controlpanel/packplugin" "$:/temp/jsonmangler/controlpanel/Tabs">>

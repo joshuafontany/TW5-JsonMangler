@@ -1,0 +1,10 @@
+color: #bbb
+created: 20190215003233421
+icon: $:/core/images/advanced-search-button
+modified: 20190215032158464
+tags: 
+title: $:/plugins/joshuafontany/jsonmangler/ui/controlpanel/AdvancedSearch
+
+<div class="tc-advanced-search">
+<<tabs "[all[shadows+tiddlers]tag[$:/tags/JsonAdvancedSearch]!has[draft.of]]" "$:/plugins/joshuafontany/jsonmangler/ui/controlpanel/AdvancedSearch/Filter">>
+</div>

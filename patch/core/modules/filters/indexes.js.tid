@@ -1,0 +1,24 @@
+created: 20181203200238686
+modified: 20190214024606691
+modloader-source: $:/core
+modloader-target: $:/core/modules/filters/indexes.js
+revision: 0
+tags: 
+title: $:/plugins/joshuafontany/jsonmangler/patch/core/modules/filters/indexes.js
+type: text/x-patch
+
+@@ -463,88 +463,78 @@
+ a) %7B%0A%09%09%09
+-$tw.utils.pushTop(results,Object.keys(
++%09results = $tw.utils.jsonIndexes(results,
+ data)
+-)
+ ;%0A
++%09
+ %09%09%7D%0A
++%09
+ %09%7D);%0A%09
+-results.sort();
+ %0A
++%09
+ %09return 

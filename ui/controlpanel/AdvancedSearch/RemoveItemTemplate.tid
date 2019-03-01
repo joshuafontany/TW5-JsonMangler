@@ -1,0 +1,25 @@
+created: 20190219001911426
+modified: 20190219002744749
+tags: 
+title: $:/plugins/joshuafontany/jsonmangler/ui/controlpanel/AdvancedSearch/RemoveItemTemplate
+
+<div class="checkbox">
+<$list filter="[<state>!contains:remove-list<currentItem>]">
+<$button tooltip="Remove this subtiddler." class="tc-btn-invisible">
+<$action-listops $tiddler=<<state>> $field="remove-list" $subfilter="[<currentItem>]" /> 
+{{$:/core/images/close-others-button}}
+</$button>
+</$list>
+<$list filter="[<state>contains:remove-list<currentItem>]">
+<$button tooltip="Removing this subtiddler. Click to keep it." class="tc-btn-invisible">
+<$action-listops $tiddler=<<state>> $field="remove-list" $subfilter="-[<currentItem>]"  /> 
+{{$:/core/images/done-button}}
+</$button>
+</$list>
+</div>
+<div class="item">
+<$link to=<<currentItem>>>
+<$text text=<<currentItem>>/>
+</$link>
+</div>
+<div style="clear: both;"/>

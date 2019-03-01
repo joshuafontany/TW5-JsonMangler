@@ -1,0 +1,34 @@
+caption: Deduplication
+created: 20181203050420523
+modified: 20190214024606691
+tags: $:/plugins/joshuafontany/jsonmangler/readme
+title: $:/plugins/joshuafontany/jsonmangler/readme/Deduplication
+type: text/vnd.tiddlywiki
+
+!! ''{{$:/plugins/joshuafontany/jsonmangler/readme/Deduplication!!caption}}''
+!!!The Backwards Compatibility Problem
+This plugin changes the methods tiddlywiki uses to retrieve and set data with json data tiddlers, and there is now a possibility of "duplicate values" within tiddler objects.
+
+An index path can refer to:
+
+<ol>
+<li> A top-level key that is a literal match to the input path.</li>
+<li> A top-level key that matches the input path by adding or removing a prefixed slash ('/').</li>
+<li>A nested key whose position matches each token in the input path in order (leading slash optional).</li>
+</ol>
+
+Each of these can contain values, and different values at that. How do we resolve this?
+
+!!!Preference Order
+Each ''get'' or ''set'' operation will have a preference if more than one of the above cases are true.
+
+* ''get'' operations will prefer a top-level key without a trailing slash. If no value is found there, a slash prefix is added to the path and this top-level key is tested for a value. Lastly, if no value is found there, then the path is tokenized and a value is searched for in nested objects.
+
+*''set'' operations follow the same preference based on the existence of the key. First a literal with no slash prefix, then with a slash prefix, and finally if these keys do not exist the value is set at the nested location.
+
+!!!Deduplication of Values
+All `tm-json-` messages handled by the `<$jsonmangler>` widget will test the json data tiddler for duplicate keys. If found, a //deduplication// operation will be performed.
+
+This follows the above preferences, taking any top level keys that match a nested value location, writing the top-level value to the nested location, and then deleteding the top-level key.
+
+//Note: Deduplication does not apply to duplicate values within an array, as these values will have different indexes.//

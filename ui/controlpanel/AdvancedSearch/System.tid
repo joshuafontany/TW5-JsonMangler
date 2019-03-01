@@ -1,0 +1,54 @@
+caption: {{$:/language/Search/System/Caption}}
+created: 20190215005510568
+modified: 20190217094205920
+tags: $:/tags/JsonAdvancedSearch
+title: $:/plugins/joshuafontany/jsonmangler/ui/controlpanel/AdvancedSearch/System
+
+\define lingo-base() $:/language/Search/
+\define searchResultList()
+<$set name="thisFilter" value="[is[system]search{$:/temp/advancedsearch}sort[title]limit[250]] -[[$:/temp/advancedsearch]]" >
+<div class="checkbox">
+{{$:/plugins/joshuafontany/jsonmangler/ui/controlpanel/AdvancedSearch/CheckAll}}
+</div>
+<div class="item">
+<<lingo System/Matches>>
+</div><div style="clear: both;"/>
+<$list filter=<<thisFilter>> template="$:/plugins/joshuafontany/jsonmangler/ui/controlpanel/AdvancedSearch/ListItemTemplate" variable="currentItem"/>
+</$set>
+\end
+<$linkcatcher to="$:/temp/advancedsearch">
+
+<<lingo System/Hint>>
+
+<div class="tc-search">
+<$edit-text tiddler="$:/temp/advancedsearch" type="search" tag="input"/>
+<$reveal state="$:/temp/advancedsearch" type="nomatch" text="">
+<$button class="tc-btn-invisible">
+<$action-setfield $tiddler="$:/temp/advancedsearch" $field="text" $value=""/>
+{{$:/core/images/close-button}}
+</$button>
+</$reveal>
+</div>
+
+</$linkcatcher>
+<div class="tc-controlpanel-search-results">
+{{$:/plugins/joshuafontany/jsonmangler/ui/controlpanel/AdvancedSearch/Selected}}
+{{$:/plugins/joshuafontany/jsonmangler/ui/controlpanel/AdvancedSearch/PluginTiddlers}}
+<span style="padding: 5px">
+<$set name="resultCount" value="""<$count filter="[is[system]search{$:/temp/advancedsearch}] -[[$:/temp/advancedsearch]]"/>""">
+<$button popup=<<qualify "$:/state/JsonAdvancedSearch/SystemResults">> class="tc-btn-invisible tc-tiddlylink" tooltip="System tiddlers matching this search." ><<resultCount>> Results {{$:/core/images/down-arrow}}</$button>
+
+<$reveal type="popup" class="tc-popup-keep" state=<<qualify "$:/state/JsonAdvancedSearch/SystemResults">>>
+<div class="tc-drop-down">
+
+<$list filter="[{$:/temp/advancedsearch}minlength{$:/config/Search/MinLength}limit[1]]" emptyMessage="""<div class="tc-search-results">{{$:/language/Search/Search/TooShort}}</div>""" variable="listItem">
+
+<<searchResultList>>
+
+</$list>
+
+</div>
+</$reveal>
+</$set>
+</span>
+</div>
