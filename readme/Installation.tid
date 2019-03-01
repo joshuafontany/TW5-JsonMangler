@@ -24,7 +24,7 @@ Drag and drop the following links to install the plugins, then restart your serv
 
 !! Folder-style node served plugin method
 
-Go to the <$link $to="">Json Mangler Github Release</$list> page and download the latest *.zip file.
+Go to the <$link $to="https://github.com/joshuafontany/TW5-JsonManglerPlugin/releases">Json Mangler Github Release</$list> page and download the latest *.zip file.
 
 Place the *.zip file in your `.\TiddlyWiki5` directory, right click and select `Extract Here` (7zip) or `Extract to here` (Winzip).
 

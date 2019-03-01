@@ -36,7 +36,7 @@ Follow the instructions within the HelloThere tiddler.
 
 #### Folder-style node served plugin method
 
-Go to the <$link $to="">Json Mangler Github Release</$list> page and download the latest *.zip file.
+Go to the [Json Mangler Github Release](https://github.com/joshuafontany/TW5-JsonManglerPlugin/releases) page and download the latest *.zip file.
 
 Place the *.zip file in your `.\TiddlyWiki5` directory, right click and select `Extract Here` (7zip) or `Extract to here` (Winzip).
 
