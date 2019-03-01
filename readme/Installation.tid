@@ -10,7 +10,9 @@ type: text/vnd.tiddlywiki
 [[JsonMangler|$:/plugins/joshuafontany/jsonmangler]] requires the following excellent plugins:
 
 * [[ModLoader|$:/plugins/ebalster/modloader]] by Evan Balster
-* [[Action-MakeTid|$:/plugins/matabele/action-maketid]] by Matabele. Thanks you two!
+* [[Action-MakeTid|$:/plugins/matabele/action-maketid]] by Matabele.
+
+Thanks you two!
 
 !! Single-file .html wikis and plugins-as-packed-tiddler node served method
 

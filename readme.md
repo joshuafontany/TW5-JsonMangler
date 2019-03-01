@@ -18,12 +18,14 @@ $jsonmangler, a widget that catches messages to edit json data tiddlers (used in
     * A new pair of filter operators: encodeindex[] and decodeindex[]. These are used to "escape" or "unescape" the index path separation character  /  (and the encoding character  ~ ). This can be used to build paths with literal /s in a key name token. This is very useful and must be studied closely.
     * A new encodetiddler[] operator, which returns each tiddler in the input as a full json object. Used with the previous pair of operators, this can be used to pack plugin tiddlers.
 
-### Installations
+### Installation
 
-[[JsonMangler|$:/plugins/joshuafontany/jsonmangler]] requires the following excellent plugins:
+**JsonMangler** requires the following excellent plugins:
 
-* [[ModLoader|$:/plugins/ebalster/modloader]] by Evan Balster
-* [[Action-MakeTid|$:/plugins/matabele/action-maketid]] by Matabele. Thanks you two!
+* **ModLoader** by Evan Balster
+* **Action-MakeTid** by Matabele.
+
+Thanks you two!
 
 #### Single-file .html wikis and plugins-as-packed-tiddler node served method
 
