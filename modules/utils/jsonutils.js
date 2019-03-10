@@ -341,7 +341,7 @@ exports.jsonIndexes = function (results, data) {
 			}
         })
 	}
-	result.sort(alphanum.alphanum());
+	results.sort(alphanum.alphanumCS);
     return results;
 };
 

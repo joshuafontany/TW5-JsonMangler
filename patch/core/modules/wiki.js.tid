@@ -1,71 +1,4530 @@
-created: 20190214015948457
-modified: 20190214024606691
+created: 20190308082410365
+modified: 20190308082410365
 modloader-source: $:/core
 modloader-target: $:/core/modules/wiki.js
 tags: 
 title: $:/plugins/joshuafontany/jsonmangler/patch/core/modules/wiki.js
 type: text/x-patch
 
-@@ -2625,69 +2625,292 @@
- d) %7B%0A%09%09%09
+@@ -1,19 +1,20 @@
+ /*%5C
++%0D
+ %0Atitle: $:/core/
+@@ -20,32 +20,33 @@
+ /modules/wiki.js
++%0D
+ %0Atype: applicati
+@@ -50,32 +50,33 @@
+ ation/javascript
++%0D
+ %0Amodule-type: wi
+@@ -75,33 +75,35 @@
+ type: wikimethod
+-%0A
++%0D%0A%0D
+ %0AExtension metho
+@@ -120,33 +120,35 @@
+  $tw.Wiki object
+-%0A
++%0D%0A%0D
+ %0AAdds the follow
+@@ -173,33 +173,35 @@
+ the wiki object:
+-%0A
++%0D%0A%0D
+ %0A* %60eventListene
+@@ -248,32 +248,33 @@
+ stener functions
++%0D
+ %0A* %60changedTiddl
+@@ -413,32 +413,33 @@
+ ning two fields:
++%0D
+ %0A%09modified: true
+@@ -436,32 +436,33 @@
+ fied: true/false
++%0D
+ %0A%09deleted: true/
+@@ -458,32 +458,33 @@
+ eted: true/false
++%0D
+ %0A* %60changeCount%60
+@@ -623,32 +623,33 @@
+ anged or deleted
++%0D
+ %0A* %60caches%60 is a
+@@ -789,32 +789,33 @@
+ ified or deleted
++%0D
+ %0A* %60globalCache%60
+@@ -910,35 +910,40 @@
+ e occurs
+-%0A
++%0D%0A%0D
+ %0A%5C*/
++%0D
+ %0A(function()%7B
+-%0A
++%0D%0A%0D
+ %0A/*jslin
+@@ -964,32 +964,33 @@
+ browser: true */
++%0D
+ %0A/*global $tw: f
+@@ -996,31 +996,34 @@
+ false */
++%0D
+ %0A%22use strict%22;
+-%0A
++%0D%0A%0D
+ %0Avar wid
+@@ -1065,33 +1065,35 @@
+ ets/widget.js%22);
+-%0A
++%0D%0A%0D
+ %0Avar USER_NAME_T
+@@ -1112,32 +1112,33 @@
+ tatus/UserName%22,
++%0D
+ %0A%09TIMESTAMP_DISA
+@@ -1170,36 +1170,39 @@
+ mestampDisable%22;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AGet the value o
+@@ -1265,32 +1265,34 @@
+ e forms:
++%0D
+ %0A%09%3Ctiddlertitle%3E
++%0D
+ %0A%09%3Ctiddl
+@@ -1304,32 +1304,33 @@
+ le%3E!!%3Cfieldname%3E
++%0D
+ %0A%09!!%3Cfieldname%3E 
+@@ -1364,32 +1364,33 @@
+ current tiddlers
++%0D
+ %0A%09%3Ctiddlertitle%3E
+@@ -1390,35 +1390,37 @@
+ rtitle%3E##%3Cindex%3E
++%0D
+ %0A*/
++%0D
+ %0Aexports.getText
+@@ -1471,32 +1471,33 @@
+ rTiddlerTitle) %7B
++%0D
+ %0A%09var tr = $tw.u
+@@ -1521,32 +1521,33 @@
+ erence(textRef),
++%0D
+ %0A%09%09title = tr.ti
+@@ -1570,32 +1570,34 @@
+ erTitle;
++%0D
+ %0A%09if(tr.field) %7B
++%0D
+ %0A%09%09var t
+@@ -1620,32 +1620,33 @@
+ tTiddler(title);
++%0D
+ %0A%09%09if(tr.field =
+@@ -1719,32 +1719,33 @@
+ existent tiddler
++%0D
+ %0A%09%09%09return title
+@@ -1737,32 +1737,33 @@
+ %09%09%09return title;
++%0D
+ %0A%09%09%7D else if(tid
+@@ -1803,32 +1803,33 @@
+ lds,tr.field)) %7B
++%0D
+ %0A%09%09%09return tiddl
+@@ -1848,43 +1848,45 @@
+ tring(tr.field);
++%0D
+ %0A%09%09%7D else %7B
++%0D
+ %0A%09%09%09return defau
+@@ -1884,36 +1884,38 @@
+ urn defaultText;
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D else if(tr.i
+@@ -1913,32 +1913,33 @@
+ e if(tr.index) %7B
++%0D
+ %0A%09%09return this.e
+@@ -1980,42 +1980,44 @@
+ ex,defaultText);
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09return this.g
+@@ -2041,39 +2041,43 @@
+ le,defaultText);
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.setText
+@@ -2122,32 +2122,33 @@
+ rTiddlerTitle) %7B
++%0D
+ %0A%09var tr = $tw.u
+@@ -2172,32 +2172,33 @@
+ erence(textRef),
++%0D
+ %0A%09%09title = tr.ti
+@@ -2213,32 +2213,33 @@
+ urrTiddlerTitle;
++%0D
+ %0A%09this.setText(t
+@@ -2260,36 +2260,39 @@
+ tr.index,value);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.setText
+@@ -2329,32 +2329,33 @@
+ value,options) %7B
++%0D
+ %0A%09options = opti
+@@ -2356,32 +2356,33 @@
+ = options %7C%7C %7B%7D;
++%0D
+ %0A%09var creationFi
+@@ -2438,32 +2438,33 @@
+ reationFields(),
++%0D
+ %0A%09%09modificationF
+@@ -2525,32 +2525,33 @@
+ icationFields();
++%0D
+ %0A%09// Check if it
+@@ -2576,45 +2576,47 @@
+  a tiddler field
++%0D
+ %0A%09if(index) %7B
++%0D
+ %0A%09%09var data = th
+@@ -2652,32 +2652,33 @@
+ t.create(null));
++%0D
+ %0A%09%09if(value !== 
+@@ -2689,78 +2689,312 @@
+ fined) %7B
++%0D
+ %0A%09%09%09
 -data%5Bindex%5D =
-+//fix for blank root obj and numeral index/array init%0A%09%09%09if (JSON.stringify(data) === %22%7B%7D%22) %7B%0A%09%09%09%09if (index.match(/%5E%5C/(%5Cd+%7C-)$/) %7C%7C index.match(/%5E(%5Cd+%7C-)$/)) %7B%0A%09%09%09%09%09data = %5B%5D;%0A%09%09%09%09%7D%0A%09%09%09%7D%0A%09%09%09$tw.utils.jsonSet(data, index,
++//fix for blank root obj and numeral index/array init%0D%0A%09%09%09if (JSON.stringify(data) === %22%7B%7D%22) %7B%0D%0A%09%09%09%09if (index.match(/%5E%5C/(%5Cd+%7C-)$/) %7C%7C index.match(/%5E(%5Cd+%7C-)$/)) %7B%0D%0A%09%09%09%09%09data = %5B%5D;%0D%0A%09%09%09%09%7D%0D%0A%09%09%09%7D%0D%0A%09%09%09$tw.utils.jsonSet(data, index,
   value
-+)
- ;%0A%09%09%7D else %7B%0A%09%09%09
+-;
++);%0D
+ %0A%09%09%7D else %7B
++%0D
+ %0A%09%09%09
 -delete 
 +$tw.utils.jsonRemove(
  data
 -%5B
 +, 
  index
--%5D
-+)
- ;%0A%09%09%7D%0A%09%09
-@@ -2953,32 +2953,76 @@
- icationFields);%0A
-+%09%09$tw.utils.jsonIsPlugin(title, %22setText%22);%0A
- %09%7D else %7B%0A%09%09var 
-@@ -20779,32 +20779,74 @@
- ddler%0A%09%09%09%09try %7B%0A
-+%09%09%09%09%09if($tw.utils.jsonIsValid(tiddler))%7B%0A%09
- %09%09%09%09%09data = JSON
-@@ -20866,32 +20866,61 @@
- r.fields.text);%0A
-+%09%09%09%09%09%7D%0A%09%09%09%09%09else %7Bthrow %22%22;%7D%0A
- %09%09%09%09%7D catch(ex) 
-@@ -21333,35 +21333,39 @@
- ta && $tw.utils.
+-%5D;
++);%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09this.
+@@ -3031,42 +3031,89 @@
+ ficationFields);
++%0D%0A%09%09$tw.utils.jsonIsPlugin(title, %22setText%22);%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09var tiddler =
+@@ -3128,32 +3128,33 @@
+ tTiddler(title),
++%0D
+ %0A%09%09%09fields = %7Bti
+@@ -3157,32 +3157,33 @@
+  %7Btitle: title%7D;
++%0D
+ %0A%09%09fields%5Bfield 
+@@ -3193,32 +3193,33 @@
+ %22text%22%5D = value;
++%0D
+ %0A%09%09this.addTiddl
+@@ -3280,39 +3280,43 @@
+ icationFields));
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.deleteT
+@@ -3358,32 +3358,33 @@
+ rTiddlerTitle) %7B
++%0D
+ %0A%09var tr = $tw.u
+@@ -3408,32 +3408,33 @@
+ erence(textRef),
++%0D
+ %0A%09%09title,tiddler
+@@ -3433,32 +3433,33 @@
+ ,tiddler,fields;
++%0D
+ %0A%09// Check if it
+@@ -3478,32 +3478,33 @@
+ nce to a tiddler
++%0D
+ %0A%09if(tr.title &&
+@@ -3508,32 +3508,33 @@
+  && !tr.field) %7B
++%0D
+ %0A%09%09this.deleteTi
+@@ -3541,32 +3541,33 @@
+ ddler(tr.title);
++%0D
+ %0A%09// Else check 
+@@ -3579,32 +3579,33 @@
+  field reference
++%0D
+ %0A%09%7D else if(tr.f
+@@ -3603,32 +3603,33 @@
+ e if(tr.field) %7B
++%0D
+ %0A%09%09title = tr.ti
+@@ -3644,32 +3644,33 @@
+ urrTiddlerTitle;
++%0D
+ %0A%09%09tiddler = thi
+@@ -3681,32 +3681,33 @@
+ tTiddler(title);
++%0D
+ %0A%09%09if(tiddler &&
+@@ -3740,32 +3740,33 @@
+ lds,tr.field)) %7B
++%0D
+ %0A%09%09%09fields = Obj
+@@ -3774,32 +3774,33 @@
+ ct.create(null);
++%0D
+ %0A%09%09%09fields%5Btr.fi
+@@ -3808,32 +3808,33 @@
+ ld%5D = undefined;
++%0D
+ %0A%09%09%09this.addTidd
+@@ -3891,43 +3891,48 @@
+ ationFields()));
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.addEven
+@@ -3960,32 +3960,33 @@
+ type,listener) %7B
++%0D
+ %0A%09this.eventList
+@@ -4011,32 +4011,33 @@
+ Listeners %7C%7C %7B%7D;
++%0D
+ %0A%09this.eventList
+@@ -4075,32 +4075,33 @@
+ rs%5Btype%5D  %7C%7C %5B%5D;
++%0D
+ %0A%09this.eventList
+@@ -4120,36 +4120,39 @@
+ push(listener);%09
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.removeE
+@@ -4183,32 +4183,33 @@
+ type,listener) %7B
++%0D
+ %0A%09var listeners 
+@@ -4228,32 +4228,33 @@
+ Listeners%5Btype%5D;
++%0D
+ %0A%09if(listeners) 
+@@ -4246,32 +4246,33 @@
+ %09if(listeners) %7B
++%0D
+ %0A%09%09var p = liste
+@@ -4286,32 +4286,33 @@
+ dexOf(listener);
++%0D
+ %0A%09%09if(p !== -1) 
+@@ -4304,32 +4304,33 @@
+ %09%09if(p !== -1) %7B
++%0D
+ %0A%09%09%09listeners.sp
+@@ -4331,43 +4331,48 @@
+ ers.splice(p,1);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.dispatc
+@@ -4400,32 +4400,33 @@
+ e /*, args */) %7B
++%0D
+ %0A%09var args = Arr
+@@ -4454,32 +4454,33 @@
+ ll(arguments,1),
++%0D
+ %0A%09%09listeners = t
+@@ -4496,32 +4496,33 @@
+ Listeners%5Btype%5D;
++%0D
+ %0A%09if(listeners) 
+@@ -4514,32 +4514,33 @@
+ %09if(listeners) %7B
++%0D
+ %0A%09%09for(var p=0; 
+@@ -4557,32 +4557,33 @@
+ s.length; p++) %7B
++%0D
+ %0A%09%09%09var listener
+@@ -4590,32 +4590,33 @@
+  = listeners%5Bp%5D;
++%0D
+ %0A%09%09%09listener.app
+@@ -4625,46 +4625,52 @@
+ (listener,args);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0ACauses a tiddle
+@@ -4747,32 +4747,33 @@
+  event handlers.
++%0D
+ %0AThis method sho
+@@ -4853,32 +4853,33 @@
+ iddlers%5B%5D array.
++%0D
+ %0A%09title: Title o
+@@ -4879,32 +4879,33 @@
+ Title of tiddler
++%0D
+ %0A%09isDeleted: def
+@@ -4962,32 +4962,33 @@
+ ed or modified),
++%0D
+ %0A%09%09true if the t
+@@ -5002,35 +5002,37 @@
+ has been deleted
++%0D
+ %0A*/
++%0D
+ %0Aexports.enqueue
+@@ -5065,32 +5065,33 @@
+ tle,isDeleted) %7B
++%0D
+ %0A%09// Record the 
+@@ -5119,32 +5119,33 @@
+ changed tiddlers
++%0D
+ %0A%09this.changedTi
+@@ -5189,32 +5189,33 @@
+ ct.create(null);
++%0D
+ %0A%09this.changedTi
+@@ -5273,32 +5273,33 @@
+ ct.create(null);
++%0D
+ %0A%09this.changedTi
+@@ -5347,32 +5347,33 @@
+ dified%22%5D = true;
++%0D
+ %0A%09// Increment t
+@@ -5379,32 +5379,33 @@
+ the change count
++%0D
+ %0A%09this.changeCou
+@@ -5441,32 +5441,33 @@
+ ct.create(null);
++%0D
+ %0A%09if($tw.utils.h
+@@ -5487,32 +5487,33 @@
+ eCount,title)) %7B
++%0D
+ %0A%09%09this.changeCo
+@@ -5517,42 +5517,44 @@
+ eCount%5Btitle%5D++;
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09this.changeCo
+@@ -5560,35 +5560,37 @@
+ ount%5Btitle%5D = 1;
++%0D
+ %0A%09%7D
++%0D
+ %0A%09// Trigger eve
+@@ -5584,32 +5584,33 @@
+ / Trigger events
++%0D
+ %0A%09this.eventList
+@@ -5635,32 +5635,33 @@
+ Listeners %7C%7C %7B%7D;
++%0D
+ %0A%09if(!this.event
+@@ -5665,32 +5665,33 @@
+ entsTriggered) %7B
++%0D
+ %0A%09%09var self = th
+@@ -5685,32 +5685,33 @@
+ var self = this;
++%0D
+ %0A%09%09$tw.utils.nex
+@@ -5720,32 +5720,33 @@
+ ick(function() %7B
++%0D
+ %0A%09%09%09var changes 
+@@ -5760,32 +5760,33 @@
+ changedTiddlers;
++%0D
+ %0A%09%09%09self.changed
+@@ -5808,32 +5808,33 @@
+ ct.create(null);
++%0D
+ %0A%09%09%09self.eventsT
+@@ -5842,32 +5842,33 @@
+ iggered = false;
++%0D
+ %0A%09%09%09if($tw.utils
+@@ -5881,32 +5881,33 @@
+ (changes) %3E 0) %7B
++%0D
+ %0A%09%09%09%09self.dispat
+@@ -5924,43 +5924,46 @@
+ hange%22,changes);
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D);
++%0D
+ %0A%09%09this.eventsTr
+@@ -5969,39 +5969,43 @@
+ riggered = true;
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.getSize
+@@ -6030,32 +6030,33 @@
+ e = function() %7B
++%0D
+ %0A%09return $tw.uti
+@@ -6078,36 +6078,39 @@
+ hangedTiddlers);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.clearTi
+@@ -6131,32 +6131,33 @@
+ e = function() %7B
++%0D
+ %0A%09this.changedTi
+@@ -6177,32 +6177,33 @@
+ ct.create(null);
++%0D
+ %0A%09this.changeCou
+@@ -6219,36 +6219,39 @@
+ ct.create(null);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.getChan
+@@ -6269,32 +6269,33 @@
+ unction(title) %7B
++%0D
+ %0A%09this.changeCou
+@@ -6331,32 +6331,33 @@
+ ct.create(null);
++%0D
+ %0A%09if($tw.utils.h
+@@ -6377,32 +6377,33 @@
+ eCount,title)) %7B
++%0D
+ %0A%09%09return this.c
+@@ -6420,48 +6420,55 @@
+ %5Btitle%5D;
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09return 0;
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AGenerat
+@@ -6500,35 +6500,37 @@
+ e specified base
++%0D
+ %0A*/
++%0D
+ %0Aexports.generat
+@@ -6562,32 +6562,33 @@
+ Title,options) %7B
++%0D
+ %0A%09options = opti
+@@ -6597,28 +6597,30 @@
+ s %7C%7C %7B%7D;
++%0D
+ %0A%09var c = 0,
++%0D
+ %0A%09%09title
+@@ -6624,32 +6624,33 @@
+ tle = baseTitle;
++%0D
+ %0A%09while(this.tid
+@@ -6717,32 +6717,33 @@
+ dDraft(title)) %7B
++%0D
+ %0A%09%09title = baseT
+@@ -6741,32 +6741,33 @@
+ e = baseTitle + 
++%0D
+ %0A%09%09%09(options.pre
+@@ -6780,48 +6780,54 @@
+  %22 %22) + 
++%0D
+ %0A%09%09%09(++c);
++%0D
+ %0A%09%7D
++%0D
+ %0A%09return title;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports
+@@ -6854,32 +6854,33 @@
+ unction(title) %7B
++%0D
+ %0A%09return title &
+@@ -6900,36 +6900,39 @@
+ Of(%22$:/%22) === 0;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.isTempo
+@@ -6954,32 +6954,33 @@
+ unction(title) %7B
++%0D
+ %0A%09return title &
+@@ -7005,36 +7005,39 @@
+ :/temp/%22) === 0;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.isImage
+@@ -7055,32 +7055,33 @@
+ unction(title) %7B
++%0D
+ %0A%09var tiddler = 
+@@ -7095,32 +7095,33 @@
+ tTiddler(title);
++%0D
+ %0A%09if(tiddler) %7B%09
+@@ -7113,32 +7113,33 @@
+ %09if(tiddler) %7B%09%09
++%0D
+ %0A%09%09var contentTy
+@@ -7212,32 +7212,33 @@
+ nd.tiddlywiki%22%5D;
++%0D
+ %0A%09%09return !!cont
+@@ -7298,51 +7298,58 @@
+  !== -1;
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09return null;
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0ALike ad
+@@ -7492,35 +7492,37 @@
+ ler was imported
++%0D
+ %0A*/
++%0D
+ %0Aexports.importT
+@@ -7541,32 +7541,33 @@
+ ction(tiddler) %7B
++%0D
+ %0A%09var existingTi
+@@ -7604,32 +7604,33 @@
+ r.fields.title);
++%0D
+ %0A%09// Check if we
+@@ -7646,32 +7646,33 @@
+ ng with a plugin
++%0D
+ %0A%09if(tiddler && 
+@@ -7829,32 +7829,33 @@
+ ld(%22version%22)) %7B
++%0D
+ %0A%09%09// Reject the
+@@ -7877,32 +7877,33 @@
+ n if it is older
++%0D
+ %0A%09%09if(!$tw.utils
+@@ -7966,32 +7966,33 @@
+ elds.version)) %7B
++%0D
+ %0A%09%09%09return false
+@@ -7984,39 +7984,42 @@
+ %09%09%09return false;
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D
++%0D
+ %0A%09// Fall throug
+@@ -8033,32 +8033,33 @@
+ ding the tiddler
++%0D
+ %0A%09this.addTiddle
+@@ -8069,37 +8069,42 @@
+ iddler);
++%0D
+ %0A%09return true;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AReturn 
+@@ -8163,35 +8163,37 @@
+ ddler is created
++%0D
+ %0A*/
++%0D
+ %0Aexports.getCrea
+@@ -8209,32 +8209,33 @@
+ s = function() %7B
++%0D
+ %0A%09if(this.getTid
+@@ -8289,32 +8289,33 @@
+ e() !== %22yes%22) %7B
++%0D
+ %0A%09%09var fields = 
+@@ -8307,32 +8307,33 @@
+ %09%09var fields = %7B
++%0D
+ %0A%09%09%09%09created: ne
+@@ -8332,38 +8332,40 @@
+ ated: new Date()
++%0D
+ %0A%09%09%09%7D,
++%0D
+ %0A%09%09%09creator = th
+@@ -8399,32 +8399,34 @@
+ _TITLE);
++%0D
+ %0A%09%09if(creator) %7B
++%0D
+ %0A%09%09%09fiel
+@@ -8438,36 +8438,38 @@
+ eator = creator;
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09return fields
+@@ -8469,49 +8469,56 @@
+  fields;
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09return %7B%7D;
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AReturn 
+@@ -8578,35 +8578,37 @@
+ dler is modified
++%0D
+ %0A*/
++%0D
+ %0Aexports.getModi
+@@ -8628,32 +8628,33 @@
+ s = function() %7B
++%0D
+ %0A%09if(this.getTid
+@@ -8708,32 +8708,33 @@
+ e() !== %22yes%22) %7B
++%0D
+ %0A%09%09var fields = 
+@@ -8745,32 +8745,33 @@
+ ct.create(null),
++%0D
+ %0A%09%09%09modifier = t
+@@ -8798,32 +8798,33 @@
+ SER_NAME_TITLE);
++%0D
+ %0A%09%09fields.modifi
+@@ -8831,32 +8831,33 @@
+ ed = new Date();
++%0D
+ %0A%09%09if(modifier) 
+@@ -8849,32 +8849,33 @@
+ %09%09if(modifier) %7B
++%0D
+ %0A%09%09%09fields.modif
+@@ -8881,36 +8881,38 @@
+ fier = modifier;
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09return fields
+@@ -8912,49 +8912,56 @@
+  fields;
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09return %7B%7D;
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AReturn 
+@@ -9003,32 +9003,33 @@
+ Options include:
++%0D
+ %0AsortField: fiel
+@@ -9032,32 +9032,33 @@
+ field to sort by
++%0D
+ %0AexcludeTag: tag
+@@ -9060,32 +9060,33 @@
+ : tag to exclude
++%0D
+ %0AincludeSystem: 
+@@ -9131,35 +9131,37 @@
+ faults to false)
++%0D
+ %0A*/
++%0D
+ %0Aexports.getTidd
+@@ -9178,32 +9178,33 @@
+ ction(options) %7B
++%0D
+ %0A%09options = opti
+@@ -9222,32 +9222,33 @@
+ ct.create(null);
++%0D
+ %0A%09var self = thi
+@@ -9241,32 +9241,33 @@
+ var self = this,
++%0D
+ %0A%09%09sortField = o
+@@ -9286,32 +9286,33 @@
+ ield %7C%7C %22title%22,
++%0D
+ %0A%09%09tiddlers = %5B%5D
+@@ -9320,32 +9320,33 @@
+  t, titles = %5B%5D;
++%0D
+ %0A%09this.each(func
+@@ -9358,32 +9358,33 @@
+ tiddler,title) %7B
++%0D
+ %0A%09%09if(options.in
+@@ -9421,32 +9421,33 @@
+ iddler(title)) %7B
++%0D
+ %0A%09%09%09if(!options.
+@@ -9490,32 +9490,33 @@
+ s.excludeTag)) %7B
++%0D
+ %0A%09%09%09%09tiddlers.pu
+@@ -9519,46 +9519,50 @@
+ s.push(tiddler);
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D);
++%0D
+ %0A%09tiddlers.sort(
+@@ -9568,32 +9568,33 @@
+ (function(a,b) %7B
++%0D
+ %0A%09%09var aa = a.fi
+@@ -9621,32 +9621,33 @@
+ werCase() %7C%7C %22%22,
++%0D
+ %0A%09%09%09bb = b.field
+@@ -9679,57 +9679,61 @@
+ ) %7C%7C %22%22;
++%0D
+ %0A%09%09if(aa %3C bb) %7B
++%0D
+ %0A%09%09%09return -1;
++%0D
+ %0A%09%09%7D else %7B
++%0D
+ %0A%09%09%09if(a
+@@ -9741,70 +9741,77 @@
+  %3E bb) %7B
++%0D
+ %0A%09%09%09%09return 1;
++%0D
+ %0A%09%09%09%7D else %7B
++%0D
+ %0A%09%09%09%09return 0;
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D);
++%0D
+ %0A%09for(t=
+@@ -9830,32 +9830,33 @@
+ s.length; t++) %7B
++%0D
+ %0A%09%09titles.push(t
+@@ -9880,39 +9880,44 @@
+ .title);
++%0D
+ %0A%09%7D
++%0D
+ %0A%09return titles;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports
+@@ -9947,32 +9947,33 @@
+ on(excludeTag) %7B
++%0D
+ %0A%09var tiddlers =
+@@ -10008,32 +10008,33 @@
+ g: excludeTag%7D);
++%0D
+ %0A%09return $tw.uti
+@@ -10044,39 +10044,43 @@
+ count(tiddlers);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AReturns a funct
+@@ -10191,35 +10191,37 @@
+ k(tiddler,title)
++%0D
+ %0A*/
++%0D
+ %0Aexports.makeTid
+@@ -10245,32 +10245,33 @@
+ nction(titles) %7B
++%0D
+ %0A%09var self = thi
+@@ -10264,32 +10264,33 @@
+ var self = this;
++%0D
+ %0A%09if(!$tw.utils.
+@@ -10299,32 +10299,33 @@
+ Array(titles)) %7B
++%0D
+ %0A%09%09titles = Obje
+@@ -10332,42 +10332,44 @@
+ ct.keys(titles);
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09titles = titl
+@@ -10372,35 +10372,37 @@
+ titles.slice(0);
++%0D
+ %0A%09%7D
++%0D
+ %0A%09return functio
+@@ -10406,32 +10406,33 @@
+ tion(callback) %7B
++%0D
+ %0A%09%09titles.forEac
+@@ -10442,32 +10442,33 @@
+ unction(title) %7B
++%0D
+ %0A%09%09%09callback(sel
+@@ -10494,33 +10494,39 @@
+ ,title);
++%0D
+ %0A%09%09%7D);
++%0D
+ %0A%09%7D;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0ASort an
+@@ -10562,32 +10562,33 @@
+  specified field
++%0D
+ %0A%09titles: array 
+@@ -10606,32 +10606,33 @@
+ sorted in place)
++%0D
+ %0A%09sortField: nam
+@@ -10644,32 +10644,33 @@
+ field to sort by
++%0D
+ %0A%09isDescending: 
+@@ -10698,32 +10698,33 @@
+ ld be descending
++%0D
+ %0A%09isCaseSensitiv
+@@ -10795,35 +10795,37 @@
+  to be different
++%0D
+ %0A*/
++%0D
+ %0Aexports.sortTid
+@@ -10906,32 +10906,33 @@
+ sAlphaNumeric) %7B
++%0D
+ %0A%09var self = thi
+@@ -10925,32 +10925,33 @@
+ var self = this;
++%0D
+ %0A%09titles.sort(fu
+@@ -10963,27 +10963,29 @@
+ n(a,b) %7B
++%0D
+ %0A%09%09var x,y,
++%0D
+ %0A%09%09%09comp
+@@ -11004,32 +11004,33 @@
+  function(x,y) %7B
++%0D
+ %0A%09%09%09%09var result 
+@@ -11023,32 +11023,33 @@
+ %09%09%09var result = 
++%0D
+ %0A%09%09%09%09%09isNaN(x) &
+@@ -11079,32 +11079,33 @@
+ ding ? -1 : 1) :
++%0D
+ %0A%09%09%09%09%09!isNaN(x) 
+@@ -11135,32 +11135,33 @@
+ ding ? 1 : -1) :
++%0D
+ %0A%09%09%09%09%09%09%09%09%09%09%09(isD
+@@ -11180,32 +11180,33 @@
+ y - x :  x - y);
++%0D
+ %0A%09%09%09%09return resu
+@@ -11200,38 +11200,40 @@
+ %09%09return result;
++%0D
+ %0A%09%09%09%7D;
++%0D
+ %0A%09%09if(sortField 
+@@ -11238,32 +11238,33 @@
+ d !== %22title%22) %7B
++%0D
+ %0A%09%09%09var tiddlerA
+@@ -11277,32 +11277,33 @@
+ f.getTiddler(a),
++%0D
+ %0A%09%09%09%09tiddlerB = 
+@@ -11313,32 +11313,33 @@
+ f.getTiddler(b);
++%0D
+ %0A%09%09%09if(tiddlerA)
+@@ -11332,32 +11332,33 @@
+ %09%09if(tiddlerA) %7B
++%0D
+ %0A%09%09%09%09a = tiddler
+@@ -11383,45 +11383,49 @@
+ %5D %7C%7C %22%22;
++%0D
+ %0A%09%09%09%7D else %7B
++%0D
+ %0A%09%09%09%09a = %22%22;
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%09if(t
+@@ -11426,32 +11426,33 @@
+ %09%09if(tiddlerB) %7B
++%0D
+ %0A%09%09%09%09b = tiddler
+@@ -11477,49 +11477,54 @@
+ %5D %7C%7C %22%22;
++%0D
+ %0A%09%09%09%7D else %7B
++%0D
+ %0A%09%09%09%09b = %22%22;
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09x = N
+@@ -11524,32 +11524,33 @@
+ %09%09x = Number(a);
++%0D
+ %0A%09%09y = Number(b)
+@@ -11542,32 +11542,33 @@
+ %09%09y = Number(b);
++%0D
+ %0A%09%09if(isNumeric 
+@@ -11589,32 +11589,33 @@
+ %7C%7C !isNaN(y))) %7B
++%0D
+ %0A%09%09%09return compa
+@@ -11621,32 +11621,33 @@
+ areNumbers(x,y);
++%0D
+ %0A%09%09%7D else if(isA
+@@ -11652,32 +11652,33 @@
+ sAlphaNumeric) %7B
++%0D
+ %0A%09%09%09return isDes
+@@ -11811,32 +11811,33 @@
+ ivity: %22base%22%7D);
++%0D
+ %0A%09%09%7D else if($tw
+@@ -11870,32 +11870,33 @@
+ ils.isDate(b)) %7B
++%0D
+ %0A%09%09%09return isDes
+@@ -11911,43 +11911,45 @@
+ ? b - a : a - b;
++%0D
+ %0A%09%09%7D else %7B
++%0D
+ %0A%09%09%09a = String(a
+@@ -11942,32 +11942,33 @@
+ %09%09a = String(a);
++%0D
+ %0A%09%09%09b = String(b
+@@ -11961,32 +11961,33 @@
+ %09%09b = String(b);
++%0D
+ %0A%09%09%09if(!isCaseSe
+@@ -11988,32 +11988,33 @@
+ CaseSensitive) %7B
++%0D
+ %0A%09%09%09%09a = a.toLow
+@@ -12014,32 +12014,33 @@
+ a.toLowerCase();
++%0D
+ %0A%09%09%09%09b = b.toLow
+@@ -12040,37 +12040,39 @@
+ b.toLowerCase();
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%09return isDes
+@@ -12121,32 +12121,38 @@
+ pare(b);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AFor eve
+@@ -12239,32 +12239,33 @@
+ Options include:
++%0D
+ %0AsortField: fiel
+@@ -12268,32 +12268,33 @@
+ field to sort by
++%0D
+ %0AexcludeTag: tag
+@@ -12296,32 +12296,33 @@
+ : tag to exclude
++%0D
+ %0AincludeSystem: 
+@@ -12367,35 +12367,37 @@
+ faults to false)
++%0D
+ %0A*/
++%0D
+ %0Aexports.forEach
+@@ -12442,30 +12442,32 @@
+ ck */) %7B
++%0D
+ %0A%09var arg = 0,
++%0D
+ %0A%09%09optio
+@@ -12509,32 +12509,33 @@
+ nts%5Barg++%5D : %7B%7D,
++%0D
+ %0A%09%09callback = ar
+@@ -12541,32 +12541,33 @@
+ rguments%5Barg++%5D,
++%0D
+ %0A%09%09titles = this
+@@ -12588,30 +12588,32 @@
+ ptions),
++%0D
+ %0A%09%09t, tiddler;
++%0D
+ %0A%09for(t=
+@@ -12630,32 +12630,33 @@
+ s.length; t++) %7B
++%0D
+ %0A%09%09tiddler = thi
+@@ -12679,32 +12679,34 @@
+ les%5Bt%5D);
++%0D
+ %0A%09%09if(tiddler) %7B
++%0D
+ %0A%09%09%09call
+@@ -12750,30 +12750,36 @@
+ iddler);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AReturn 
+@@ -12848,35 +12848,37 @@
+ pecified tiddler
++%0D
+ %0A*/
++%0D
+ %0Aexports.getTidd
+@@ -12897,32 +12897,33 @@
+ unction(title) %7B
++%0D
+ %0A%09var self = thi
+@@ -12916,32 +12916,33 @@
+ var self = this;
++%0D
+ %0A%09// We'll cache
+@@ -12992,32 +12992,33 @@
+  tiddler changes
++%0D
+ %0A%09return this.ge
+@@ -13052,32 +13052,33 @@
+ ks%22,function() %7B
++%0D
+ %0A%09%09// Parse the 
+@@ -13076,32 +13076,33 @@
+ arse the tiddler
++%0D
+ %0A%09%09var parser = 
+@@ -13118,32 +13118,33 @@
+ eTiddler(title);
++%0D
+ %0A%09%09// Count up t
+@@ -13143,32 +13143,33 @@
+ unt up the links
++%0D
+ %0A%09%09var links = %5B
+@@ -13162,32 +13162,33 @@
+ %09var links = %5B%5D,
++%0D
+ %0A%09%09%09checkParseTr
+@@ -13205,32 +13205,33 @@
+ ion(parseTree) %7B
++%0D
+ %0A%09%09%09%09for(var t=0
+@@ -13250,32 +13250,33 @@
+ e.length; t++) %7B
++%0D
+ %0A%09%09%09%09%09var parseT
+@@ -13290,32 +13290,33 @@
+  = parseTree%5Bt%5D;
++%0D
+ %0A%09%09%09%09%09if(parseTr
+@@ -13412,32 +13412,33 @@
+  === %22string%22) %7B
++%0D
+ %0A%09%09%09%09%09%09var value
+@@ -13466,32 +13466,33 @@
+ ibutes.to.value;
++%0D
+ %0A%09%09%09%09%09%09if(links.
+@@ -13507,32 +13507,33 @@
+ value) === -1) %7B
++%0D
+ %0A%09%09%09%09%09%09%09links.pu
+@@ -13534,47 +13534,50 @@
+ nks.push(value);
++%0D
+ %0A%09%09%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09%09if(parseTr
+@@ -13586,32 +13586,33 @@
+ Node.children) %7B
++%0D
+ %0A%09%09%09%09%09%09checkPars
+@@ -13641,50 +13641,55 @@
+ ildren);
++%0D
+ %0A%09%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09%7D
++%0D
+ %0A%09%09%09%7D;
++%0D
+ %0A%09%09if(parser) %7B
++%0D
+ %0A%09%09%09chec
+@@ -13712,48 +13712,55 @@
+ r.tree);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09return links;
++%0D
+ %0A%09%7D);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AReturn 
+@@ -13812,35 +13812,37 @@
+ pecified tiddler
++%0D
+ %0A*/
++%0D
+ %0Aexports.getTidd
+@@ -13871,32 +13871,33 @@
+ n(targetTitle) %7B
++%0D
+ %0A%09var self = thi
+@@ -13890,32 +13890,33 @@
+ var self = this,
++%0D
+ %0A%09%09backlinks = %5B
+@@ -13909,32 +13909,33 @@
+ %09backlinks = %5B%5D;
++%0D
+ %0A%09this.forEachTi
+@@ -13957,32 +13957,33 @@
+ title,tiddler) %7B
++%0D
+ %0A%09%09var links = s
+@@ -14001,32 +14001,33 @@
+ lerLinks(title);
++%0D
+ %0A%09%09if(links.inde
+@@ -14044,32 +14044,33 @@
+ Title) !== -1) %7B
++%0D
+ %0A%09%09%09backlinks.pu
+@@ -14071,41 +14071,44 @@
+ nks.push(title);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D);
++%0D
+ %0A%09return backlin
+@@ -14102,39 +14102,43 @@
+ eturn backlinks;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AReturn a hashma
+@@ -14253,35 +14253,37 @@
+ er is referenced
++%0D
+ %0A*/
++%0D
+ %0Aexports.getMiss
+@@ -14298,32 +14298,33 @@
+ s = function() %7B
++%0D
+ %0A%09var self = thi
+@@ -14325,32 +14325,34 @@
+  = this,
++%0D
+ %0A%09%09missing = %5B%5D;
++%0D
+ %0A// We s
+@@ -14438,32 +14438,33 @@
+ dler is modified
++%0D
+ %0A%09this.forEachTi
+@@ -14486,32 +14486,33 @@
+ title,tiddler) %7B
++%0D
+ %0A%09%09var links = s
+@@ -14530,32 +14530,33 @@
+ lerLinks(title);
++%0D
+ %0A%09%09$tw.utils.eac
+@@ -14571,32 +14571,33 @@
+ function(link) %7B
++%0D
+ %0A%09%09%09if((!self.ti
+@@ -14672,32 +14672,33 @@
+ (link) === -1) %7B
++%0D
+ %0A%09%09%09%09missing.pus
+@@ -14705,32 +14705,36 @@
+ h(link);
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D);
++%0D
+ %0A%09%7D);
++%0D
+ %0A%09return
+@@ -14734,36 +14734,39 @@
+ %09return missing;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.getOrph
+@@ -14780,32 +14780,33 @@
+ s = function() %7B
++%0D
+ %0A%09var self = thi
+@@ -14799,32 +14799,33 @@
+ var self = this,
++%0D
+ %0A%09%09orphans = thi
+@@ -14832,32 +14832,33 @@
+ s.getTiddlers();
++%0D
+ %0A%09this.forEachTi
+@@ -14880,32 +14880,33 @@
+ title,tiddler) %7B
++%0D
+ %0A%09%09var links = s
+@@ -14924,32 +14924,33 @@
+ lerLinks(title);
++%0D
+ %0A%09%09$tw.utils.eac
+@@ -14965,32 +14965,33 @@
+ function(link) %7B
++%0D
+ %0A%09%09%09var p = orph
+@@ -15000,32 +15000,33 @@
+ s.indexOf(link);
++%0D
+ %0A%09%09%09if(p !== -1)
+@@ -15019,32 +15019,33 @@
+ %09%09if(p !== -1) %7B
++%0D
+ %0A%09%09%09%09orphans.spl
+@@ -15053,32 +15053,36 @@
+ ce(p,1);
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D);
++%0D
+ %0A%09%7D);
++%0D
+ %0A%09return
+@@ -15090,39 +15090,43 @@
+ orphans; // Todo
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0ARetrieves a lis
+@@ -15173,35 +15173,37 @@
+ with a given tag
++%0D
+ %0A*/
++%0D
+ %0Aexports.getTidd
+@@ -15223,32 +15223,33 @@
+  function(tag) %7B
++%0D
+ %0A%09var self = thi
+@@ -15242,32 +15242,33 @@
+ var self = this;
++%0D
+ %0A%09return this.ge
+@@ -15301,32 +15301,33 @@
+ tag,function() %7B
++%0D
+ %0A%09%09var tagmap = 
+@@ -15335,32 +15335,33 @@
+ elf.getTagMap();
++%0D
+ %0A%09%09return self.s
+@@ -15379,44 +15379,49 @@
+ agmap%5Btag%5D,tag);
++%0D
+ %0A%09%7D);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AGet a hashmap b
+@@ -15445,35 +15445,37 @@
+ f tiddler titles
++%0D
+ %0A*/
++%0D
+ %0Aexports.getTagM
+@@ -15483,32 +15483,33 @@
+ p = function() %7B
++%0D
+ %0A%09var self = thi
+@@ -15502,32 +15502,33 @@
+ var self = this;
++%0D
+ %0A%09return this.ge
+@@ -15553,32 +15553,33 @@
+ ap%22,function() %7B
++%0D
+ %0A%09%09var tags = Ob
+@@ -15588,32 +15588,33 @@
+ ct.create(null),
++%0D
+ %0A%09%09%09storeTags = 
+@@ -15631,32 +15631,33 @@
+ agArray,title) %7B
++%0D
+ %0A%09%09%09%09if(tagArray
+@@ -15651,32 +15651,33 @@
+ %09%09if(tagArray) %7B
++%0D
+ %0A%09%09%09%09%09for(var in
+@@ -15708,32 +15708,33 @@
+ ngth; index++) %7B
++%0D
+ %0A%09%09%09%09%09%09var tag =
+@@ -15742,32 +15742,33 @@
+ tagArray%5Bindex%5D;
++%0D
+ %0A%09%09%09%09%09%09if($tw.ut
+@@ -15779,32 +15779,33 @@
+ hop(tags,tag)) %7B
++%0D
+ %0A%09%09%09%09%09%09%09tags%5Btag
+@@ -15810,47 +15810,49 @@
+ ag%5D.push(title);
++%0D
+ %0A%09%09%09%09%09%09%7D else %7B
++%0D
+ %0A%09%09%09%09%09%09%09tags%5Btag
+@@ -15863,43 +15863,48 @@
+ %5Btitle%5D;
++%0D
+ %0A%09%09%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09%7D
++%0D
+ %0A%09%09%09%7D,
++%0D
+ %0A%09%09%09titl
+@@ -15906,32 +15906,33 @@
+ %09title, tiddler;
++%0D
+ %0A%09%09// Collect up
+@@ -15936,32 +15936,33 @@
+  up all the tags
++%0D
+ %0A%09%09self.eachShad
+@@ -15981,32 +15981,33 @@
+ tiddler,title) %7B
++%0D
+ %0A%09%09%09if(!self.tid
+@@ -16018,32 +16018,33 @@
+ Exists(title)) %7B
++%0D
+ %0A%09%09%09%09tiddler = s
+@@ -16057,32 +16057,33 @@
+ tTiddler(title);
++%0D
+ %0A%09%09%09%09storeTags(t
+@@ -16100,43 +16100,46 @@
+ lds.tags,title);
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D);
++%0D
+ %0A%09%09self.each(fun
+@@ -16152,32 +16152,33 @@
+ tiddler,title) %7B
++%0D
+ %0A%09%09%09storeTags(ti
+@@ -16202,49 +16202,56 @@
+ ,title);
++%0D
+ %0A%09%09%7D);
++%0D
+ %0A%09%09return tags;
++%0D
+ %0A%09%7D);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0ALookup 
+@@ -16339,35 +16339,37 @@
+ ified list field
++%0D
+ %0A*/
++%0D
+ %0Aexports.findLis
+@@ -16410,32 +16410,33 @@
+ tle,fieldName) %7B
++%0D
+ %0A%09fieldName = fi
+@@ -16445,32 +16445,33 @@
+ dName %7C%7C %22list%22;
++%0D
+ %0A%09var titles = %5B
+@@ -16464,32 +16464,33 @@
+ var titles = %5B%5D;
++%0D
+ %0A%09this.each(func
+@@ -16502,32 +16502,33 @@
+ tiddler,title) %7B
++%0D
+ %0A%09%09var list = $t
+@@ -16571,32 +16571,33 @@
+ lds%5BfieldName%5D);
++%0D
+ %0A%09%09if(list && li
+@@ -16621,32 +16621,33 @@
+ Title) !== -1) %7B
++%0D
+ %0A%09%09%09titles.push(
+@@ -16653,48 +16653,55 @@
+ (title);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D);
++%0D
+ %0A%09return titles;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0ASorts a
+@@ -16746,35 +16746,37 @@
+  an ordered list
++%0D
+ %0A*/
++%0D
+ %0Aexports.sortByL
+@@ -16800,32 +16800,33 @@
+ ray,listTitle) %7B
++%0D
+ %0A%09var self = thi
+@@ -16819,32 +16819,33 @@
+ var self = this,
++%0D
+ %0A%09%09replacedTitle
+@@ -16860,32 +16860,33 @@
+ ct.create(null);
++%0D
+ %0A%09function repla
+@@ -16892,32 +16892,33 @@
+ aceItem(title) %7B
++%0D
+ %0A%09%09if(!$tw.utils
+@@ -16939,32 +16939,33 @@
+ itles, title)) %7B
++%0D
+ %0A%09%09%09replacedTitl
+@@ -16973,32 +16973,33 @@
+ s%5Btitle%5D = true;
++%0D
+ %0A%09%09%09var newPos =
+@@ -16994,32 +16994,33 @@
+ var newPos = -1,
++%0D
+ %0A%09%09%09%09tiddler = s
+@@ -17033,32 +17033,33 @@
+ tTiddler(title);
++%0D
+ %0A%09%09%09if(tiddler) 
+@@ -17051,32 +17051,33 @@
+ %09%09%09if(tiddler) %7B
++%0D
+ %0A%09%09%09%09var beforeT
+@@ -17105,32 +17105,33 @@
+ %5B%22list-before%22%5D,
++%0D
+ %0A%09%09%09%09%09afterTitle
+@@ -17154,32 +17154,33 @@
+ s%5B%22list-after%22%5D;
++%0D
+ %0A%09%09%09%09if(beforeTi
+@@ -17184,32 +17184,33 @@
+ eTitle === %22%22) %7B
++%0D
+ %0A%09%09%09%09%09newPos = 0
+@@ -17202,32 +17202,33 @@
+ %09%09%09%09%09newPos = 0;
++%0D
+ %0A%09%09%09%09%7D else if(a
+@@ -17238,32 +17238,33 @@
+ rTitle === %22%22) %7B
++%0D
+ %0A%09%09%09%09%09newPos = t
+@@ -17268,32 +17268,33 @@
+ = titles.length;
++%0D
+ %0A%09%09%09%09%7D else if(b
+@@ -17298,32 +17298,33 @@
+ f(beforeTitle) %7B
++%0D
+ %0A%09%09%09%09%09replaceIte
+@@ -17330,32 +17330,33 @@
+ em(beforeTitle);
++%0D
+ %0A%09%09%09%09%09newPos = t
+@@ -17374,32 +17374,33 @@
+ Of(beforeTitle);
++%0D
+ %0A%09%09%09%09%7D else if(a
+@@ -17403,32 +17403,33 @@
+ if(afterTitle) %7B
++%0D
+ %0A%09%09%09%09%09replaceIte
+@@ -17434,32 +17434,33 @@
+ tem(afterTitle);
++%0D
+ %0A%09%09%09%09%09newPos = t
+@@ -17477,32 +17477,33 @@
+ xOf(afterTitle);
++%0D
+ %0A%09%09%09%09%09if(newPos 
+@@ -17509,45 +17509,49 @@
+  %3E= 0) %7B
++%0D
+ %0A%09%09%09%09%09%09++newPos;
++%0D
+ %0A%09%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09// 
+@@ -17659,32 +17659,33 @@
+  title's currPos
++%0D
+ %0A%09%09%09%09var currPos
+@@ -17701,32 +17701,33 @@
+ .indexOf(title);
++%0D
+ %0A%09%09%09%09if(newPos =
+@@ -17726,32 +17726,33 @@
+ newPos === -1) %7B
++%0D
+ %0A%09%09%09%09%09newPos = c
+@@ -17750,38 +17750,40 @@
+ ewPos = currPos;
++%0D
+ %0A%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09if(currPos 
+@@ -17803,32 +17803,33 @@
+ s !== currPos) %7B
++%0D
+ %0A%09%09%09%09%09titles.spl
+@@ -17835,32 +17835,33 @@
+ lice(currPos,1);
++%0D
+ %0A%09%09%09%09%09if(newPos 
+@@ -17873,39 +17873,42 @@
+ rrPos) %7B
++%0D
+ %0A%09%09%09%09%09%09newPos--;
++%0D
+ %0A%09%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09%09ti
+@@ -17935,34 +17935,39 @@
+ ,title);
++%0D
+ %0A%09%09%09%09%7D
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D
++%0D
+ %0A%09var li
+@@ -17994,32 +17994,33 @@
+ List(listTitle);
++%0D
+ %0A%09if(!array %7C%7C a
+@@ -18039,39 +18039,42 @@
+ === 0) %7B
++%0D
+ %0A%09%09return %5B%5D;
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09var t
+@@ -18086,32 +18086,33 @@
+  = %5B%5D, t, title;
++%0D
+ %0A%09%09// First plac
+@@ -18145,32 +18145,33 @@
+ sent in the list
++%0D
+ %0A%09%09for(t=0; t%3Cli
+@@ -18179,32 +18179,33 @@
+ t.length; t++) %7B
++%0D
+ %0A%09%09%09title = list
+@@ -18200,32 +18200,33 @@
+ title = list%5Bt%5D;
++%0D
+ %0A%09%09%09if(array.ind
+@@ -18238,32 +18238,33 @@
+ title) !== -1) %7B
++%0D
+ %0A%09%09%09%09titles.push
+@@ -18263,41 +18263,44 @@
+ les.push(title);
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09// Then place
+@@ -18313,32 +18313,33 @@
+ emaining entries
++%0D
+ %0A%09%09for(t=0; t%3Car
+@@ -18348,32 +18348,33 @@
+ y.length; t++) %7B
++%0D
+ %0A%09%09%09title = arra
+@@ -18370,32 +18370,33 @@
+ itle = array%5Bt%5D;
++%0D
+ %0A%09%09%09if(list.inde
+@@ -18407,32 +18407,33 @@
+ title) === -1) %7B
++%0D
+ %0A%09%09%09%09titles.push
+@@ -18432,41 +18432,44 @@
+ les.push(title);
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09// Finally ob
+@@ -18524,32 +18524,33 @@
+  tiddler in turn
++%0D
+ %0A%09%09var sortedTit
+@@ -18563,32 +18563,33 @@
+ titles.slice(0);
++%0D
+ %0A%09%09for(t=0; t%3Cso
+@@ -18605,32 +18605,33 @@
+ s.length; t++) %7B
++%0D
+ %0A%09%09%09title = sort
+@@ -18634,32 +18634,33 @@
+ sortedTitles%5Bt%5D;
++%0D
+ %0A%09%09%09replaceItem(
+@@ -18658,36 +18658,38 @@
+ laceItem(title);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09return titles
+@@ -18681,39 +18681,43 @@
+ %09%09return titles;
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.getSubT
+@@ -18750,32 +18750,33 @@
+ bTiddlerTitle) %7B
++%0D
+ %0A%09var bundleInfo
+@@ -18832,32 +18832,33 @@
+ taCached(title);
++%0D
+ %0A%09if(bundleInfo 
+@@ -18874,32 +18874,33 @@
+ Info.tiddlers) %7B
++%0D
+ %0A%09%09var subTiddle
+@@ -18932,32 +18932,33 @@
+ ubTiddlerTitle%5D;
++%0D
+ %0A%09%09if(subTiddler
+@@ -18952,32 +18952,33 @@
+ if(subTiddler) %7B
++%0D
+ %0A%09%09%09return new $
+@@ -19000,44 +19000,51 @@
+ iddler);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D
++%0D
+ %0A%09return null;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0ARetriev
+@@ -19077,35 +19077,37 @@
+ ng of the fields
++%0D
+ %0A*/
++%0D
+ %0Aexports.getTidd
+@@ -19127,32 +19127,33 @@
+ unction(title) %7B
++%0D
+ %0A%09var tiddler = 
+@@ -19167,47 +19167,49 @@
+ tTiddler(title);
++%0D
+ %0A%09if(tiddler) %7B
++%0D
+ %0A%09%09var fields = 
+@@ -19220,32 +19220,33 @@
+ ct.create(null);
++%0D
+ %0A%09%09$tw.utils.eac
+@@ -19276,32 +19276,33 @@
+ on(value,name) %7B
++%0D
+ %0A%09%09%09fields%5Bname%5D
+@@ -19325,38 +19325,40 @@
+ eldString(name);
++%0D
+ %0A%09%09%7D);
++%0D
+ %0A%09%09return JSON.s
+@@ -19366,42 +19366,44 @@
+ ringify(fields);
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09return JSON.s
+@@ -19419,39 +19419,43 @@
+ %7Btitle: title%7D);
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.getTidd
+@@ -19477,32 +19477,33 @@
+ nction(filter) %7B
++%0D
+ %0A%09var tiddlers =
+@@ -19531,29 +19531,31 @@
+ filter),
++%0D
+ %0A%09%09data = %5B%5D;
++%0D
+ %0A%09for(va
+@@ -19577,32 +19577,33 @@
+ s.length; t++) %7B
++%0D
+ %0A%09%09var tiddler =
+@@ -19632,32 +19632,34 @@
+ ers%5Bt%5D);
++%0D
+ %0A%09%09if(tiddler) %7B
++%0D
+ %0A%09%09%09var 
+@@ -19672,32 +19672,33 @@
+  = new Object();
++%0D
+ %0A%09%09%09for(var fiel
+@@ -19711,32 +19711,33 @@
+ iddler.fields) %7B
++%0D
+ %0A%09%09%09%09fields%5Bfiel
+@@ -19763,37 +19763,39 @@
+ ldString(field);
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%09data.push(fi
+@@ -19792,39 +19792,42 @@
+ ta.push(fields);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D
++%0D
+ %0A%09return JSON.st
+@@ -19871,39 +19871,43 @@
+ ces.jsonSpaces);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AGet the content
+@@ -19988,33 +19988,35 @@
+  of the tiddler:
+-%0A
++%0D%0A%0D
+ %0Aapplication/jso
+@@ -20051,32 +20051,33 @@
+ d into an object
++%0D
+ %0Aapplication/x-t
+@@ -20140,33 +20140,35 @@
+ name:value pairs
+-%0A
++%0D%0A%0D
+ %0AOther types cur
+@@ -20183,33 +20183,35 @@
+ ust return null.
+-%0A
++%0D%0A%0D
+ %0AtitleOrTiddler:
+@@ -20243,32 +20243,33 @@
+ a tiddler object
++%0D
+ %0AdefaultData: de
+@@ -20335,33 +20335,35 @@
+ n't contain data
+-%0A
++%0D%0A%0D
+ %0ANote that the s
+@@ -20522,35 +20522,37 @@
+ e to all callers
++%0D
+ %0A*/
++%0D
+ %0Aexports.getTidd
+@@ -20597,32 +20597,33 @@
+ r,defaultData) %7B
++%0D
+ %0A%09var self = thi
+@@ -20616,32 +20616,33 @@
+ var self = this,
++%0D
+ %0A%09%09tiddler = tit
+@@ -20645,32 +20645,33 @@
+  titleOrTiddler;
++%0D
+ %0A%09if(!(tiddler i
+@@ -20687,32 +20687,33 @@
+  $tw.Tiddler)) %7B
++%0D
+ %0A%09%09tiddler = thi
+@@ -20735,34 +20735,37 @@
+ ddler);%09
++%0D
+ %0A%09%7D
++%0D
+ %0A%09if(tiddler) %7B
++%0D
+ %0A%09%09retur
+@@ -20822,32 +20822,33 @@
+ ta%22,function() %7B
++%0D
+ %0A%09%09%09// Return th
+@@ -20853,32 +20853,33 @@
+ the frozen value
++%0D
+ %0A%09%09%09var value = 
+@@ -20922,32 +20922,33 @@
+ itle,undefined);
++%0D
+ %0A%09%09%09$tw.utils.de
+@@ -20955,32 +20955,33 @@
+ epFreeze(value);
++%0D
+ %0A%09%09%09return value
+@@ -20973,32 +20973,33 @@
+ %09%09%09return value;
++%0D
+ %0A%09%09%7D) %7C%7C default
+@@ -20995,42 +20995,44 @@
+  %7C%7C defaultData;
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09return defaul
+@@ -21029,42 +21029,47 @@
+ urn defaultData;
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AAlternative, un
+@@ -21151,35 +21151,37 @@
+ reely and reused
++%0D
+ %0A*/
++%0D
+ %0Aexports.getTidd
+@@ -21220,32 +21220,33 @@
+ r,defaultData) %7B
++%0D
+ %0A%09var tiddler = 
+@@ -21260,24 +21260,26 @@
+ Tiddler,
++%0D
+ %0A%09%09data;
++%0D
+ %0A%09if(!(t
+@@ -21303,32 +21303,33 @@
+  $tw.Tiddler)) %7B
++%0D
+ %0A%09%09tiddler = thi
+@@ -21343,35 +21343,37 @@
+ ddler(tiddler);%09
++%0D
+ %0A%09%7D
++%0D
+ %0A%09if(tiddler && 
+@@ -21386,32 +21386,33 @@
+ r.fields.text) %7B
++%0D
+ %0A%09%09switch(tiddle
+@@ -21419,32 +21419,33 @@
+ r.fields.type) %7B
++%0D
+ %0A%09%09%09case %22applic
+@@ -21448,32 +21448,33 @@
+ plication/json%22:
++%0D
+ %0A%09%09%09%09// JSON tid
+@@ -21477,27 +21477,72 @@
+  tiddler
++%0D
+ %0A%09%09%09%09try %7B
++%0D
+ %0A
++%09%09%09%09%09if($tw.utils.jsonIsValid(tiddler))%7B%0D%0A%09
+ %09%09%09%09%09dat
+@@ -21569,32 +21569,64 @@
+ er.fields.text);
++%0D%0A%09%09%09%09%09%7D%0D%0A%09%09%09%09%09else %7Bthrow %22%22;%7D%0D
+ %0A%09%09%09%09%7D catch(ex)
+@@ -21619,32 +21619,33 @@
+ %09%09%09%7D catch(ex) %7B
++%0D
+ %0A%09%09%09%09%09return def
+@@ -21645,38 +21645,40 @@
+ urn defaultData;
++%0D
+ %0A%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09return data
+@@ -21670,32 +21670,33 @@
+ %09%09%09%09return data;
++%0D
+ %0A%09%09%09case %22applic
+@@ -21715,32 +21715,33 @@
+ ler-dictionary%22:
++%0D
+ %0A%09%09%09%09return $tw.
+@@ -21771,39 +21771,42 @@
+ er.fields.text);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D
++%0D
+ %0A%09return default
+@@ -21802,39 +21802,43 @@
+ urn defaultData;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AExtract an inde
+@@ -21865,35 +21865,37 @@
+ n a data tiddler
++%0D
+ %0A*/
++%0D
+ %0Aexports.extract
+@@ -21948,32 +21948,33 @@
+ x,defaultText) %7B
++%0D
+ %0A%09var data = thi
+@@ -22032,24 +22032,26 @@
+ (null)),
++%0D
+ %0A%09%09text;
++%0D
+ %0A%09if(dat
+@@ -22065,59 +22065,84 @@
+ w.utils.
 -hop
 +jsonHas
- (data,index)) %7B%0A
-@@ -21373,27 +21373,45 @@
- %09text = 
+ (data,index)) %7B
++%0D
+ %0A%09%09text = 
 +$tw.utils.jsonGet(
  data
 -%5B
 +,
  index
--%5D
-+)
- ;%0A%09%7D%0A%09if
-@@ -24474,32 +24474,33 @@
- s%0A%09%09%09%7D%0A%09%09%7D%0A%09%7D);%0A
-+%09
- %09// Use the gene
-@@ -26822,35 +26822,32 @@
- s.text,options);
+-%5D;
++);%0D
+ %0A%09%7D
++%0D
+ %0A%09if(typ
+@@ -22185,32 +22185,33 @@
+  === %22number%22) %7B
++%0D
+ %0A%09%09return text.t
+@@ -22212,42 +22212,44 @@
+ text.toString();
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09return defaul
+@@ -22246,42 +22246,47 @@
+ urn defaultText;
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0ASet a tiddlers 
+@@ -22434,32 +22434,33 @@
+ ext of the data.
++%0D
+ %0Atitle: title of
+@@ -22459,32 +22459,33 @@
+ title of tiddler
++%0D
+ %0Adata: object th
+@@ -22504,32 +22504,33 @@
+ rialised to JSON
++%0D
+ %0Afields: optiona
+@@ -22569,35 +22569,37 @@
+ fields to be set
++%0D
+ %0A*/
++%0D
+ %0Aexports.setTidd
+@@ -22629,32 +22629,33 @@
+ e,data,fields) %7B
++%0D
+ %0A%09var existingTi
+@@ -22685,52 +22685,56 @@
+ (title),
++%0D
+ %0A%09%09newFields = %7B
++%0D
+ %0A%09%09%09title: title
++%0D
+ %0A%09%7D;
++%0D
+ %0A%09if(exi
+@@ -22810,32 +22810,33 @@
+ r-dictionary%22) %7B
++%0D
+ %0A%09%09newFields.tex
+@@ -22869,42 +22869,44 @@
+ ictionary(data);
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09newFields.typ
+@@ -22920,32 +22920,33 @@
+ plication/json%22;
++%0D
+ %0A%09%09newFields.tex
+@@ -23001,35 +23001,37 @@
+ ces.jsonSpaces);
++%0D
+ %0A%09%7D
++%0D
+ %0A%09this.addTiddle
+@@ -23129,39 +23129,43 @@
+ ationFields()));
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AReturn the cont
+@@ -23205,35 +23205,37 @@
+ aining each line
++%0D
+ %0A*/
++%0D
+ %0Aexports.getTidd
+@@ -23265,45 +23265,47 @@
+ e,field,index) %7B
++%0D
+ %0A%09if(index) %7B
++%0D
+ %0A%09%09return $tw.ut
+@@ -23362,35 +23362,37 @@
+ itle,index,%22%22));
++%0D
+ %0A%09%7D
++%0D
+ %0A%09field = field 
+@@ -23393,32 +23393,33 @@
+ field %7C%7C %22list%22;
++%0D
+ %0A%09var tiddler = 
+@@ -23433,47 +23433,49 @@
+ tTiddler(title);
++%0D
+ %0A%09if(tiddler) %7B
++%0D
+ %0A%09%09return ($tw.u
+@@ -23535,35 +23535,40 @@
+ lice(0);
++%0D
+ %0A%09%7D
++%0D
+ %0A%09return %5B%5D;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A// Retu
+@@ -23656,32 +23656,33 @@
+ er change occurs
++%0D
+ %0Aexports.getGlob
+@@ -23716,32 +23716,33 @@
+ e,initializer) %7B
++%0D
+ %0A%09this.globalCac
+@@ -23778,32 +23778,33 @@
+ ct.create(null);
++%0D
+ %0A%09if($tw.utils.h
+@@ -23828,32 +23828,33 @@
+ he,cacheName)) %7B
++%0D
+ %0A%09%09return this.g
+@@ -23867,42 +23867,44 @@
+ ache%5BcacheName%5D;
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09this.globalCa
+@@ -23926,32 +23926,33 @@
+ = initializer();
++%0D
+ %0A%09%09return this.g
+@@ -23965,39 +23965,43 @@
+ ache%5BcacheName%5D;
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.clearGl
+@@ -24016,32 +24016,33 @@
+ e = function() %7B
++%0D
+ %0A%09this.globalCac
+@@ -24058,36 +24058,39 @@
+ ct.create(null);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A// Return the n
+@@ -24194,32 +24194,33 @@
+ ked to create it
++%0D
+ %0Aexports.getCach
+@@ -24264,32 +24264,33 @@
+ e,initializer) %7B
++%0D
+ %0A%09this.caches = 
+@@ -24316,32 +24316,33 @@
+ ct.create(null);
++%0D
+ %0A%09var caches = t
+@@ -24351,32 +24351,33 @@
+ s.caches%5Btitle%5D;
++%0D
+ %0A%09if(caches && c
+@@ -24387,32 +24387,33 @@
+ es%5BcacheName%5D) %7B
++%0D
+ %0A%09%09return caches
+@@ -24424,42 +24424,45 @@
+ heName%5D;
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09if(!caches) %7B
++%0D
+ %0A%09%09%09cach
+@@ -24478,32 +24478,33 @@
+ ct.create(null);
++%0D
+ %0A%09%09%09this.caches%5B
+@@ -24511,36 +24511,38 @@
+ title%5D = caches;
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09caches%5BcacheN
+@@ -24554,32 +24554,33 @@
+ = initializer();
++%0D
+ %0A%09%09return caches
+@@ -24583,39 +24583,43 @@
+ ches%5BcacheName%5D;
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A// Clear all ca
+@@ -24720,32 +24720,33 @@
+ all the tiddlers
++%0D
+ %0Aexports.clearCa
+@@ -24768,29 +24768,31 @@
+ title) %7B
++%0D
+ %0A%09if(title) %7B
++%0D
+ %0A%09%09this.
+@@ -24827,32 +24827,33 @@
+ ct.create(null);
++%0D
+ %0A%09%09if($tw.utils.
+@@ -24869,32 +24869,33 @@
+ caches,title)) %7B
++%0D
+ %0A%09%09%09delete this.
+@@ -24900,46 +24900,49 @@
+ s.caches%5Btitle%5D;
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09this.caches =
+@@ -24954,39 +24954,43 @@
+ ct.create(null);
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports.initPar
+@@ -25010,32 +25010,33 @@
+ on(moduleType) %7B
++%0D
+ %0A%09// Install the
+@@ -25042,32 +25042,33 @@
+ e parser modules
++%0D
+ %0A%09$tw.Wiki.parse
+@@ -25067,32 +25067,33 @@
+ ki.parsers = %7B%7D;
++%0D
+ %0A%09var self = thi
+@@ -25086,32 +25086,33 @@
+ var self = this;
++%0D
+ %0A%09$tw.modules.fo
+@@ -25154,32 +25154,33 @@
+ (title,module) %7B
++%0D
+ %0A%09%09for(var f in 
+@@ -25180,32 +25180,33 @@
+ r f in module) %7B
++%0D
+ %0A%09%09%09if($tw.utils
+@@ -25214,32 +25214,33 @@
+ hop(module,f)) %7B
++%0D
+ %0A%09%09%09%09$tw.Wiki.pa
+@@ -25286,31 +25286,36 @@
+ er class
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D);
+-%0A
++%0D%0A%09
+ %09// Use 
+@@ -25374,32 +25374,33 @@
+ egistered so far
++%0D
+ %0A%09if($tw.Wiki.pa
+@@ -25427,32 +25427,33 @@
+ ctet-stream%22%5D) %7B
++%0D
+ %0A%09%09Object.keys($
+@@ -25495,32 +25495,33 @@
+ function(type) %7B
++%0D
+ %0A%09%09%09if(!$tw.util
+@@ -25601,32 +25601,33 @@
+  === %22base64%22) %7B
++%0D
+ %0A%09%09%09%09$tw.Wiki.pa
+@@ -25685,39 +25685,46 @@
+ tream%22%5D;
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D);%09%09
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AParse a
+@@ -25754,32 +25754,33 @@
+ cified MIME type
++%0D
+ %0A%09type: content 
+@@ -25804,28 +25804,30 @@
+ e parsed
++%0D
+ %0A%09text: text
++%0D
+ %0A%09option
+@@ -25830,32 +25830,33 @@
+ tions: see below
++%0D
+ %0AOptions include
+@@ -25848,32 +25848,33 @@
+ Options include:
++%0D
+ %0A%09parseAsInline:
+@@ -25930,32 +25930,33 @@
+ as an inline run
++%0D
+ %0A%09_canonical_uri
+@@ -26001,35 +26001,37 @@
+  of this content
++%0D
+ %0A*/
++%0D
+ %0Aexports.parseTe
+@@ -26056,32 +26056,33 @@
+ ,text,options) %7B
++%0D
+ %0A%09text = text %7C%7C
+@@ -26077,32 +26077,33 @@
+ xt = text %7C%7C %22%22;
++%0D
+ %0A%09options = opti
+@@ -26104,32 +26104,33 @@
+ = options %7C%7C %7B%7D;
++%0D
+ %0A%09// Select a pa
+@@ -26125,32 +26125,33 @@
+  Select a parser
++%0D
+ %0A%09var Parser = $
+@@ -26164,32 +26164,33 @@
+ i.parsers%5Btype%5D;
++%0D
+ %0A%09if(!Parser && 
+@@ -26220,32 +26220,33 @@
+ ionInfo(type)) %7B
++%0D
+ %0A%09%09Parser = $tw.
+@@ -26301,34 +26301,37 @@
+ ).type%5D;
++%0D
+ %0A%09%7D
++%0D
+ %0A%09if(!Parser) %7B
++%0D
+ %0A%09%09Parse
+@@ -26397,52 +26397,57 @@
+ ywiki%22%5D;
++%0D
+ %0A%09%7D
++%0D
+ %0A%09if(!Parser) %7B
++%0D
+ %0A%09%09return null;
++%0D
+ %0A%09%7D
++%0D
+ %0A%09// Ret
+@@ -26461,32 +26461,33 @@
+  parser instance
++%0D
+ %0A%09return new Par
+@@ -26493,32 +26493,33 @@
+ rser(type,text,%7B
++%0D
+ %0A%09%09parseAsInline
+@@ -26534,46 +26534,48 @@
+ s.parseAsInline,
++%0D
+ %0A%09%09wiki: this,
++%0D
+ %0A%09%09_canonical_ur
+@@ -26591,44 +26591,49 @@
+ s._canonical_uri
++%0D
+ %0A%09%7D);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AParse a tiddler
+@@ -26651,35 +26651,37 @@
+ to its MIME type
++%0D
+ %0A*/
++%0D
+ %0Aexports.parseTi
+@@ -26705,32 +26705,33 @@
+ title,options) %7B
++%0D
+ %0A%09options = $tw.
+@@ -26747,32 +26747,33 @@
+ end(%7B%7D,options);
++%0D
+ %0A%09var cacheType 
+@@ -26827,32 +26827,33 @@
+ blockParseTree%22,
++%0D
+ %0A%09%09tiddler = thi
+@@ -26872,31 +26872,33 @@
+ (title),
++%0D
+ %0A%09%09self = this;
++%0D
+ %0A%09return
+@@ -26952,32 +26952,33 @@
+ ype,function() %7B
++%0D
+ %0A%09%09%09if(tiddler.h
+@@ -26997,32 +26997,33 @@
+ nonical_uri%22)) %7B
++%0D
+ %0A%09%09%09%09options._ca
+@@ -27058,37 +27058,39 @@
+ ._canonical_uri;
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%09return self.
+@@ -27148,33 +27148,37 @@
+ ptions);
++%0D
+ %0A%09%09%7D) : null;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0Aexports
+@@ -27228,32 +27228,33 @@
+ index,options) %7B
++%0D
+ %0A%09var tiddler,te
+@@ -27248,32 +27248,33 @@
+ ar tiddler,text;
++%0D
+ %0A%09if(options.sub
+@@ -27275,32 +27275,33 @@
+ ns.subTiddler) %7B
++%0D
+ %0A%09%09tiddler = thi
+@@ -27334,42 +27334,44 @@
+ ons.subTiddler);
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09tiddler = thi
+@@ -27382,32 +27382,33 @@
+ tTiddler(title);
++%0D
+ %0A%09%09if(field === 
+@@ -27430,32 +27430,33 @@
+ ld && !index)) %7B
++%0D
+ %0A%09%09%09this.getTidd
+@@ -27503,32 +27503,33 @@
+ be lazily loaded
++%0D
+ %0A%09%09%09return this.
+@@ -27548,39 +27548,42 @@
+ (title,options);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D
++%0D
+ %0A%09if(field === %22
+@@ -27604,32 +27604,33 @@
+ ld && !index)) %7B
++%0D
+ %0A%09%09if(tiddler &&
+@@ -27639,32 +27639,33 @@
+ iddler.fields) %7B
++%0D
+ %0A%09%09%09return this.
+@@ -27723,50 +27723,51 @@
+ ptions);
 -%09%09%09
- %0A%09%09%7D else %7B%0A%09%09%09r
-@@ -33290,32 +33290,33 @@
- )%22,flags)%5D;%0A%09%09%7D%0A
-+%09
++%0D
+ %0A%09%09%7D else %7B
++%0D
+ %0A%09%09%09return null;
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D else
+@@ -27770,32 +27770,33 @@
+ else if(field) %7B
++%0D
+ %0A%09%09if(field === 
+@@ -27797,32 +27797,33 @@
+ d === %22title%22) %7B
++%0D
+ %0A%09%09%09text = title
+@@ -27815,43 +27815,45 @@
+ %09%09%09text = title;
++%0D
+ %0A%09%09%7D else %7B
++%0D
+ %0A%09%09%09if(!tiddler 
+@@ -27874,32 +27874,33 @@
+ sField(field)) %7B
++%0D
+ %0A%09%09%09%09return null
+@@ -27892,37 +27892,39 @@
+ %09%09%09%09return null;
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%09text = tiddl
+@@ -27932,36 +27932,38 @@
+ r.fields%5Bfield%5D;
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09return this.p
+@@ -28010,32 +28010,33 @@
+ ring(),options);
++%0D
+ %0A%09%7D else if(inde
+@@ -28031,32 +28031,33 @@
+ else if(index) %7B
++%0D
+ %0A%09%09this.getTiddl
+@@ -28103,32 +28103,33 @@
+ be lazily loaded
++%0D
+ %0A%09%09text = this.e
+@@ -28167,32 +28167,33 @@
+ ndex,undefined);
++%0D
+ %0A%09%09if(text === u
+@@ -28203,36 +28203,39 @@
+ fined) %7B
++%0D
+ %0A%09%09%09return null;
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09retur
+@@ -28279,42 +28279,47 @@
+ %22,text,options);
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AMake a widget t
+@@ -28330,32 +28330,33 @@
+ for a parse tree
++%0D
+ %0Aparser: parser 
+@@ -28353,32 +28353,33 @@
+ r: parser object
++%0D
+ %0Aoptions: see be
+@@ -28373,32 +28373,33 @@
+ tions: see below
++%0D
+ %0AOptions include
+@@ -28391,32 +28391,33 @@
+ Options include:
++%0D
+ %0Adocument: optio
+@@ -28427,32 +28427,33 @@
+  document to use
++%0D
+ %0Avariables: hash
+@@ -28467,32 +28467,33 @@
+ variables to set
++%0D
+ %0AparentWidget: o
+@@ -28523,35 +28523,37 @@
+ or the root node
++%0D
+ %0A*/
++%0D
+ %0Aexports.makeWid
+@@ -28576,32 +28576,33 @@
+ arser,options) %7B
++%0D
+ %0A%09options = opti
+@@ -28603,32 +28603,33 @@
+ = options %7C%7C %7B%7D;
++%0D
+ %0A%09var widgetNode
+@@ -28624,32 +28624,33 @@
+ r widgetNode = %7B
++%0D
+ %0A%09%09%09type: %22widge
+@@ -28652,37 +28652,40 @@
+ widget%22,
++%0D
+ %0A%09%09%09children: %5B%5D
++%0D
+ %0A%09%09%7D,
++%0D
+ %0A%09%09currW
+@@ -28699,32 +28699,33 @@
+ de = widgetNode;
++%0D
+ %0A%09// Create set 
+@@ -28750,32 +28750,33 @@
+ or each variable
++%0D
+ %0A%09$tw.utils.each
+@@ -28808,32 +28808,33 @@
+ on(value,name) %7B
++%0D
+ %0A%09%09var setVariab
+@@ -28845,32 +28845,34 @@
+ dget = %7B
++%0D
+ %0A%09%09%09type: %22set%22,
++%0D
+ %0A%09%09%09attr
+@@ -28872,32 +28872,33 @@
+ %09%09%09attributes: %7B
++%0D
+ %0A%09%09%09%09name: %7Btype
+@@ -28914,32 +28914,33 @@
+ %22, value: name%7D,
++%0D
+ %0A%09%09%09%09value: %7Btyp
+@@ -28965,43 +28965,47 @@
+ : value%7D
++%0D
+ %0A%09%09%09%7D,
++%0D
+ %0A%09%09%09children: %5B%5D
++%0D
+ %0A%09%09%7D;
++%0D
+ %0A%09%09currW
+@@ -29037,32 +29037,33 @@
+ VariableWidget%5D;
++%0D
+ %0A%09%09currWidgetNod
+@@ -29076,37 +29076,39 @@
+ tVariableWidget;
++%0D
+ %0A%09%7D);
++%0D
+ %0A%09// Add in the 
+@@ -29124,32 +29124,33 @@
+ parse tree nodes
++%0D
+ %0A%09currWidgetNode
+@@ -29179,32 +29179,33 @@
+ arser.tree : %5B%5D;
++%0D
+ %0A%09// Create the 
+@@ -29202,32 +29202,33 @@
+ reate the widget
++%0D
+ %0A%09return new wid
+@@ -29242,46 +29242,48 @@
+ get(widgetNode,%7B
++%0D
+ %0A%09%09wiki: this,
++%0D
+ %0A%09%09document: opt
+@@ -29308,32 +29308,33 @@
+ tw.fakeDocument,
++%0D
+ %0A%09%09parentWidget:
+@@ -29354,28 +29354,33 @@
+ ntWidget
++%0D
+ %0A%09%7D);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AMake a 
+@@ -29399,32 +29399,33 @@
+ for transclusion
++%0D
+ %0Atitle: target t
+@@ -29428,32 +29428,33 @@
+ et tiddler title
++%0D
+ %0Aoptions: as for
+@@ -29469,32 +29469,33 @@
+ keWidget() plus:
++%0D
+ %0Aoptions.field: 
+@@ -29535,32 +29535,33 @@
+ aults to %22text%22)
++%0D
+ %0Aoptions.mode: t
+@@ -29588,32 +29588,33 @@
+ line%22 or %22block%22
++%0D
+ %0Aoptions.childre
+@@ -29660,32 +29660,33 @@
+ ransclude widget
++%0D
+ %0Aoptions.importV
+@@ -29751,32 +29751,33 @@
+ s to be included
++%0D
+ %0Aoptions.importP
+@@ -29938,35 +29938,37 @@
+ .importVariables
++%0D
+ %0A*/
++%0D
+ %0Aexports.makeTra
+@@ -30000,32 +30000,33 @@
+ title,options) %7B
++%0D
+ %0A%09options = opti
+@@ -30027,32 +30027,33 @@
+ = options %7C%7C %7B%7D;
++%0D
+ %0A%09var parseTreeD
+@@ -30058,32 +30058,33 @@
+ eDiv = %7Btree: %5B%7B
++%0D
+ %0A%09%09%09type: %22eleme
+@@ -30087,31 +30087,33 @@
+ lement%22,
++%0D
+ %0A%09%09%09tag: %22div%22,
++%0D
+ %0A%09%09%09chil
+@@ -30116,32 +30116,33 @@
+ children: %5B%5D%7D%5D%7D,
++%0D
+ %0A%09%09parseTreeImpo
+@@ -30148,32 +30148,33 @@
+ ortVariables = %7B
++%0D
+ %0A%09%09%09type: %22impor
+@@ -30177,32 +30177,33 @@
+ mportvariables%22,
++%0D
+ %0A%09%09%09attributes: 
+@@ -30203,30 +30203,32 @@
+ butes: %7B
++%0D
+ %0A%09%09%09%09filter: %7B
++%0D
+ %0A%09%09%09%09%09na
+@@ -30232,32 +30232,33 @@
+ %09name: %22filter%22,
++%0D
+ %0A%09%09%09%09%09type: %22str
+@@ -30261,28 +30261,31 @@
+ %22string%22
++%0D
+ %0A%09%09%09%09%7D
++%0D
+ %0A%09%09%09%7D,
++%0D
+ %0A%09%09%09isBl
+@@ -30287,32 +30287,33 @@
+ %09isBlock: false,
++%0D
+ %0A%09%09%09children: %5B%5D
+@@ -30306,32 +30306,33 @@
+ %09%09children: %5B%5D%7D,
++%0D
+ %0A%09%09parseTreeTran
+@@ -30333,32 +30333,33 @@
+ eeTransclude = %7B
++%0D
+ %0A%09%09%09type: %22trans
+@@ -30357,32 +30357,33 @@
+ e: %22transclude%22,
++%0D
+ %0A%09%09%09attributes: 
+@@ -30383,31 +30383,33 @@
+ butes: %7B
++%0D
+ %0A%09%09%09%09tiddler: %7B
++%0D
+ %0A%09%09%09%09%09na
+@@ -30414,32 +30414,33 @@
+ name: %22tiddler%22,
++%0D
+ %0A%09%09%09%09%09type: %22str
+@@ -30436,32 +30436,33 @@
+ %09type: %22string%22,
++%0D
+ %0A%09%09%09%09%09value: tit
+@@ -30458,32 +30458,33 @@
+ %09value: title%7D%7D,
++%0D
+ %0A%09%09%09isBlock: !op
+@@ -30496,32 +30496,33 @@
+ .parseAsInline%7D;
++%0D
+ %0A%09if(options.imp
+@@ -30556,32 +30556,33 @@
+ ortPageMacros) %7B
++%0D
+ %0A%09%09if(options.im
+@@ -30589,32 +30589,33 @@
+ portVariables) %7B
++%0D
+ %0A%09%09%09parseTreeImp
+@@ -30669,32 +30669,33 @@
+ importVariables;
++%0D
+ %0A%09%09%7D else if(opt
+@@ -30710,32 +30710,33 @@
+ ortPageMacros) %7B
++%0D
+ %0A%09%09%09parseTreeImp
+@@ -30850,36 +30850,38 @@
+ has%5Bdraft.of%5D%5D%22;
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09parseTreeDiv.
+@@ -30920,32 +30920,33 @@
+ mportVariables);
++%0D
+ %0A%09%09parseTreeImpo
+@@ -30984,42 +30984,44 @@
+ TreeTransclude);
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09parseTreeDiv.
+@@ -31055,35 +31055,37 @@
+ TreeTransclude);
++%0D
+ %0A%09%7D
++%0D
+ %0A%09if(options.fie
+@@ -31081,32 +31081,33 @@
+ options.field) %7B
++%0D
+ %0A%09%09parseTreeTran
+@@ -31163,35 +31163,37 @@
+  options.field%7D;
++%0D
+ %0A%09%7D
++%0D
+ %0A%09if(options.mod
+@@ -31188,32 +31188,33 @@
+ (options.mode) %7B
++%0D
+ %0A%09%09parseTreeTran
+@@ -31268,35 +31268,37 @@
+ : options.mode%7D;
++%0D
+ %0A%09%7D
++%0D
+ %0A%09if(options.chi
+@@ -31297,32 +31297,33 @@
+ ions.children) %7B
++%0D
+ %0A%09%09parseTreeTran
+@@ -31349,35 +31349,37 @@
+ ptions.children;
++%0D
+ %0A%09%7D
++%0D
+ %0A%09return $tw.wik
+@@ -31405,39 +31405,43 @@
+ reeDiv,options);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AParse text in a
+@@ -31483,32 +31483,33 @@
+ o another format
++%0D
+ %0A%09outputType: co
+@@ -31525,32 +31525,33 @@
+ e for the output
++%0D
+ %0A%09textType: cont
+@@ -31568,32 +31568,33 @@
+ f the input text
++%0D
+ %0A%09text: input te
+@@ -31587,32 +31587,33 @@
+ text: input text
++%0D
+ %0A%09options: see b
+@@ -31608,32 +31608,33 @@
+ tions: see below
++%0D
+ %0AOptions include
+@@ -31626,32 +31626,33 @@
+ Options include:
++%0D
+ %0Avariables: hash
+@@ -31666,32 +31666,33 @@
+ variables to set
++%0D
+ %0AparentWidget: o
+@@ -31722,35 +31722,37 @@
+ or the root node
++%0D
+ %0A*/
++%0D
+ %0Aexports.renderT
+@@ -31793,32 +31793,33 @@
+ ,text,options) %7B
++%0D
+ %0A%09options = opti
+@@ -31820,32 +31820,33 @@
+ = options %7C%7C %7B%7D;
++%0D
+ %0A%09var parser = t
+@@ -31874,32 +31874,33 @@
+ e,text,options),
++%0D
+ %0A%09%09widgetNode = 
+@@ -31923,32 +31923,33 @@
+ parser,options);
++%0D
+ %0A%09var container 
+@@ -31980,32 +31980,33 @@
+ eElement(%22div%22);
++%0D
+ %0A%09widgetNode.ren
+@@ -32017,32 +32017,33 @@
+ container,null);
++%0D
+ %0A%09return outputT
+@@ -32100,39 +32100,43 @@
+ ner.textContent;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AParse text from
+@@ -32171,32 +32171,33 @@
+ o another format
++%0D
+ %0A%09outputType: co
+@@ -32213,32 +32213,33 @@
+ e for the output
++%0D
+ %0A%09title: title o
+@@ -32258,32 +32258,33 @@
+ r to be rendered
++%0D
+ %0A%09options: see b
+@@ -32279,32 +32279,33 @@
+ tions: see below
++%0D
+ %0AOptions include
+@@ -32297,32 +32297,33 @@
+ Options include:
++%0D
+ %0Avariables: hash
+@@ -32337,32 +32337,33 @@
+ variables to set
++%0D
+ %0AparentWidget: o
+@@ -32393,35 +32393,37 @@
+ or the root node
++%0D
+ %0A*/
++%0D
+ %0Aexports.renderT
+@@ -32459,32 +32459,33 @@
+ title,options) %7B
++%0D
+ %0A%09options = opti
+@@ -32486,32 +32486,33 @@
+ = options %7C%7C %7B%7D;
++%0D
+ %0A%09var parser = t
+@@ -32535,32 +32535,33 @@
+ (title,options),
++%0D
+ %0A%09%09widgetNode = 
+@@ -32584,32 +32584,33 @@
+ parser,options);
++%0D
+ %0A%09var container 
+@@ -32641,32 +32641,33 @@
+ eElement(%22div%22);
++%0D
+ %0A%09widgetNode.ren
+@@ -32678,32 +32678,33 @@
+ container,null);
++%0D
+ %0A%09return outputT
+@@ -32836,39 +32836,43 @@
+ er.textContent);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AReturn an array
+@@ -32908,32 +32908,33 @@
+  a search string
++%0D
+ %0A%09text: The text
+@@ -32946,32 +32946,33 @@
+ ng to search for
++%0D
+ %0A%09options: see b
+@@ -32967,32 +32967,33 @@
+ tions: see below
++%0D
+ %0AOptions availab
+@@ -32987,32 +32987,33 @@
+ tions available:
++%0D
+ %0A%09source: an ite
+@@ -33120,32 +33120,33 @@
+ r(tiddler,title)
++%0D
+ %0A%09exclude: An ar
+@@ -33185,32 +33185,33 @@
+  from the search
++%0D
+ %0A%09invert: If tru
+@@ -33261,32 +33261,33 @@
+ specified string
++%0D
+ %0A%09caseSensitive:
+@@ -33317,32 +33317,33 @@
+ sensitive search
++%0D
+ %0A%09field: If spec
+@@ -33412,32 +33412,33 @@
+ y of field names
++%0D
+ %0A%09excludeField: 
+@@ -33518,32 +33518,33 @@
+ t to be searched
++%0D
+ %0A%09The search mod
+@@ -33597,32 +33597,33 @@
+ flags to be true
++%0D
+ %0A%09%09literal: sear
+@@ -33637,32 +33637,33 @@
+ r literal string
++%0D
+ %0A%09%09whitespace: s
+@@ -33724,32 +33724,33 @@
+ s a single space
++%0D
+ %0A%09%09regexp: treat
+@@ -33782,32 +33782,33 @@
+ gular expression
++%0D
+ %0A%09%09words: (defau
+@@ -33917,35 +33917,37 @@
+ ency or ordering
++%0D
+ %0A*/
++%0D
+ %0Aexports.search 
+@@ -33964,32 +33964,33 @@
+ (text,options) %7B
++%0D
+ %0A%09options = opti
+@@ -33991,32 +33991,33 @@
+ = options %7C%7C %7B%7D;
++%0D
+ %0A%09var self = thi
+@@ -34010,37 +34010,39 @@
+ var self = this,
++%0D
+ %0A%09%09t,
++%0D
+ %0A%09%09invert = !!op
+@@ -34046,32 +34046,33 @@
+ !options.invert;
++%0D
+ %0A%09// Convert the
+@@ -34105,32 +34105,33 @@
+ xp for each term
++%0D
+ %0A%09var terms, sea
+@@ -34138,32 +34138,33 @@
+ rchTermsRegExps,
++%0D
+ %0A%09%09flags = optio
+@@ -34183,32 +34183,33 @@
+ tive ? %22%22 : %22i%22;
++%0D
+ %0A%09if(options.lit
+@@ -34207,32 +34207,33 @@
+ tions.literal) %7B
++%0D
+ %0A%09%09if(text.lengt
+@@ -34234,32 +34234,33 @@
+ .length === 0) %7B
++%0D
+ %0A%09%09%09searchTermsR
+@@ -34265,43 +34265,45 @@
+ sRegExps = null;
++%0D
+ %0A%09%09%7D else %7B
++%0D
+ %0A%09%09%09searchTermsR
+@@ -34364,37 +34364,40 @@
+ ) + %22)%22,flags)%5D;
++%0D
+ %0A%09%09%7D
+-%0A
++%0D%0A%09
  %09%7D else if(optio
-@@ -34055,32 +34055,33 @@
- ));%0A%09%09%09%7D%0A%09%09%7D%0A%09%7D%0A
-+%09
+@@ -34412,30 +34412,32 @@
+ space) %7B
++%0D
+ %0A%09%09terms = %5B%5D;
++%0D
+ %0A%09%09$tw.u
+@@ -34481,30 +34481,32 @@
+ (term) %7B
++%0D
+ %0A%09%09%09if(term) %7B
++%0D
+ %0A%09%09%09%09ter
+@@ -34535,43 +34535,46 @@
+ peRegExp(term));
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D);
++%0D
+ %0A%09%09searchTermsRe
+@@ -34624,32 +34624,33 @@
+ ) + %22)%22,flags)%5D;
++%0D
+ %0A%09%7D else if(opti
+@@ -34662,24 +34662,26 @@
+ egexp) %7B
++%0D
+ %0A%09%09try %7B
++%0D
+ %0A%09%09%09sear
+@@ -34737,31 +34737,33 @@
+ gs)%5D;%09%09%09
++%0D
+ %0A%09%09%7D catch(e) %7B
++%0D
+ %0A%09%09%09sear
+@@ -34776,32 +34776,33 @@
+ sRegExps = null;
++%0D
+ %0A%09%09%09console.log(
+@@ -34859,30 +34859,33 @@
+ %22: %22,e);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09terms
+@@ -34896,32 +34896,33 @@
+ ext.split(/ +/);
++%0D
+ %0A%09%09if(terms.leng
+@@ -34943,32 +34943,33 @@
+ rms%5B0%5D === %22%22) %7B
++%0D
+ %0A%09%09%09searchTermsR
+@@ -34974,43 +34974,45 @@
+ sRegExps = null;
++%0D
+ %0A%09%09%7D else %7B
++%0D
+ %0A%09%09%09searchTermsR
+@@ -35015,32 +35015,33 @@
+ rmsRegExps = %5B%5D;
++%0D
+ %0A%09%09%09for(t=0; t%3Ct
+@@ -35051,32 +35051,33 @@
+ s.length; t++) %7B
++%0D
+ %0A%09%09%09%09searchTerms
+@@ -35145,45 +35145,50 @@
+ ) + %22)%22,flags));
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D
+-%0A
++%0D%0A%09
  %09// Accumulate t
-@@ -34807,32 +34807,34 @@
- eturn true;%0A%09%09%7D%0A
+@@ -35240,32 +35240,33 @@
+  from the search
++%0D
+ %0A%09var fields = %5B
+@@ -35259,32 +35259,33 @@
+ var fields = %5B%5D;
++%0D
+ %0A%09if(options.fie
+@@ -35281,32 +35281,33 @@
+ options.field) %7B
++%0D
+ %0A%09%09if($tw.utils.
+@@ -35323,32 +35323,33 @@
+ ptions.field)) %7B
++%0D
+ %0A%09%09%09$tw.utils.ea
+@@ -35378,32 +35378,33 @@
+ ion(fieldName) %7B
++%0D
+ %0A%09%09%09%09if(fieldNam
+@@ -35399,32 +35399,33 @@
+ %09if(fieldName) %7B
++%0D
+ %0A%09%09%09%09%09fields.pus
+@@ -35442,40 +35442,44 @@
+ e);%09%09%09%09%09
++%0D
+ %0A%09%09%09%09%7D
++%0D
+ %0A%09%09%09%7D);
++%0D
+ %0A%09%09%7D else %7B
++%0D
+ %0A%09%09%09fiel
+@@ -35493,39 +35493,42 @@
+ (options.field);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D
++%0D
+ %0A%09// Use default
+@@ -35656,32 +35656,33 @@
+ hing all fields)
++%0D
+ %0A%09if(fields.leng
+@@ -35709,32 +35709,33 @@
+ .excludeField) %7B
++%0D
+ %0A%09%09fields.push(%22
+@@ -35734,32 +35734,33 @@
+ s.push(%22title%22);
++%0D
+ %0A%09%09fields.push(%22
+@@ -35758,32 +35758,33 @@
+ ds.push(%22tags%22);
++%0D
+ %0A%09%09fields.push(%22
+@@ -35782,35 +35782,37 @@
+ ds.push(%22text%22);
++%0D
+ %0A%09%7D
++%0D
+ %0A%09// Function to
+@@ -35845,32 +35845,33 @@
+  the search term
++%0D
+ %0A%09var searchTidd
+@@ -35885,32 +35885,33 @@
+ unction(title) %7B
++%0D
+ %0A%09%09if(!searchTer
+@@ -35922,37 +35922,42 @@
+ gExps) %7B
++%0D
+ %0A%09%09%09return true;
++%0D
+ %0A%09%09%7D
++%0D
+ %0A
 +%09%09
- %09%09var notYetFoun
+ %09%09var no
+@@ -35987,33 +35987,35 @@
+ RegExps.slice();
+-%0A
++%0D%0A%0D
+ %0A%09%09var tiddler =
+@@ -36030,32 +36030,33 @@
+ tTiddler(title);
++%0D
+ %0A%09%09if(!tiddler) 
+@@ -36048,32 +36048,33 @@
+ %09%09if(!tiddler) %7B
++%0D
+ %0A%09%09%09tiddler = ne
+@@ -36134,36 +36134,38 @@
+ d.tiddlywiki%22%7D);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09var contentTy
+@@ -36266,32 +36266,33 @@
+ nd.tiddlywiki%22%5D,
++%0D
+ %0A%09%09%09searchFields
+@@ -36284,32 +36284,33 @@
+ %09%09%09searchFields;
++%0D
+ %0A%09%09// Get the li
+@@ -36329,32 +36329,33 @@
+  we're searching
++%0D
+ %0A%09%09if(options.ex
+@@ -36359,32 +36359,33 @@
+ .excludeField) %7B
++%0D
+ %0A%09%09%09searchFields
+@@ -36407,32 +36407,33 @@
+ tiddler.fields);
++%0D
+ %0A%09%09%09$tw.utils.ea
+@@ -36455,32 +36455,33 @@
+ ion(fieldName) %7B
++%0D
+ %0A%09%09%09%09var p = sea
+@@ -36501,32 +36501,33 @@
+ exOf(fieldName);
++%0D
+ %0A%09%09%09%09if(p !== -1
+@@ -36521,32 +36521,33 @@
+ %09%09if(p !== -1) %7B
++%0D
+ %0A%09%09%09%09%09searchFiel
+@@ -36561,40 +36561,44 @@
+ ce(p,1);
++%0D
+ %0A%09%09%09%09%7D
++%0D
+ %0A%09%09%09%7D);
++%0D
+ %0A%09%09%7D else %7B
++%0D
+ %0A%09%09%09sear
+@@ -36607,36 +36607,38 @@
+ Fields = fields;
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09for(var field
+@@ -36709,32 +36709,33 @@
+  fieldIndex++) %7B
++%0D
+ %0A%09%09%09// Don't sea
+@@ -36774,32 +36774,33 @@
+ t type is binary
++%0D
+ %0A%09%09%09var fieldNam
+@@ -36820,32 +36820,33 @@
+ lds%5BfieldIndex%5D;
++%0D
+ %0A%09%09%09if(fieldName
+@@ -36898,32 +36898,35 @@
+ utf8%22) %7B
++%0D
+ %0A%09%09%09%09break;
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%09var 
+@@ -36957,36 +36957,39 @@
+ ldName%5D,
++%0D
+ %0A%09%09%09%09t;
++%0D
+ %0A%09%09%09if(str) %7B
++%0D
+ %0A%09%09%09%09if(
+@@ -37005,32 +37005,33 @@
+ .isArray(str)) %7B
++%0D
+ %0A%09%09%09%09%09// If the 
+@@ -37163,32 +37163,33 @@
+ ield array entry
++%0D
+ %0A%09%09%09%09%09for(var s=
+@@ -37203,32 +37203,33 @@
+ r.length; s++) %7B
++%0D
+ %0A%09%09%09%09%09%09for(t=0; 
+@@ -37244,32 +37244,33 @@
+ Found.length;) %7B
++%0D
+ %0A%09%09%09%09%09%09%09if(notYe
+@@ -37286,32 +37286,33 @@
+ .test(str%5Bs%5D)) %7B
++%0D
+ %0A%09%09%09%09%09%09%09%09notYetF
+@@ -37329,82 +37329,89 @@
+ e(t, 1);
++%0D
+ %0A%09%09%09%09%09%09%09%7D else %7B
++%0D
+ %0A%09%09%09%09%09%09%09%09t++;
++%0D
+ %0A%09%09%09%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09%7D else %7B
++%0D
+ %0A%09%09%09%09%09//
+@@ -37513,32 +37513,33 @@
+ any do not match
++%0D
+ %0A%09%09%09%09%09str = tidd
+@@ -37560,32 +37560,33 @@
+ ring(fieldName);
++%0D
+ %0A%09%09%09%09%09for(t=0; t
+@@ -37600,32 +37600,33 @@
+ Found.length;) %7B
++%0D
+ %0A%09%09%09%09%09%09if(notYet
+@@ -37638,32 +37638,33 @@
+ %5Bt%5D.test(str)) %7B
++%0D
+ %0A%09%09%09%09%09%09%09notYetFo
+@@ -37680,74 +37680,82 @@
+ e(t, 1);
++%0D
+ %0A%09%09%09%09%09%09%7D else %7B
++%0D
+ %0A%09%09%09%09%09%09%09t++;
++%0D
+ %0A%09%09%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09%09%7D
++%0D
+ %0A%09%09%09%09%7D
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D;
++%0D
+ %0A%09%09retur
+@@ -37772,36 +37772,38 @@
+ und.length == 0;
++%0D
+ %0A%09%7D;
++%0D
+ %0A%09// Loop throug
+@@ -37829,32 +37829,33 @@
+ doing the search
++%0D
+ %0A%09var results = 
+@@ -37849,32 +37849,33 @@
+ ar results = %5B%5D,
++%0D
+ %0A%09%09source = opti
+@@ -37890,32 +37890,33 @@
+ ce %7C%7C this.each;
++%0D
+ %0A%09source(functio
+@@ -37925,32 +37925,33 @@
+ tiddler,title) %7B
++%0D
+ %0A%09%09if(searchTidd
+@@ -37974,32 +37974,33 @@
+ ptions.invert) %7B
++%0D
+ %0A%09%09%09results.push
+@@ -37999,41 +37999,44 @@
+ lts.push(title);
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D);
++%0D
+ %0A%09// Remove any 
+@@ -38060,32 +38060,33 @@
+  have to exclude
++%0D
+ %0A%09if(options.exc
+@@ -38084,32 +38084,33 @@
+ tions.exclude) %7B
++%0D
+ %0A%09%09for(t=0; t%3Cop
+@@ -38129,32 +38129,33 @@
+ e.length; t++) %7B
++%0D
+ %0A%09%09%09var p = resu
+@@ -38178,32 +38178,33 @@
+ ons.exclude%5Bt%5D);
++%0D
+ %0A%09%09%09if(p !== -1)
+@@ -38197,32 +38197,33 @@
+ %09%09if(p !== -1) %7B
++%0D
+ %0A%09%09%09%09results.spl
+@@ -38223,44 +38223,48 @@
+ lts.splice(p,1);
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D
++%0D
+ %0A%09return results
+@@ -38256,39 +38256,43 @@
+ %09return results;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0ATrigger a load 
+@@ -38415,35 +38415,37 @@
+ g lazily loaded.
++%0D
+ %0A*/
++%0D
+ %0Aexports.getTidd
+@@ -38475,32 +38475,33 @@
+ e,defaultText) %7B
++%0D
+ %0A%09var tiddler = 
+@@ -38515,32 +38515,33 @@
+ tTiddler(title);
++%0D
+ %0A%09// Return unde
+@@ -38572,32 +38572,34 @@
+ 't found
++%0D
+ %0A%09if(!tiddler) %7B
++%0D
+ %0A%09%09retur
+@@ -38604,35 +38604,37 @@
+ urn defaultText;
++%0D
+ %0A%09%7D
++%0D
+ %0A%09if(tiddler.fie
+@@ -38650,32 +38650,33 @@
+ !== undefined) %7B
++%0D
+ %0A%09%09// Just retur
+@@ -38693,32 +38693,33 @@
+  if we've got it
++%0D
+ %0A%09%09return tiddle
+@@ -38724,42 +38724,44 @@
+ ler.fields.text;
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09// Tell any l
+@@ -38803,32 +38803,33 @@
+ oad this tiddler
++%0D
+ %0A%09%09this.dispatch
+@@ -38844,32 +38844,33 @@
+ azyLoad%22,title);
++%0D
+ %0A%09%09// Indicate t
+@@ -38897,41 +38897,47 @@
+ g loaded
++%0D
+ %0A%09%09return null;
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0ACheck w
+@@ -39087,35 +39087,37 @@
+  text is trimmed
++%0D
+ %0A*/
++%0D
+ %0Aexports.checkTi
+@@ -39156,32 +39156,33 @@
+ tText,options) %7B
++%0D
+ %0A%09options = opti
+@@ -39183,32 +39183,33 @@
+ = options %7C%7C %7B%7D;
++%0D
+ %0A%09var text = thi
+@@ -39227,32 +39227,33 @@
+ rText(title,%22%22);
++%0D
+ %0A%09if(!options.no
+@@ -39251,32 +39251,33 @@
+ ptions.noTrim) %7B
++%0D
+ %0A%09%09text = text.t
+@@ -39274,35 +39274,37 @@
+ t = text.trim();
++%0D
+ %0A%09%7D
++%0D
+ %0A%09if(!options.ca
+@@ -39309,32 +39309,33 @@
+ caseSensitive) %7B
++%0D
+ %0A%09%09text = text.t
+@@ -39339,32 +39339,33 @@
+ t.toLowerCase();
++%0D
+ %0A%09%09targetText = 
+@@ -39381,35 +39381,37 @@
+ t.toLowerCase();
++%0D
+ %0A%09%7D
++%0D
+ %0A%09return text ==
+@@ -39415,38 +39415,42 @@
+  === targetText;
++%0D
+ %0A%7D
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0ARead an array o
+@@ -39524,35 +39524,37 @@
+ they're all read
++%0D
+ %0A*/
++%0D
+ %0Aexports.readFil
+@@ -39575,47 +39575,49 @@
+ files,options) %7B
++%0D
+ %0A%09var callback;
++%0D
+ %0A%09if(typeof opti
+@@ -39629,32 +39629,33 @@
+ == %22function%22) %7B
++%0D
+ %0A%09%09callback = op
+@@ -39660,42 +39660,45 @@
+ options;
++%0D
+ %0A%09%09options = %7B%7D;
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09callb
+@@ -39712,35 +39712,37 @@
+ ptions.callback;
++%0D
+ %0A%09%7D
++%0D
+ %0A%09var result = %5B
+@@ -39735,32 +39735,33 @@
+ var result = %5B%5D,
++%0D
+ %0A%09%09outstanding =
+@@ -39766,32 +39766,33 @@
+  = files.length,
++%0D
+ %0A%09%09readFileCallb
+@@ -39819,32 +39819,33 @@
+ erFieldsArray) %7B
++%0D
+ %0A%09%09%09result.push.
+@@ -39869,32 +39869,33 @@
+ lerFieldsArray);
++%0D
+ %0A%09%09%09if(--outstan
+@@ -39899,32 +39899,33 @@
+ tanding === 0) %7B
++%0D
+ %0A%09%09%09%09callback(re
+@@ -39930,26 +39930,29 @@
+ result);
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D;
++%0D
+ %0A%09for(va
+@@ -39972,32 +39972,33 @@
+ s.length; f++) %7B
++%0D
+ %0A%09%09this.readFile
+@@ -40058,35 +40058,37 @@
+ FileCallback%7D));
++%0D
+ %0A%09%7D
++%0D
+ %0A%09return files.l
+@@ -40085,39 +40085,43 @@
+ rn files.length;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0ARead a browser 
+@@ -40202,35 +40202,37 @@
+ r fields objects
++%0D
+ %0A*/
++%0D
+ %0Aexports.readFil
+@@ -40251,47 +40251,49 @@
+ (file,options) %7B
++%0D
+ %0A%09var callback;
++%0D
+ %0A%09if(typeof opti
+@@ -40305,32 +40305,33 @@
+ == %22function%22) %7B
++%0D
+ %0A%09%09callback = op
+@@ -40336,42 +40336,45 @@
+ options;
++%0D
+ %0A%09%09options = %7B%7D;
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09callb
+@@ -40388,35 +40388,37 @@
+ ptions.callback;
++%0D
+ %0A%09%7D
++%0D
+ %0A%09// Get the typ
+@@ -40450,32 +40450,33 @@
+ lename extension
++%0D
+ %0A%09var self = thi
+@@ -40469,32 +40469,33 @@
+ var self = this,
++%0D
+ %0A%09%09type = file.t
+@@ -40490,32 +40490,33 @@
+ ype = file.type;
++%0D
+ %0A%09if(type === %22%22
+@@ -40519,32 +40519,33 @@
+ = %22%22 %7C%7C !type) %7B
++%0D
+ %0A%09%09var dotPos = 
+@@ -40563,32 +40563,33 @@
+ astIndexOf(%22.%22);
++%0D
+ %0A%09%09if(dotPos !==
+@@ -40586,32 +40586,33 @@
+ dotPos !== -1) %7B
++%0D
+ %0A%09%09%09var fileExte
+@@ -40672,32 +40672,33 @@
+ substr(dotPos));
++%0D
+ %0A%09%09%09if(fileExten
+@@ -40700,32 +40700,33 @@
+ ExtensionInfo) %7B
++%0D
+ %0A%09%09%09%09type = file
+@@ -40744,28 +40744,32 @@
+ fo.type;
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D
++%0D
+ %0A%09// Fig
+@@ -40798,32 +40798,33 @@
+ ng a binary file
++%0D
+ %0A%09var contentTyp
+@@ -40856,32 +40856,33 @@
+ tTypeInfo%5Btype%5D,
++%0D
+ %0A%09%09isBinary = co
+@@ -40935,32 +40935,33 @@
+ base64%22 : false;
++%0D
+ %0A%09// Log some de
+@@ -40971,32 +40971,33 @@
+ ging information
++%0D
+ %0A%09if($tw.log.IMP
+@@ -40994,32 +40994,33 @@
+ tw.log.IMPORT) %7B
++%0D
+ %0A%09%09console.log(%22
+@@ -41093,35 +41093,37 @@
+ : %22 + isBinary);
++%0D
+ %0A%09%7D
++%0D
+ %0A%09// Give the ho
+@@ -41145,32 +41145,33 @@
+ process the drag
++%0D
+ %0A%09if($tw.hooks.i
+@@ -41201,44 +41201,47 @@
+ -file%22,%7B
++%0D
+ %0A%09%09file: file,
++%0D
+ %0A%09%09type: type,
++%0D
+ %0A%09%09isBin
+@@ -41246,32 +41246,33 @@
+ inary: isBinary,
++%0D
+ %0A%09%09callback: cal
+@@ -41276,32 +41276,34 @@
+ callback
++%0D
+ %0A%09%7D) !== true) %7B
++%0D
+ %0A%09%09this.
+@@ -41360,42 +41360,47 @@
+ lizer,callback);
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0ALower level uti
+@@ -41519,35 +41519,37 @@
+ r fields objects
++%0D
+ %0A*/
++%0D
+ %0Aexports.readFil
+@@ -41603,32 +41603,33 @@
+ izer,callback) %7B
++%0D
+ %0A%09var self = thi
+@@ -41622,32 +41622,33 @@
+ var self = this;
++%0D
+ %0A%09// Create the 
+@@ -41649,32 +41649,33 @@
+ e the FileReader
++%0D
+ %0A%09var reader = n
+@@ -41690,27 +41690,29 @@
+ eader();
++%0D
+ %0A%09// Onload
++%0D
+ %0A%09reader
+@@ -41730,32 +41730,33 @@
+ unction(event) %7B
++%0D
+ %0A%09%09var text = ev
+@@ -41765,32 +41765,33 @@
+ t.target.result,
++%0D
+ %0A%09%09%09tiddlerField
+@@ -41831,32 +41831,33 @@
+ d%22, type: type%7D;
++%0D
+ %0A%09%09if(isBinary) 
+@@ -41849,32 +41849,33 @@
+ %09%09if(isBinary) %7B
++%0D
+ %0A%09%09%09var commaPos
+@@ -41887,32 +41887,33 @@
+ xt.indexOf(%22,%22);
++%0D
+ %0A%09%09%09if(commaPos 
+@@ -41913,32 +41913,33 @@
+ mmaPos !== -1) %7B
++%0D
+ %0A%09%09%09%09text = text
+@@ -41952,41 +41952,44 @@
+ r(commaPos + 1);
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%09// Check whet
+@@ -42020,32 +42020,33 @@
+  TiddlyWiki file
++%0D
+ %0A%09%09var encrypted
+@@ -42086,32 +42086,33 @@
+ StoreArea(text);
++%0D
+ %0A%09%09if(encryptedJ
+@@ -42109,32 +42109,33 @@
+ encryptedJson) %7B
++%0D
+ %0A%09%09%09// If so, at
+@@ -42171,32 +42171,33 @@
+ current password
++%0D
+ %0A%09%09%09$tw.utils.de
+@@ -42248,32 +42248,33 @@
+ tion(tiddlers) %7B
++%0D
+ %0A%09%09%09%09callback(ti
+@@ -42281,34 +42281,37 @@
+ ddlers);
++%0D
+ %0A%09%09%09%7D);
++%0D
+ %0A%09%09%7D else %7B
++%0D
+ %0A%09%09%09// O
+@@ -42360,32 +42360,33 @@
+ lers in the file
++%0D
+ %0A%09%09%09callback(sel
+@@ -42462,24 +42462,27 @@
+ izer%7D));
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D;
++%0D
+ %0A%09// Kic
+@@ -42495,32 +42495,34 @@
+ the read
++%0D
+ %0A%09if(isBinary) %7B
++%0D
+ %0A%09%09reade
+@@ -42535,42 +42535,44 @@
+ AsDataURL(file);
++%0D
+ %0A%09%7D else %7B
++%0D
+ %0A%09%09reader.readAs
+@@ -42582,26 +42582,31 @@
+ t(file);
++%0D
+ %0A%09%7D
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AFind an
+@@ -42636,35 +42636,37 @@
+ pecified tiddler
++%0D
+ %0A*/
++%0D
+ %0Aexports.findDra
+@@ -42685,32 +42685,33 @@
+ n(targetTitle) %7B
++%0D
+ %0A%09var draftTitle
+@@ -42715,32 +42715,33 @@
+ tle = undefined;
++%0D
+ %0A%09this.forEachTi
+@@ -42785,32 +42785,33 @@
+ title,tiddler) %7B
++%0D
+ %0A%09%09if(tiddler.fi
+@@ -42870,32 +42870,33 @@
+ = targetTitle) %7B
++%0D
+ %0A%09%09%09draftTitle =
+@@ -42902,25 +42902,28 @@
+ = title;
++%0D
+ %0A%09%09%7D
++%0D
+ %0A%09%7D);
++%0D
+ %0A%09return
+@@ -42934,22 +42934,26 @@
+ ftTitle;
++%0D
+ %0A%7D
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0ACheck w
+@@ -42997,32 +42997,33 @@
+ s been modified.
++%0D
+ %0AIf the original
+@@ -43073,32 +43073,33 @@
+ iddler variable,
++%0D
+ %0Ato check if add
+@@ -43121,35 +43121,37 @@
+ have been added.
++%0D
+ %0A*/
++%0D
+ %0Aexports.isDraft
+@@ -43170,32 +43170,33 @@
+ unction(title) %7B
++%0D
+ %0A%09var tiddler = 
+@@ -43210,32 +43210,33 @@
+ tTiddler(title);
++%0D
+ %0A%09if(!tiddler.is
+@@ -43245,35 +43245,38 @@
+ aft()) %7B
++%0D
+ %0A%09%09return false;
++%0D
+ %0A%09%7D
++%0D
+ %0A%09var ig
+@@ -43341,32 +43341,33 @@
+ e%22, %22draft.of%22%5D,
++%0D
+ %0A%09%09origTiddler =
+@@ -43442,32 +43442,33 @@
+ t:%22%22, tags:%5B%5D%7D),
++%0D
+ %0A%09%09titleModified
+@@ -43523,32 +43523,33 @@
+ lds%5B%22draft.of%22%5D;
++%0D
+ %0A%09return titleMo
+@@ -43594,39 +43594,43 @@
+ ,ignoredFields);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AAdd a new recor
+@@ -43654,32 +43654,33 @@
+ he history stack
++%0D
+ %0Atitle: a title 
+@@ -43706,32 +43706,33 @@
+ of title strings
++%0D
+ %0AfromPageRect: p
+@@ -43770,32 +43770,33 @@
+ f the navigation
++%0D
+ %0AhistoryTitle: t
+@@ -43839,35 +43839,37 @@
+  $:/HistoryList)
++%0D
+ %0A*/
++%0D
+ %0Aexports.addToHi
+@@ -43911,32 +43911,33 @@
+ ,historyTitle) %7B
++%0D
+ %0A%09var story = ne
+@@ -43982,32 +43982,33 @@
+  historyTitle%7D);
++%0D
+ %0A%09story.addToHis
+@@ -44024,39 +44024,43 @@
+ e,fromPageRect);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AAdd a new tiddl
+@@ -44072,32 +44072,33 @@
+  the story river
++%0D
+ %0Atitle: a title 
+@@ -44124,32 +44124,33 @@
+ of title strings
++%0D
+ %0AfromTitle: the 
+@@ -44198,32 +44198,33 @@
+ ation originated
++%0D
+ %0AstoryTitle: tit
+@@ -44261,32 +44261,33 @@
+ to $:/StoryList)
++%0D
+ %0Aoptions: see st
+@@ -44284,35 +44284,37 @@
+ ns: see story.js
++%0D
+ %0A*/
++%0D
+ %0Aexports.addToSt
+@@ -44357,32 +44357,33 @@
+ Title,options) %7B
++%0D
+ %0A%09var story = ne
+@@ -44424,32 +44424,33 @@
+ e: storyTitle%7D);
++%0D
+ %0A%09story.addToSto
+@@ -44477,23 +44477,27 @@
+ ptions);
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A/*
++%0D
+ %0AInvoke 
+@@ -44518,32 +44518,33 @@
+ upgrader modules
++%0D
+ %0Atitles: array o
+@@ -44567,32 +44567,33 @@
+  to be processed
++%0D
+ %0Atiddlers: hashm
+@@ -44894,32 +44894,33 @@
+ the titles array
++%0D
+ %0AReturns a hashm
+@@ -44949,35 +44949,37 @@
+ y tiddler title.
++%0D
+ %0A*/
++%0D
+ %0Aexports.invokeU
+@@ -45008,32 +45008,33 @@
+ tles,tiddlers) %7B
++%0D
+ %0A%09// Collect up 
+@@ -45055,32 +45055,33 @@
+ upgrader modules
++%0D
+ %0A%09var self = thi
+@@ -45074,32 +45074,33 @@
+ var self = this;
++%0D
+ %0A%09if(!this.upgra
+@@ -45104,32 +45104,33 @@
+ graderModules) %7B
++%0D
+ %0A%09%09this.upgrader
+@@ -45134,32 +45134,33 @@
+ derModules = %5B%5D;
++%0D
+ %0A%09%09$tw.modules.f
+@@ -45205,32 +45205,33 @@
+ (title,module) %7B
++%0D
+ %0A%09%09%09if(module.up
+@@ -45230,32 +45230,33 @@
+ odule.upgrade) %7B
++%0D
+ %0A%09%09%09%09self.upgrad
+@@ -45278,30 +45278,34 @@
+ module);
++%0D
+ %0A%09%09%09%7D
++%0D
+ %0A%09%09%7D);
++%0D
+ %0A%09%7D
++%0D
+ %0A%09// Inv
+@@ -45321,32 +45321,33 @@
+ upgrader in turn
++%0D
+ %0A%09var messages =
+@@ -45342,32 +45342,33 @@
+ r messages = %7B%7D;
++%0D
+ %0A%09for(var t=0; t
+@@ -45395,32 +45395,33 @@
+ s.length; t++) %7B
++%0D
+ %0A%09%09var upgrader 
+@@ -45438,32 +45438,33 @@
+ raderModules%5Bt%5D,
++%0D
+ %0A%09%09%09upgraderMess
+@@ -45501,32 +45501,33 @@
+ itles,tiddlers);
++%0D
+ %0A%09%09$tw.utils.ext
+@@ -45549,35 +45549,37 @@
+ graderMessages);
++%0D
+ %0A%09%7D
++%0D
+ %0A%09return message
+@@ -45580,20 +45580,25 @@
+ essages;
++%0D
+ %0A%7D;
+-%0A
++%0D%0A%0D
+ %0A%7D)();
+-%0A
++%0D%0A%0D
+ %0A
