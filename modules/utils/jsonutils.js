@@ -145,10 +145,10 @@ exports.jsonGet= function(obj, index) {
 		value = obj[index.substring(1)];
 	}
 	else if($tw.utils.hop(obj, index)) {
-		value = obj[index];
+		value = obj[index] || "";
 	}
 	else{
-		value = pointer.get(obj,index); 
+		value = pointer.get(obj,index) || ""; 
 	};
 	return String(value) === value ? value : JSON.stringify(value, null, 2);	
 };

@@ -1,3 +1,7 @@
+module-type: filteroperator
+title: $:/core/modules/filters/indexes.js
+type: application/javascript
+
 /*\
 title: $:/core/modules/filters/indexes.js
 type: application/javascript
