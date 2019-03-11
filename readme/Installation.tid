@@ -1,6 +1,6 @@
 caption: Installation
 created: 20181203050502346
-modified: 20190219043218163
+modified: 20190310051517340
 tags: 
 title: $:/plugins/joshuafontany/jsonmangler/readme/Installation
 type: text/vnd.tiddlywiki
@@ -12,7 +12,7 @@ type: text/vnd.tiddlywiki
 
 Thanks you two!
 
-!! Single-file .html wikis and plugins-as-packed-tiddler node served method
+!! Single-file .html wikis / Node served tid files saved to wiki folder
 
 Drag and drop the following links to install the plugins, then restart your server and(or) refresh your wiki.
 
@@ -20,20 +20,24 @@ Drag and drop the following links to install the plugins, then restart your serv
 * $:/plugins/matabele/action-maketid
 * $:/plugins/joshuafontany/jsonmangler
 
-!! Folder-style node served plugin method
+!! Node served from TiddlyWiki's plugin folder
 
-Go to the <$link to="https://github.com/joshuafontany/TW5-JsonManglerPlugin/releases">Json Mangler Github Release</$link> page and download the latest *.zip file.
+Use Git to clone my `master` repository into a folder in your TiddlyWiki5 repo's plugin folder, `./plugins/joshuafontany/jsonmangler/` .
+
+Alternately, you can use single-file `plugin.info` versions under node,js, which are found in the Releases tab.
+
+Go to <$link $to="https://github.com/joshuafontany/TW5-JsonManglerPlugin/releases">Json Mangler Github Releases</$link> and download the latest *.zip file.
 
 Place the *.zip file in your `.\TiddlyWiki5` directory, right click and select `Extract Here` (7zip) or `Extract to here` (Winzip).
 
-All of the required tiddlers will then be placed in the right folders within your `.\TiddlyWiki5\plugins` folder.
+A plugin.info (json) file containing all the tiddlers for each required plugin will then be placed in the right folders within your `.\TiddlyWiki5\plugins` folder.
 
 Edit any wiki's `tiddlywiki.info` file to include the following in the `plugins` array.
 
-<$code>
+```
 "joshuafontany/jsonmangler",
 "matabele/action-maketid",
 "ebalster/modloader"
-</$code>
+```
 
 Finally, restart your server.
