@@ -5,7 +5,7 @@ tags:
 title: $:/plugins/joshuafontany/jsonmangler/readme
 type: text/vnd.tiddlywiki
 
-TW5-JsonManglerPlugin by [[Joshua Fontany|https://github.com/joshuafontany]], v 2.0.3
+TW5-JsonManglerPlugin by [[Joshua Fontany|https://github.com/joshuafontany]], v {{$:/plugins/joshuafontany/jsonmangler!!version}}
 
 This plugin changes the methods tiddlywiki uses to retrieve and set values in json data tiddlers. It does so in a way that aims for //backwards compatibility//.
 
