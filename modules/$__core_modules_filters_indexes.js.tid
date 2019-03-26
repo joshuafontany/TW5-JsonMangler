@@ -24,7 +24,7 @@ exports.indexes = function(source,operator,options) {
 	source(function(tiddler,title) {
 		var data = options.wiki.getTiddlerDataCached(title);
 		if(data) {
-				results = $tw.utils.jsonIndexes(results,data);
+				results = $tw.utils.jsonIndexes(data);
 			}
 		});
 	

@@ -95,8 +95,8 @@ api.set = function set (obj, pointer, value) {
     function test() {
         if (obj.constructor === Array) {
             if (!nextTok.match(/^\/*(\d+|-)$/)) {
-                throw "Json Set Error:\n key '"+nextTok+"', index '/"+refTokens.join('/')+"'\n"+
-                "Unable to set a non-numeric key on an exiting array object.";
+                throw "Json Set Error:/"+refTokens.join('/')+"\n"+
+                "Unable to set a non-numeric key ("+nextTok+") on an exiting array object.";
             }
         }
     }
@@ -147,11 +147,13 @@ api.remove = function (obj, pointer) {
       if (finalToken === '' && isNaN(index)) {
         throw new Error('Invalid array index: "' + finalToken + '"');
       }
-
       Array.prototype.splice.call(parent, index, 1);
     } else {
       delete parent[finalToken];
     }
+    if(Object.keys(parent).length == 0 && refTokens.length > 1) {
+		api.remove(obj, refTokens.slice(0, -1));
+	}
 };
 
 /**

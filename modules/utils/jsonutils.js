@@ -158,8 +158,7 @@ Sets a value at an index path, prefers leading "/" (optional).
 Tests if the string value passed is an integer, or a valid json  
 object/array, and if so calls the appropriate parse() method.
 Tests to see if a literal key exists at the top level, and sets 
-the value there,  else we sets the value at the 'nested' location,
-and create the 'nested' key if necessary.
+the value there, else we set the value at the 'nested' location.
 */
 exports.jsonSet= function(obj, index, value) {
 	if(!obj) throw "jsonSet error, no obj";
@@ -323,7 +322,7 @@ Returns a list of all keys on the object.
 Top level keys are returned as-is.
 Nested keys are returned as an index/pointer.
 */
-exports.jsonIndexes = function (results, data) {
+exports.jsonIndexes = function (data) {
 
     var objKeys = Object.keys(pointer.dict(data)),
         results = [];
@@ -345,13 +344,51 @@ exports.jsonIndexes = function (results, data) {
     return results;
 };
 
+/* Sorts strings in an array, gets longest & shortest, then gets longest common prefix */
+exports.longestCommonPrefix = function (strs) {
+	if (!strs)
+	return '';
+
+	let smallest = strs.reduce( (min, str) => min < str ? min : str, strs[0] );
+	let largest  = strs.reduce( (min, str) => min > str ? min : str, strs[0] );
+
+	for (let i=0; i<smallest.length; i++) {
+		if (smallest[i] != largest[i])
+			return smallest.substr(0,i);
+	}
+
+	return '';
+};
+
+/* Recurses through a path and finds the longest valid prefix */
+exports.longestValidPrefix = function (data, str, sep) {
+	if (!str)
+	return '';
+	if(!sep) sep = "/";
+	var escStr = (sep && sep != '/') ? pointer.escape(str).replace(sep, '/') : str;
+	var tokens = pointer.parse(escStr);
+	var results = [];
+
+	for (let i=0; i<tokens.length; i++) {
+		if ($tw.utils.jsonHas(data, tokens.slice(0, i))) results.push(tokens[i]);
+	}
+	var finalStr;
+	if (results.length > 0) finalStr = pointer.unescape(results.join(sep))
+	return (finalStr) ? finalStr : '';
+};
+
 /* Sorts object by top level keys, using custom alphanum tokenized sorting */
+exports.jsonSort = function (data) {
+	return data.sort(alphanum.alphanum);
+};
+
+/* Sorts object by top level keys, using custom alphanum tokenized sorting, returns string */
 exports.jsonOrderedStringify = function (data, padding) {
 	if(!padding) padding = 0;
-        const allKeys = [];
-        JSON.stringify(data, (k, v) => { allKeys.push(k); return v; });
-		allKeys.sort(alphanum.alphanum);
-        return JSON.stringify(data, allKeys, padding);
+	const allKeys = [];
+	JSON.stringify(data, (k, v) => { allKeys.push(k); return v; });
+	allKeys.sort(alphanum.alphanum);
+	return JSON.stringify(data, allKeys, padding);
 };
 
 /* 	
