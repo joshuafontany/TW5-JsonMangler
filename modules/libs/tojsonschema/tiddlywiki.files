@@ -1,0 +1,28 @@
+{
+  "tiddlers": [
+   {
+      "file": "index.js",
+      "fields": {
+        "type": "application/javascript",
+        "title": "$:/plugins/joshuafontany/jsonmangler/modules/libs/tojsonschema.js",
+        "module-type": "library"
+      }
+    },
+       {
+      "file": "helpers.js",
+      "fields": {
+        "type": "application/javascript",
+        "title": "$:/plugins/joshuafontany/jsonmangler/modules/libs/tojsonschema/helpers.js",
+        "module-type": "library"
+      }
+    },
+       {
+      "file": "jsonSchemaHelpers.js",
+      "fields": {
+        "type": "application/javascript",
+        "title": "$:/plugins/joshuafontany/jsonmangler/modules/libs/tojsonschema/jsonSchemaHelpers.js",
+        "module-type": "library"
+      }
+    }
+  ]
+}

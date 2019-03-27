@@ -15,6 +15,26 @@ Various json utility functions added to $tw.utils
 var pointer = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/json-pointer.js");
 var alphanum = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/alphanum.js");
 
+/* Import the json schema helper methods */
+var jsonFactory = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/jsonschema_instantiator.js");
+var toJsonSchema = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/tojsonschema.js");
+
+/* Import the lodash _.isEqual(), _.merge(), and _.xor() methods */
+exports.jsonIsEqual = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/lodash/isEqual.js"); 
+exports.jsonMerge = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/lodash/merge.js");
+exports.jsonXor = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/lodash/xor.js");
+
+exports.jsonSchemaInstance = function(schema) {
+	if (typeof schema == "undefined" ) throw "jsonSchemaInstance: invalid schema";
+	return jsonFactory.instantiate(schema);
+}
+exports.jsonToSchema = function(obj) {
+	if (typeof obj == "undefined" ) throw "jsonToSchema: invalid schema";
+	return toJsonSchema(obj);
+}
+
+
+
 /*
 Displays a Json Error alert to the user.
 */
@@ -163,7 +183,7 @@ the value there, else we set the value at the 'nested' location.
 exports.jsonSet= function(obj, index, value) {
 	if(!obj) throw "jsonSet error, no obj";
 	if(!index || index.length == 0 || index == "" || index == "/") throw "jsonSet error, missing or invalid index";
-	if(!value) value = null;
+	if(typeof value == "undefined") value = null;
 	
 	var setValue;
 	if(String(value) === value && !(value === "")){
@@ -390,6 +410,30 @@ exports.jsonOrderedStringify = function (data, padding) {
 	allKeys.sort(alphanum.alphanum);
 	return JSON.stringify(data, allKeys, padding);
 };
+
+/* https://stackoverflow.com/users/4079235/johan-persson
+ * Compare two objects by reducing an array of keys in obj1, having the
+ * keys in obj2 as the intial value of the result. Key points:
+ * - All keys of obj2 are initially in the result.
+ * - If the loop finds a key (from obj1, remember) not in obj2, it adds
+ *   it to the result.
+ * - If the loop finds a key that are both in obj1 and obj2, it compares
+ *   the value. If it's the same value, the key is removed from the result.
+ */
+exports.jsonDiff = function(obj1, obj2) {
+	if(typeof obj1 == "undefined" || typeof obj2 == "undefined") throw "jsonDiff: invalid object reference";
+    const diff = Object.keys(obj1).reduce((result, key) => {
+        if (!obj2.hasOwnProperty(key)) {
+            result.push(key);
+        } else if (this.jsonIsEqual(obj1[key], obj2[key])) {
+            const resultKeyIndex = result.indexOf(key);
+            result.splice(resultKeyIndex, 1);
+        }
+        return result;
+    }, Object.keys(obj2));
+
+    return diff;
+}
 
 /* 	
 Resolves all top level keys that have '/' in them.
