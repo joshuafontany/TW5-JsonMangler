@@ -4,7 +4,7 @@ var isEqual = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/lodash/
 var xor = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/lodash/xor.js");
 var keys = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/lodash/keys.js");
 
-var _require = require('$:/plugins/joshuafontany/jsoneditor/tojsonschema/jsonSchemaHelpers.js'),
+var _require = require('$:/plugins/joshuafontany/jsonmangler/modules/libs/tojsonschema/jsonSchemaHelpers.js'),
     types = _require.types,
     FORMAT_REGEXPS = _require.FORMAT_REGEXPS,
     isFormat = _require.isFormat;

@@ -1,3 +1,12 @@
+/**
+ * @name JSON To JSON Schema
+ * @description A simple tool for creating JSON Schemas
+ * @version 0.2.0
+ * @author David Ruzicka
+ * @see https://github.com/ruzicka/to-json-schema
+ * @license MIT 2017
+ */
+
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -9,7 +18,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var merge = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/lodash/merge.js");
 var isEqual = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/lodash/isEqual.js");
 
-var helpers = require('$:/plugins/joshuafontany/jsoneditor/tojsonschema/helpers.js');
+var helpers = require('$:/plugins/joshuafontany/jsonmangler/modules/libs/tojsonschema/helpers.js');
 
 var defaultOptions = {
   required: false,
