@@ -1,11 +1,11 @@
 created: 20181204022819553
 list-after: $:/core/ui/ViewTemplate/classic
 modified: 20190214092136292
-tags: $:/tags/EditTemplate
+tags: $:/tags/EditTemplate $:/tags/ViewTemplate
 title: $:/plugins/joshuafontany/jsonmangler/ui/editTemplates/json
 type: text/vnd.tiddlywiki
 
-<$list filter="[is[current]type[application/json]]">
+<$list filter="[is[current]type[application/json]!has[plugin-type]]">
 <div class="json-tools">
 <$jsonmangler title=<<currentTiddler>> >
 
@@ -24,6 +24,12 @@ type: text/vnd.tiddlywiki
 <$button tooltip="Converts Objects and Arrays." class="tc-btn-invisible tc-tiddlylink" style="float: left; margin-right: 0.5em; padding: 4px;">
 <$action-sendmessage $message="tm-json-convert" />
 <<fa-icon "list-ul" "fa-lg fa-fw">> ''Convert''
+</$button>
+
+<!-- /* Generate Schema*/ -->
+<$button tooltip="Generates a Schema Tiddler from this Json Tiddler's current data. Set this tiddler's schema field to set the location to save the schema (or it will default to $:/schema/<<currentTiddler>>). This can be used to validate or to generate editors with the jsoneditor plugin." class="tc-btn-invisible tc-tiddlylink" style="float: left; margin-right: 0.5em; padding: 4px;">
+<$action-sendmessage $message="tm-json-toschema" schema={{!!schema}}/>
+<<fa-icon "list-ul" "fa-lg fa-fw">> ''Create Schema''
 </$button>
 
 <!-- /* Refresh Json */ -->
