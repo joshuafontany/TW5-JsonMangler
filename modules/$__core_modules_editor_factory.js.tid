@@ -1,6 +1,6 @@
-title: $:/core/modules/editor/factory.js
+/* title: $:/core/modules/editor/factory.js
 type: application/javascript
-module-type: library
+module-type: library */
 
 /*\
 title: $:/core/modules/editor/factory.js
@@ -97,7 +97,7 @@ function editTextWidgetFactory(toolbarEngine,nonToolbarEngine) {
 			value = this.wiki.extractTiddlerDataItem(this.editTitle,this.editIndex,this.editDefault);
 			update = function(value) {
 				var data = self.wiki.getTiddlerData(self.editTitle,{});
-				var unEq = !(_.isEqual(value, $tw.utils.jsonGet(data, self.editIndex)));
+				var unEq = !($tw.utils.jsonIsEqual(value, $tw.utils.jsonGet(data, self.editIndex)));
 				if(unEq) {
 					$tw.utils.jsonSet(data, value, self.editIndex);
 					self.wiki.setTextReference(self.editTitle, data);
