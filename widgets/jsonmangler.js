@@ -275,7 +275,7 @@ JsonManglerWidget.prototype.handleJsonSpliceEvent = function(event) {
             var {data, remArr} = $tw.utils.jsonSplice($tw.utils.jsonDedupe(jsonObj), index, deleteCount, false, value);
         }
         var modification = this.wiki.getModificationFields();
-        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(data, padding): JSON.stringify(data, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(data);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
         if(Array.isArray(remArr) && typeof setReference != 'undefined'){
@@ -331,7 +331,7 @@ JsonManglerWidget.prototype.handleJsonInsertEvent = function(event) {
         /*DeDupe, Insert (Splice with spread syntax), and Refresh Formatting*/
         var {data, remArr} = $tw.utils.jsonSplice(...[$tw.utils.jsonDedupe(jsonObj), index, deleteCount, insert].concat(value));
         var modification = this.wiki.getModificationFields();
-        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(data, padding): JSON.stringify(data, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(data);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
         if(Array.isArray(remArr) && typeof setReference != 'undefined'){
@@ -380,7 +380,7 @@ JsonManglerWidget.prototype.handleJsonPushEvent = function(event) {
         /*DeDupe, Push, and Refresh Formatting*/
         let {data, newLength} = $tw.utils.jsonPush($tw.utils.jsonDedupe(jsonObj), index, value);
         var modification = this.wiki.getModificationFields();
-        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(data, padding): JSON.stringify(data, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(data);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
         if(typeof setReference != 'undefined'){
@@ -422,7 +422,7 @@ JsonManglerWidget.prototype.handleJsonPopEvent = function(event) {
         /*DeDupe, Pop, and Refresh Formatting*/
         var {data, dataItem} = $tw.utils.jsonPop($tw.utils.jsonDedupe(jsonObj), index);
         var modification = this.wiki.getModificationFields();
-        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(data, padding): JSON.stringify(data, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(data, padding);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
         if(typeof setReference != 'undefined'){
@@ -464,7 +464,7 @@ JsonManglerWidget.prototype.handleJsonShiftEvent = function(event) {
         /*DeDupe, Shift, and Refresh Formatting*/
         var {data, dataItem} = $tw.utils.jsonShift($tw.utils.jsonDedupe(jsonObj), index);
         var modification = this.wiki.getModificationFields();
-        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(data, padding): JSON.stringify(data, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(data);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
         if(typeof setReference != 'undefined'){
@@ -513,7 +513,7 @@ JsonManglerWidget.prototype.handleJsonUnshiftEvent = function(event) {
         /*DeDupe, Unshift, and Refresh Formatting */
         var {data, newLength} = $tw.utils.jsonUnshift($tw.utils.jsonDedupe(jsonObj), index, value);
         var modification = this.wiki.getModificationFields();
-        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(data, padding): JSON.stringify(data, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(data);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
         if(typeof setReference != 'undefined'){
@@ -532,7 +532,7 @@ JsonManglerWidget.prototype.handleJsonToSchemaEvent = function(event) {
         schemaTitle = "$:/schema/"+this.mangleTitle;
     }
     if (tiddler && tiddler.fields.text) {
-        var result, jsonObj,
+        var jsonObj,
             a = tiddler.fields.title,
             b = this.wiki.getTextReference(a+"!!text");
         if (!b || 0 == b.length) {
