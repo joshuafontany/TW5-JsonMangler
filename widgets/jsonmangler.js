@@ -91,6 +91,9 @@ JsonManglerWidget.prototype.handleJsonConvertEvent = function(event) {
         if(padding && !(padding === ''+parseInt(padding, 10))) throw "tm-json-refresh error, invalid padding";
         padding = parseInt(padding, 10);
     }
+    var sort = event.paramObject["sort"];
+    if (typeof sort === "undefined") sort = false
+    else{ sort = (sort === "true") };
     
     if (tiddler && tiddler.fields.text) {
         var result, jsonObj,
@@ -111,7 +114,7 @@ JsonManglerWidget.prototype.handleJsonConvertEvent = function(event) {
         /*Refresh*/
         var modification = this.wiki.getModificationFields();
         result = $tw.utils.jsonConvert(jsonObj);
-        modification.text = $tw.utils.jsonOrderedStringify(result, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(result);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
     }
@@ -128,6 +131,9 @@ JsonManglerWidget.prototype.handleJsonRefreshEvent = function(event) {
         if(padding && !(padding === ''+parseInt(padding, 10))) throw "tm-json-refresh error, invalid padding";
         padding = parseInt(padding, 10);
     }
+    var sort = event.paramObject["sort"];
+    if (typeof sort === "undefined") sort = false
+    else{ sort = (sort === "true") };
     
     if (tiddler && tiddler.fields.text) {
         var result, jsonObj,
@@ -144,7 +150,7 @@ JsonManglerWidget.prototype.handleJsonRefreshEvent = function(event) {
         /*Refresh*/
         var modification = this.wiki.getModificationFields();
         result = $tw.utils.jsonDedupe(jsonObj);
-        modification.text = $tw.utils.jsonOrderedStringify(result, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(result);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
     }
@@ -160,6 +166,10 @@ JsonManglerWidget.prototype.handleJsonFlattenEvent= function(event) {
         if(padding && !(padding === ''+parseInt(padding, 10))) throw "tm-json-refresh error, invalid padding";
         padding = parseInt(padding, 10);
     }
+    var sort = event.paramObject["sort"];
+    if (typeof sort === "undefined") sort = false
+    else{ sort = (sort === "true") };
+
 	if(tiddler && tiddler.fields.text) {
 		var result, jsonObj,
             a = tiddler.fields.title,
@@ -175,7 +185,7 @@ JsonManglerWidget.prototype.handleJsonFlattenEvent= function(event) {
        	/*Flatten*/
         var modification = this.wiki.getModificationFields();
         result = $tw.utils.jsonFlatten($tw.utils.jsonDedupe(jsonObj));
-        modification.text = $tw.utils.jsonOrderedStringify(result, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(result);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler,modification));		
     }
@@ -191,6 +201,10 @@ JsonManglerWidget.prototype.handleJsonExpandEvent= function(event) {
         if(padding && !(padding === ''+parseInt(padding, 10))) throw "tm-json-refresh error, invalid padding";
         padding = parseInt(padding, 10);
     }
+    var sort = event.paramObject["sort"];
+    if (typeof sort === "undefined") sort = false
+    else{ sort = (sort === "true") };
+
 	if(tiddler && tiddler.fields.text) {
 		var result, jsonObj,
             a = tiddler.fields.title,
@@ -206,7 +220,7 @@ JsonManglerWidget.prototype.handleJsonExpandEvent= function(event) {
 		/*Expand*/
         var modification = this.wiki.getModificationFields();
         result = $tw.utils.jsonExpand($tw.utils.jsonDedupe(jsonObj));
-        modification.text = $tw.utils.jsonOrderedStringify(result, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(result);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler,modification));		
     }
@@ -225,6 +239,10 @@ JsonManglerWidget.prototype.handleJsonSpliceEvent = function(event) {
         if(padding && !(padding === ''+parseInt(padding, 10))) throw "tm-json-refresh error, invalid padding";
         padding = parseInt(padding, 10);
     }
+    var sort = event.paramObject["sort"];
+    if (typeof sort === "undefined") sort = false
+    else{ sort = (sort === "true") };
+
     if(!index) index = "";
     if(!/\d$/.test(index)) index += "0";
     if(!deleteCount) deleteCount = 0;
@@ -257,11 +275,11 @@ JsonManglerWidget.prototype.handleJsonSpliceEvent = function(event) {
             var {data, remArr} = $tw.utils.jsonSplice($tw.utils.jsonDedupe(jsonObj), index, deleteCount, false, value);
         }
         var modification = this.wiki.getModificationFields();
-        modification.text = $tw.utils.jsonOrderedStringify(data, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(data);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
         if(Array.isArray(remArr) && typeof setReference != 'undefined'){
-            this.wiki.setTextReference(setReference, $tw.utils.jsonOrderedStringify(remArr), this.getVariable("currentTiddler"));
+            this.wiki.setTextReference(setReference, $tw.utils.jsonOrderedSJSON.stringify(remArr, null, 0), this.getVariable("currentTiddler"));
         };
         $tw.utils.jsonIsPlugin(this.mangleTitle, this.getVariable("currentTiddler"), "tm-json-splice");
         return true;
@@ -280,6 +298,9 @@ JsonManglerWidget.prototype.handleJsonInsertEvent = function(event) {
         if(padding && !(padding === ''+parseInt(padding, 10))) throw "tm-json-refresh error, invalid padding";
         padding = parseInt(padding, 10);
     }
+    var sort = event.paramObject["sort"];
+    if (typeof sort === "undefined") sort = false
+    else{ sort = (sort === "true") };
     if (typeof value == "undefined") {
         return false;
     }
@@ -310,11 +331,11 @@ JsonManglerWidget.prototype.handleJsonInsertEvent = function(event) {
         /*DeDupe, Insert (Splice with spread syntax), and Refresh Formatting*/
         var {data, remArr} = $tw.utils.jsonSplice(...[$tw.utils.jsonDedupe(jsonObj), index, deleteCount, insert].concat(value));
         var modification = this.wiki.getModificationFields();
-        modification.text = $tw.utils.jsonOrderedStringify(data, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(data);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
         if(Array.isArray(remArr) && typeof setReference != 'undefined'){
-            this.wiki.setTextReference(setReference, $tw.utils.jsonOrderedStringify(remArr), this.getVariable("currentTiddler"));
+            this.wiki.setTextReference(setReference, JSON.stringify(remArr, null, 0), this.getVariable("currentTiddler"));
         };
         $tw.utils.jsonIsPlugin(this.mangleTitle, this.getVariable("currentTiddler"), "tm-json-insert");
         return true;
@@ -332,6 +353,9 @@ JsonManglerWidget.prototype.handleJsonPushEvent = function(event) {
         if(padding && !(padding === ''+parseInt(padding, 10))) throw "tm-json-refresh error, invalid padding";
         padding = parseInt(padding, 10);
     }
+    var sort = event.paramObject["sort"];
+    if (typeof sort === "undefined") sort = false
+    else{ sort = (sort === "true") };
     if(!index) index = "";
     if (!value) return false;
     try {
@@ -356,7 +380,7 @@ JsonManglerWidget.prototype.handleJsonPushEvent = function(event) {
         /*DeDupe, Push, and Refresh Formatting*/
         let {data, newLength} = $tw.utils.jsonPush($tw.utils.jsonDedupe(jsonObj), index, value);
         var modification = this.wiki.getModificationFields();
-        modification.text = $tw.utils.jsonOrderedStringify(data, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(data);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
         if(typeof setReference != 'undefined'){
@@ -378,6 +402,9 @@ JsonManglerWidget.prototype.handleJsonPopEvent = function(event) {
         if(padding && !(padding === ''+parseInt(padding, 10))) throw "tm-json-refresh error, invalid padding";
         padding = parseInt(padding, 10);
     }
+    var sort = event.paramObject["sort"];
+    if (typeof sort === "undefined") sort = false
+    else{ sort = (sort === "true") };
     if(!index) index = "";
     
     if (tiddler && tiddler.fields.text) {
@@ -395,7 +422,7 @@ JsonManglerWidget.prototype.handleJsonPopEvent = function(event) {
         /*DeDupe, Pop, and Refresh Formatting*/
         var {data, dataItem} = $tw.utils.jsonPop($tw.utils.jsonDedupe(jsonObj), index);
         var modification = this.wiki.getModificationFields();
-        modification.text = $tw.utils.jsonOrderedStringify(data);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(data, padding);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
         if(typeof setReference != 'undefined'){
@@ -417,6 +444,9 @@ JsonManglerWidget.prototype.handleJsonShiftEvent = function(event) {
         if(padding && !(padding === ''+parseInt(padding, 10))) throw "tm-json-refresh error, invalid padding";
         padding = parseInt(padding, 10);
     }
+    var sort = event.paramObject["sort"];
+    if (typeof sort === "undefined") sort = false
+    else{ sort = (sort === "true") };
     if(!index) index = "";
     
     if (tiddler && tiddler.fields.text) {
@@ -434,7 +464,7 @@ JsonManglerWidget.prototype.handleJsonShiftEvent = function(event) {
         /*DeDupe, Shift, and Refresh Formatting*/
         var {data, dataItem} = $tw.utils.jsonShift($tw.utils.jsonDedupe(jsonObj), index);
         var modification = this.wiki.getModificationFields();
-        modification.text = $tw.utils.jsonOrderedStringify(data, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(data);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
         if(typeof setReference != 'undefined'){
@@ -456,6 +486,9 @@ JsonManglerWidget.prototype.handleJsonUnshiftEvent = function(event) {
         if(padding && !(padding === ''+parseInt(padding, 10))) throw "tm-json-refresh error, invalid padding";
         padding = parseInt(padding, 10);
     }
+    var sort = event.paramObject["sort"];
+    if (typeof sort === "undefined") sort = false
+    else{ sort = (sort === "true") };
     if(!index) index = "";
     if (!value) return false;
     try {
@@ -480,7 +513,7 @@ JsonManglerWidget.prototype.handleJsonUnshiftEvent = function(event) {
         /*DeDupe, Unshift, and Refresh Formatting */
         var {data, newLength} = $tw.utils.jsonUnshift($tw.utils.jsonDedupe(jsonObj), index, value);
         var modification = this.wiki.getModificationFields();
-        modification.text = $tw.utils.jsonOrderedStringify(data, padding);
+        modification.text = sort ? $tw.utils.jsonOrderedStringify(result, padding): JSON.stringify(result, null, padding);
         modification.flat = $tw.utils.jsonIsFlat(data);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
         if(typeof setReference != 'undefined'){

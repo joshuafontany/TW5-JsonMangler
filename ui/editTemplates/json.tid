@@ -34,10 +34,13 @@ type: text/vnd.tiddlywiki
 
 <!-- /* Refresh Json */ -->
 <$button tooltip="Refresh Json Formatting. Padding value determines layout." class="tc-btn-invisible tc-tiddlylink" style="float: left; margin-right: 0.5em; padding: 4px;">
-<$action-sendmessage $message="tm-json-refresh" padding={{!!padding}}/>
+<$action-sendmessage $message="tm-json-refresh" padding={{!!padding}} sort={{!!sort}}/>
 <<fa-icon "retweet" "fa-lg fa-fw">> ''Refresh''
 </$button>
-<$checkbox field="padding" checked="" unchecked="0" default="" style="float: left; margin-right: 0.25em; padding: 4px;"> Padding?</$checkbox>
+<div style="float: left; margin-right: 0.25em;">
+<$checkbox field="padding" checked="" unchecked="0" default="" style="padding: 4px;"> Padding?</$checkbox>
+<$checkbox field="sort" checked="true" unchecked="false" default="false" style="padding: 4px;"> Sort?</$checkbox>
+</div>
 
 </$jsonmangler>
     </div><div class="clear" style="clear: both;"></div>
