@@ -279,7 +279,7 @@ JsonManglerWidget.prototype.handleJsonSpliceEvent = function(event) {
         modification.flat = $tw.utils.jsonIsFlat(data);
         this.wiki.addTiddler(new $tw.Tiddler(tiddler, modification));
         if(Array.isArray(remArr) && typeof setReference != 'undefined'){
-            this.wiki.setTextReference(setReference, $tw.utils.jsonOrderedSJSON.stringify(remArr, null, 0), this.getVariable("currentTiddler"));
+            this.wiki.setTextReference(setReference, $tw.utils.jsonOrderedStringify(remArr, null, 0), this.getVariable("currentTiddler"));
         };
         $tw.utils.jsonIsPlugin(this.mangleTitle, this.getVariable("currentTiddler"), "tm-json-splice");
         return true;
