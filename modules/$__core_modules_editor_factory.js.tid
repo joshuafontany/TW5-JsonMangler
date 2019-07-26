@@ -99,8 +99,8 @@ function editTextWidgetFactory(toolbarEngine,nonToolbarEngine) {
 				var data = self.wiki.getTiddlerData(self.editTitle,{});
 				var unEq = !($tw.utils.jsonIsEqual(value, $tw.utils.jsonGet(data, self.editIndex)));
 				if(unEq) {
-					$tw.utils.jsonSet(data, value, self.editIndex);
-					self.wiki.setTextReference(self.editTitle, data);
+					$tw.utils.jsonSet(data, self.editIndex, value);
+					self.wiki.setTextReference(self.editTitle, $tw.utils.jsonOrderedStringify(data));
 				}
 			};
 		} else {

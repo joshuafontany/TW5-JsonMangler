@@ -167,9 +167,10 @@ exports.jsonGet= function(obj, index) {
 	else if($tw.utils.hop(obj, index)) {
 		value = obj[index] || "";
 	}
-	else{
-		value = pointer.get(obj,index) || ""; 
-	};
+	else if(pointer.has(obj,index)){
+		value = pointer.get(obj,index); 
+	}
+	else {value = "";}
 	return String(value) === value ? value : JSON.stringify(value, null, 2);	
 };
 
