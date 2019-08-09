@@ -1,7 +1,3 @@
-title: $:/plugins/joshuafontany/jsonmangler/modules/libs/lodash_LICENSE
-type: text/plain
-
-
 Copyright JS Foundation and other contributors <https://js.foundation/>
 
 Based on Underscore.js, copyright Jeremy Ashkenas,
