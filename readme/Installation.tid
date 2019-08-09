@@ -26,7 +26,7 @@ Use Git to clone my `master` repository into a folder in your TiddlyWiki5 repo's
 
 Alternately, you can use single-file `plugin.info` versions under node,js, which are found in the Releases tab.
 
-Go to <$link $to="https://github.com/joshuafontany/TW5-JsonManglerPlugin/releases">Json Mangler Github Releases</$link> and download the latest *.zip file.
+Go to <$link $to="https://github.com/joshuafontany/TW5-JsonMangler/releases">Json Mangler Github Releases</$link> and download the latest *.zip file.
 
 Place the *.zip file in your `.\TiddlyWiki5` directory, right click and select `Extract Here` (7zip) or `Extract to here` (Winzip).
 

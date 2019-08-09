@@ -26,7 +26,7 @@ It introduces new features, widgets, and filter operators to manage, edit, and v
 ** A new ''encodetiddler[]'' operator, which returns each tiddler in the input as a full json object. Used with the previous pair of operators, this can be used to pack plugin tiddlers.
 
 Further documentation is available in the example wiki: <br/>
-https://joshuafontany.github.io/TW5-JsonManglerPlugin/
+https://joshuafontany.github.io/TW5-JsonMangler/
 
 This plugin is a work in progress; any suggestions or bug reports are very welcome.
 
