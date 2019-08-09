@@ -48,7 +48,7 @@ type: text/vnd.tiddlywiki
 
 .tc-drop-down p {margin: 0.2em;}
 
-.tc-drop-down a, .tc-drop-down button {width: auto; padding: 0 0.5em 0 0.5em;}
+.tc-drop-down a, .tc-drop-down button {width: 100%; padding: 0 0.5em 0 0.5em;}
 
 .tc-drop-down .checkbox {float: left}
 
