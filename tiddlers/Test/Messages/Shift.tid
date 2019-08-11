@@ -1,0 +1,30 @@
+created: 20181130060902243
+item: 
+length: 
+messages-target: Test/JsonMessagesTest.json
+modified: 20190726231154886
+tags: Test
+title: Test/Messages/Shift
+type: text/vnd.tiddlywiki
+
+Target: <$link to={{!!messages-target}}>{{!!messages-target}}</$link>
+<$jsonmangler tiddler={{!!messages-target}}>
+
+<$button>
+<$action-setfield $tiddler={{!!messages-target}} text={{Test/JsonMessagesTestReset.json}}/>
+<$action-setfield item=""/>
+Reset Target
+</$button>
+
+<$transclude tiddler={{!!messages-target}} />
+
+<$set name="i" filter="[all[current]get[messages-target]indexes[]prefix[/2/]count[]]" >
+<$button>
+<$action-sendmessage $message="tm-json-shift" index="/2" set="!!item" />
+<$action-navigate $to={{!!messages-target}} $scroll="no" />
+Shift: send first item to !!item
+</$button>
+</$set>
+</$jsonmangler>
+Shifted item: {{!!item}}
+

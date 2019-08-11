@@ -1,0 +1,32 @@
+created: 20180726173557739
+modified: 20181201045259183
+tags: Test
+title: Test/Widget/Action-ListOps
+type: text/vnd.tiddlywiki
+
+<$codeblock code={{Test/Widget/Action-ListOps!!text}} />
+
+Target: <$link to="Test/ButtonData.json">Test/ButtonData.json</$link>
+
+<$transclude tiddler="Test/ButtonData.json" />
+
+<$button>
+<$action-listops $tiddler="Test/ButtonData.json" $index="/0" $subfilter="efg hlm pqr"/>
+Populate '/0'
+</$button>
+<$button>
+<$action-listops $tiddler="Test/ButtonData.json" $index="/0" $subfilter="abc xyz"/>
+Append More Items
+</$button>
+<$button>
+<$action-listops $tiddler="Test/ButtonData.json" $index="/0" $subfilter="-abc -hlm"/>
+Remove Items
+</$button>
+<$button>
+<$action-listops $tiddler="Test/ButtonData.json" $index="/0" $filter="[[]]"/>
+Clear '/0'
+</$button>
+
+<$list filter="[list[Test/ButtonData.json##/0]]">
+
+</$list>

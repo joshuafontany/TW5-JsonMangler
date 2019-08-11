@@ -1,0 +1,36 @@
+created: 20181130044347809
+modified: 20181130060648788
+tags: 
+target: Test/Colors.json
+title: Test/Filters/Indexes
+type: text/vnd.tiddlywiki
+
+```
+Non-Verbose:
+<ul>
+<$list filter="[all[current]get[target]indexes[]]" variable="i">
+<li> <<i>></li>
+</$list>
+</ul>
+
+Verbose:
+<ul>
+<$list filter="[all[current]get[target]indexes[verbose]]" variable="i">
+<li> <<i>></li>
+</$list>
+</ul>
+```
+
+Non-Verbose:
+<ul>
+<$list filter="[all[current]get[target]indexes[]]" variable="i">
+<li> <<i>></li>
+</$list>
+</ul>
+
+Verbose:
+<ul>
+<$list filter="[all[current]get[target]indexes[verbose]]" variable="i">
+<li> <<i>></li>
+</$list>
+</ul>

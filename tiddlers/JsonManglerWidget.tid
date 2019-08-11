@@ -1,0 +1,30 @@
+created: 20181130230340272
+modified: 20181201215750697
+tags: Widgets
+title: JsonManglerWidget
+type: text/vnd.tiddlywiki
+
+! Introduction
+
+The json mangler widget manipulates the indexes of a data tiddler of type application/json. It does so in response to the following [[Messages]] (see each message documentation for specifics):
+
+|!Message |!Description |
+|[[tm-json-refresh|WidgetMessage: tm-json-refresh]] |Runs a de-duplication method, then refreshes the formatting. <br/>Optional `padding` parameter controls the format (applies to all tm-json- messages).|
+|[[tm-json-flatten|WidgetMessage: tm-json-flatten]] |Creates a dictionary containing all non-object/non-array values. <br/>The new keys are the path to the value's expanded location. |
+|[[tm-json-expand|WidgetMessage: tm-json-expand]] |Expands all top level keys that contain "/" (are 'paths'). <br/> Sets their value at that location, then removes the top level key.|
+|[[tm-json-splice|WidgetMessage: tm-json-splice]] |Calls the javascript .splice() method on an array object. |
+|[[tm-json-insert|WidgetMessage: tm-json-insert]] |Calls the javascript .splice() method to insert one array into another ('joins' arrays). |
+|[[tm-json-pop|WidgetMessage: tm-json-pop]] |Removes an item from the end of an array ('pops' an item off). <br/>Optionally saves the item to a TextReference.|
+|[[tm-json-push|WidgetMessage: tm-json-push]] |Adds ('pushes') an item onto the end of an array. <br/>The array's length is the new index for the new item.|
+|[[tm-json-shift|WidgetMessage: tm-json-shift]] |Removes an item from the start of an array ('shifts' the array). <br/>Optionally saves the item to a TextReference. |
+|[[tm-json-unshift|WidgetMessage: tm-json-unshift]] |Adds an item onto the start of an array ('unshifts' the array).|
+
+! Content and Attributes
+
+The json mangler widget displays any contained content, and responds to [[Messages]] dispatched within it.
+
+|!Attribute |!Description |
+|tiddler |Title of the json data tiddler to manipulate.|
+
+<$link to="JsonMangler Widget (Examples)"> JsonMangler Widget (Examples)</$link>
+

@@ -1,0 +1,17 @@
+author: test
+core-version: etst
+created: 20190228062056662
+dependents: gsg
+description: as
+flat: false
+modified: 20190228062319371
+name: sdv
+padding: 
+plugin-type: fake
+tags: TestData
+title: Test/MockPlugin.json
+type: application/json
+
+{
+    "tiddlers": {}
+}

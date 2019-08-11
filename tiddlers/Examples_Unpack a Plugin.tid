@@ -1,0 +1,8 @@
+created: 20190210051427084
+modified: 20190214053313729
+tags: Test
+title: Examples/Unpack a Plugin
+
+The following code will unpack a plugin by making 'regular' tiddlers out of each shadow tiddler contained in the plugin. This does not use any [[JsonManglerPlugin|$:/plugins/joshuafontany/jsonmangler]] code, and can be done in an unmodified wiki. See [[Examples/Pack a Plugin]] for examples on using the [[JsonMangler|$:/plugins/joshuafontany/jsonmangler]] plugin to pack or re-pack a plugin.
+
+{{$:/plugins/joshuafontany/jsonmangler/ui/controlpanel/unpackplugin}}

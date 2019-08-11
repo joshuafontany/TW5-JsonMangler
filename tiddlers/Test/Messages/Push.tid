@@ -1,0 +1,28 @@
+created: 20181130015440632
+length: null
+messages-target: Test/JsonMessagesTest.json
+modified: 20190726231144053
+tags: Test
+title: Test/Messages/Push
+type: text/vnd.tiddlywiki
+
+Target: <$link to={{!!messages-target}}>{{!!messages-target}}</$link>
+<$jsonmangler tiddler={{!!messages-target}}>
+
+<$button>
+<$action-setfield $tiddler={{!!messages-target}} text={{Test/JsonMessagesTestReset.json}}/>
+<$action-setfield length="null"/>
+Reset Target
+</$button>
+
+<$transclude tiddler={{!!messages-target}} />
+
+<$set name="i" filter="[all[current]get[messages-target]indexes[]prefix[/2/]count[]]" >
+<$button>
+<$action-sendmessage $message="tm-json-push" index="/2" set=<<i>> value=<<i>> />
+<$action-navigate $to={{!!messages-target}} $scroll="no" />
+Push: add "<<i>>" to the array end
+</$button>
+</$set>
+</$jsonmangler>
+Array Length: {{!!length}}

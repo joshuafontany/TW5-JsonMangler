@@ -1,0 +1,22 @@
+created: 20181201222409569
+modified: 20181201222453314
+tags: JsonManglerWidget Messages
+title: WidgetMessage: tm-json-push
+type: text/vnd.tiddlywiki
+
+The `tm-json-push` message is handled by the JsonManglerWidget.
+
+It calls the javascript .push() method on an array object. This adds an item to the end of an array ('pushes' an item onto the array). 
+It will optionally save the new length of the array to a TextReference.
+
+//Note: All ''tm-json-'' messages will perform a deduplication operation and test for 'flattness'. See [[WidgetMessage: tm-json-refresh]].//
+
+''Parameters''
+
+|!Name |!Description |
+|padding|Integer. The number of spaces to indent between object or array items when reformatting. Defaults to 0.|
+|index|The index-path to the target array.|
+|value|The value to add to the array. Will accept valid json.|
+|set|The TextReference used to store the new length of the array.|
+
+The push json message is usually generated with the ButtonWidget or an ActionWidget, and is handled by the surrounding JsonManglerWidget.

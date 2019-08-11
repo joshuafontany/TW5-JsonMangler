@@ -1,0 +1,20 @@
+created: 20180726174951204
+modified: 20181201045223762
+tags: Test
+title: Test/Widget/Action-SetField
+type: text/vnd.tiddlywiki
+
+<$codeblock code={{Test/Widget/Action-SetField!!text}} />
+
+<$edit tiddler="Test/ButtonData.json" index="/0"/>
+
+Target: <$link to="Test/ButtonData.json">Test/ButtonData.json##1</$link>
+
+<$set name="var" tiddler="Test/ButtonData.json" index="/0" >
+<$button>
+<$action-setfield $tiddler="Test/ButtonData.json" $index="/1" $value=<<var>> />
+Set Field Index 1 to: <<var>>
+</$button>
+</$set>
+
+<$transclude tiddler="Test/ButtonData.json"/>

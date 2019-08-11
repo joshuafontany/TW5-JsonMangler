@@ -1,0 +1,58 @@
+created: 20180712170729608
+flat: false
+modified: 20190702034636823
+tags: TestData
+title: Test/Complex.json
+type: application/json
+
+{
+    "0": "{{Test/MixedTest.json##/various other keys}}",
+    "1": "top level",
+    "2": [
+        "nested one level"
+    ],
+    "3": [
+        "a",
+        null,
+        "c"
+    ],
+    "4": [
+        "100",
+        "23",
+        "5"
+    ],
+    "5": [
+        100,
+        23,
+        5
+    ],
+    "6": "test1",
+    "7": "test2",
+    "8": {
+        "test": [
+            null,
+            null
+        ]
+    },
+    "9": {
+        "test": 500.501
+    },
+    "12": {
+        "one": {
+            "two": {
+                "three": {
+                    "four": {
+                        "five": [
+                            null,
+                            null,
+                            null,
+                            "YES"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "/7": "test",
+    "/8/test/1": ""
+}

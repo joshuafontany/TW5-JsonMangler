@@ -1,0 +1,37 @@
+created: 20180713160417271
+modified: 20181203225920344
+tags: Test
+test: 100
+title: Test/TextReference/IndexWrites
+total: 500.501
+type: text/vnd.tiddlywiki
+
+<$codeblock code={{Test/TextReference/IndexWrites!!text}} />
+
+Target: <$link to="Test/Complex.json">Test/Complex.json</$link>
+
+<$button set="Test/Complex.json##6" setTo="test1" >
+Test 1
+</$button>
+<$button set="Test/Complex.json##/7" setTo="test2" >
+Test 2
+</$button>
+<$button set="Test/Complex.json##/8/test/1" setTo={{Test/Complex.json##/4/0}} >
+Test 3
+</$button>
+<$button set="Test/Complex.json##9/test" setTo={{Test/TextReference/IndexWrites!!total}} >
+Test 4
+</$button>
+<$button set="Test/Complex.json##/11/a" setTo="null" >
+Test 5
+</$button>
+<$button set="Test/Complex.json##11/a" setTo="false">
+Test 6
+</$button>
+<$button set="Test/Complex.json##11/a" setTo='{"key1":"val1","key2":"val2"}'>
+Test 7
+</$button>
+<$button set="Test/Complex.json##11/a" >
+Test 8
+</$button>
+<$transclude tiddler="Test/Complex.json" />

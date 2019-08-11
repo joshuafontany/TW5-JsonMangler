@@ -1,0 +1,22 @@
+created: 20190209063706257
+modified: 20190801040151365
+tags: Filter Test
+title: Test/Filter/TSort
+
+''tsort[]'': 
+
+<$wikify name="state" text="""<<qualify "$:/state/showTsort">>""" >
+<$reveal type="nomatch" state=<<state>> text="show">
+<$button set=<<state>> setTo="show">Show</$button> Sorting padded numerals and tokenized items:
+</$reveal>
+<$reveal type="match" state=<<state>> text="show">
+<$button set=<<state>> setTo="hide">Hide</$button> Sorting padded numerals and tokenized items:
+
+<$list filter="[all[]tag[TSort]tsort[]]">
+
+</$list>
+
+{{Test/Tsort/Section Symbol List}}
+
+</$reveal>
+</$wikify>

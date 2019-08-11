@@ -1,0 +1,15 @@
+created: 20180712170904463
+modified: 20181201045449357
+tags: Test
+title: Test/TextReference/IndexReads
+type: text/vnd.tiddlywiki
+
+<$codeblock code={{Test/TextReference/IndexReads!!text}} />
+
+`{{Test/Complex.json##/4/0}}` = {{Test/Complex.json##/4/0}}
+
+`{{Test/Complex.json##/5/0}}` = {{Test/Complex.json##/5/0}}
+
+`{{Test/Complex.json##/4}}` = {{Test/Complex.json##/4}}
+
+`{{Test/Complex.json##/12/one/two/three/four/five/3}}` = {{Test/Complex.json##/12/one/two/three/four/five/3}}

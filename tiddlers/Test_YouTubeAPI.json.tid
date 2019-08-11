@@ -1,0 +1,43 @@
+created: 20170906030309143
+flat: false
+modified: 20190628205432708
+padding: 
+tags: TestData
+title: Test/YouTubeAPI.json
+type: application/json
+
+{
+    "items": [
+        {
+            "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/QpOIr3QKlV5EUlzfFcVvDiJT0hw\"",
+            "id": {
+                "channelId": "UCJowOS1R0FnhipXVqEnYU1A",
+                "kind": "youtube#channel"
+            },
+            "kind": "youtube#searchResult"
+        },
+        {
+            "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/AWutzVOt_5p1iLVifyBdfoSTf9E\"",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "Eqa2nAAhHN0"
+            },
+            "kind": "youtube#searchResult"
+        },
+        {
+            "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/2dIR9BTfr7QphpBuY3hPU-h5u-4\"",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "IirngItQuVs"
+            },
+            "kind": "youtube#searchResult"
+        }
+    ],
+    "kind": "youtube#searchListResponse",
+    "nextPageToken": "CAUQAA",
+    "pageInfo": {
+        "resultsPerPage": 5,
+        "totalResults": 4249
+    },
+    "regionCode": "KE"
+}

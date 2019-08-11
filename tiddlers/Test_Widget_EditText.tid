@@ -1,0 +1,11 @@
+created: 20180726173101762
+modified: 20181201044409427
+tags: Test
+title: Test/Widget/EditText
+type: text/vnd.tiddlywiki
+
+<$codeblock code={{Test/Widget/EditText!!text}} />
+
+Target: <$link to="Test/ComplexMixedTestjson">Test/MixedTest.json##/test/0</$link>
+<$edit tiddler="Test/MixedTest.json" index="/test/0"/>
+<$transclude tiddler="Test/MixedTest.json" />

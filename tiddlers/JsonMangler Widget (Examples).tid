@@ -1,0 +1,14 @@
+created: 20181130230410823
+length: 14
+messages-target: Test/JsonMessagesTest.json
+modified: 20181201050436929
+tags: [[Widget Examples]] JsonMangerWidget
+title: JsonMangler Widget (Examples)
+type: text/vnd.tiddlywiki
+
+<$list filter="[tag[Test]prefix[Test/Message]]" variable="testTiddler">
+{{{[<testTiddler>]}}}
+<br/>
+<$transclude tiddler=<<testTiddler>> />
+<hr/>
+</$list>

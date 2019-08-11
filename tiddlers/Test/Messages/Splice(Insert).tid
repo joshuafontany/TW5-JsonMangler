@@ -1,0 +1,34 @@
+created: 20181125011711566
+messages-target: Test/JsonMessagesTest.json
+modified: 20181204013754446
+tags: Test
+title: Test/Messages/Splice(Insert)
+type: text/vnd.tiddlywiki
+
+Target: <$link to={{!!messages-target}}>{{!!messages-target}}</$link>
+<$jsonmangler tiddler={{!!messages-target}}>
+
+<$button>
+<$action-setfield $tiddler={{!!messages-target}} text={{Test/JsonMessagesTestReset.json}}/>
+<$action-setfield $tiddler="Test/JsonResultTest.json" text="{}"/>
+Reset Target
+</$button>
+
+<$transclude tiddler={{!!messages-target}} />
+
+<$button>
+<$action-sendmessage $message="tm-json-splice" index="/2/2" set="Test/JsonResultTest.json" delete="3" />
+<$action-navigate $to="Test/JsonResultTest.json" $scroll="no" />
+Splice: Delete 3 items @ index /2/2!
+</$button>
+
+<$list filter="[title[Test/JsonResultTest.json]] +[has[title]]" >
+<$button>
+<$action-sendmessage $message="tm-json-insert" index="/2/2" value={{Test/JsonResultTest.json}} />
+<$action-sendmessage $message="tm-close-tiddler" $param="Test/JsonResultTest.json"/>
+<$action-deletetiddler $tiddler="Test/JsonResultTest.json"/>
+Insert: Put them back!
+</$button>
+</$list>
+
+</$jsonmangler>

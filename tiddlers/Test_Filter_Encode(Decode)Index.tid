@@ -1,0 +1,26 @@
+created: 20190214042405795
+modified: 20190214042649289
+tags: Filter Test
+title: Test/Filter/Encode(Decode)Index
+
+''encodeindex[] / decodeindex[]'':
+
+<$list filter="[all[]!is[system]type[application/json]limit[1]]" variable="json">
+<ul>
+<li>
+<$wikify name="state" text="""$:/state/showIndexes/<$macrocall $name="qualify" title=<<json>> />""" >
+<$reveal type="nomatch" state=<<state>> text="show">
+<$button set=<<state>> setTo="show">Show</$button> <$link to=<<json>>><$text text=<<json>>/></$link>
+</$reveal>
+<$reveal type="match" state=<<state>> text="show">
+<$button set=<<state>> setTo="hide">Hide</$button> <$link to=<<json>>><$text text=<<json>>/></$link>
+<$list filter="[<json>indexes[]encodeindex[]tsort[]]" variable="key">
+<ul>
+<li><<key>> = <$transclude tiddler=<<json>> index={{{[<key>decodeindex[]]}}} /></li>
+</ul></$list>
+</$reveal>
+</$wikify>
+<br/>
+</li>
+</ul>
+</$list>

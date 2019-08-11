@@ -1,0 +1,20 @@
+created: 20181201070955884
+modified: 20181201073235064
+tags: 
+target: Test/Colors.json
+title: Test/Filters/Tsort
+type: text/vnd.tiddlywiki
+
+```
+<ul>
+<$list filter="[all[]is[system]tsort[true]]" variable="i">
+<li> <<i>></li>
+</$list>
+</ul>
+```
+
+<ul>
+<$list filter="[all[]tsort[true]]" variable="i">
+<li> <<i>></li>
+</$list>
+</ul>

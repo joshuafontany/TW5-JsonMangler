@@ -1,0 +1,20 @@
+created: 20190210051758543
+modified: 20190217125708844
+tags: Test
+title: Examples/Pack a Plugin
+
+\define .tip(_) <div class="doc-icon-block"><div class="doc-block-icon">{{$:/core/images/tip}}</div> $_$</div>
+
+The following wikitext will pack or re-pack an existing plugin by creating the correct json sub-objects in the plugin's `/tiddlers/` object. 
+
+Select a plugin tiddler in the drop-down below. Then create or generate (with filters) a list of tiddlers you want to pack into the Plugin Tiddler. Press the 'Pack' button, then confirm that all the information in the modal window is correct, and press 'Confirm'.
+
+This method will not auto-increment the target plugin's version number, unlike the `$tw.ultils.repackPlugin()` command, but you can set this manually through the modal confirmation window. This is __PERMANENT__ and __NOT UNDO-ABLE__ once confirmed, so back up your plugin or wiki (etc, etc).
+
+<<.tip """When setting key names with the ` / ` character in them on any object, replace them with ` ~1 `. These tokens will be converted to ` / ` when writing to and reading from that location in the object. There are filters that allow you to automate escaping or unescaping indexes (see [[Json Mangler Filters]]), and these are used to handle the packing process.""" >>
+
+Setup the list of tiddlers to pack or repack here be selecting tiddlers from the dropdowns. Use the optional search and filter fields to include the output of the filter run into the results dropdown. The filter field uses the same storage tiddler as [[$:/AdvancedSearch]], which can be used to test and fine-tune the filter before committing. Commiting the selected tidders will append them to the current package list. Then you are ready to package your plugin! 
+
+WARNING: You can now write directly to plugins. Back up your data before using this in your wiki.
+
+{{$:/plugins/joshuafontany/jsonmangler/ui/controlpanel/packplugin}}

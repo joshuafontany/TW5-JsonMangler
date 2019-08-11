@@ -1,0 +1,21 @@
+created: 20181201221531458
+modified: 20181201222101525
+tags: JsonManglerWidget Messages
+title: WidgetMessage: tm-json-pop
+type: text/vnd.tiddlywiki
+
+The `tm-json-pop` message is handled by the JsonManglerWidget.
+
+It calls the javascript .pop() method on an array object. This removes an item from the end of an array ('pops' an item off). 
+It will optionally save the item to a TextReference.
+
+//Note: All ''tm-json-'' messages will perform a deduplication operation and test for 'flattness'. See [[WidgetMessage: tm-json-refresh]].//
+
+''Parameters''
+
+|!Name |!Description |
+|padding|Integer. The number of spaces to indent between object or array items when reformatting. Defaults to 0.|
+|index|The index-path to the target array.|
+|set|The TextReference used to store the item removed from the array.|
+
+The pop json message is usually generated with the ButtonWidget or an ActionWidget, and is handled by the surrounding JsonManglerWidget.

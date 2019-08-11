@@ -1,0 +1,22 @@
+{
+    "description": "JsonMangler Plugin Wiki",
+    "plugins": [
+        "joshuafontany/jsonmangler",
+        "matabele/action-maketid",
+        "ebalster/modloader",
+        "ebalster/attribute-modules",
+        "ebalster/formula"
+    ],
+    "themes": [
+        "tiddlywiki/vanilla",
+        "tiddlywiki/snowwhite"
+    ],
+   "build": {
+        "index": [
+            "--rendertiddler",
+            "$:/plugins/tiddlywiki/tiddlyweb/save/offline",
+            "index.html",
+            "text/plain"
+        ]
+    }
+}

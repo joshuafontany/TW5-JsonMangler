@@ -1,0 +1,18 @@
+created: 20181201220233285
+modified: 20181201220406195
+tags: JsonManglerWidget Messages
+title: WidgetMessage: tm-json-expand
+type: text/vnd.tiddlywiki
+
+The `tm-json-expand` message is handled by the JsonManglerWidget.
+
+It expands all top level keys that contain "/" (are 'paths'), then sets their value at that location and removes the top level key.
+
+//Note: All ''tm-json-'' messages will perform a deduplication operation and test for 'flattness'. See [[WidgetMessage: tm-json-refresh]].//
+
+''Parameters''
+
+|!Name |!Description |
+|padding|Integer. The number of spaces to indent between object or array items when reformatting. Defaults to 4.|
+
+The expand json message is usually generated with the ButtonWidget or an ActionWidget, and is handled by the surrounding JsonManglerWidget.

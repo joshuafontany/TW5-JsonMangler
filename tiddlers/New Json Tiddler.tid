@@ -1,0 +1,24 @@
+created: 20190318030524740
+flat: false
+modified: 20190726235037239
+tags: 
+title: New Json Tiddler
+type: application/json
+
+{
+    "mixed case": {
+        "test": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+        ]
+    },
+    "test": [
+        "This is also a live $edit widget in the EditText test."
+    ],
+    "various other keys": "values",
+    "/even/mixed/0/keys/like/1/this":"data"
+}

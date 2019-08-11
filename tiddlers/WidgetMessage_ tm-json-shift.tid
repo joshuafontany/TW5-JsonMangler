@@ -1,0 +1,21 @@
+created: 20181201221949029
+modified: 20181201222032916
+tags: JsonManglerWidget Messages
+title: WidgetMessage: tm-json-shift
+type: text/vnd.tiddlywiki
+
+The `tm-json-shift` message is handled by the JsonManglerWidget.
+
+It calls the javascript .shift() method on an array object. This removes an item from the start of an array ('shifts' an item off). 
+It will optionally save the item to a TextReference.
+
+//Note: All ''tm-json-'' messages will perform a deduplication operation and test for 'flattness'. See [[WidgetMessage: tm-json-refresh]].//
+
+''Parameters''
+
+|!Name |!Description |
+|padding|Integer. The number of spaces to indent between object or array items when reformatting. Defaults to 0.|
+|index|The index-path to the target array.|
+|set|The TextReference used to store the item removed from the array.|
+
+The shift json message is usually generated with the ButtonWidget or an ActionWidget, and is handled by the surrounding JsonManglerWidget.

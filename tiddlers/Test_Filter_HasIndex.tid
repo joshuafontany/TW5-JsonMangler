@@ -1,0 +1,11 @@
+created: 20190214031156830
+modified: 20190214043234594
+tags: Filter Test
+title: Test/Filter/HasIndex
+
+''hasindex[]'':
+
+`[all[]!is[system]type[application/json]hasindex[test/1/0/0]]` =
+<$list filter="[all[]!is[system]type[application/json]hasindex[test/1/0/0]]" variable="value">
+
+</$list>

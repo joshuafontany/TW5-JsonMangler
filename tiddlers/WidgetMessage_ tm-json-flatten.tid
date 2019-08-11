@@ -1,0 +1,20 @@
+created: 20181201215530517
+modified: 20181201220213785
+tags: JsonManglerWidget Messages
+title: WidgetMessage: tm-json-flatten
+type: text/vnd.tiddlywiki
+
+The `tm-json-flatten` message is handled by the JsonManglerWidget.
+
+It changes an object with nested objects or arrays into a dictionary containing all non-object/non-array values.
+
+The new keys are the path to the value's expanded location.
+
+//Note: All ''tm-json-'' messages will perform a deduplication operation and test for 'flattness'. See [[WidgetMessage: tm-json-refresh]].//
+
+''Parameters''
+
+|!Name |!Description |
+|padding|Integer. The number of spaces to indent between object or array items when reformatting. Defaults to 4.|
+
+The flatten json message is usually generated with the ButtonWidget or an ActionWidget, and is handled by the surrounding JsonManglerWidget.

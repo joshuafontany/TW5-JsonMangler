@@ -1,0 +1,18 @@
+created: 20190214031419754
+modified: 20190214031529402
+tags: Filter Test
+title: Test/Filter/GetIndex
+
+''getindex[]'':
+
+`(=[all[]!is[system]type[application/json]getindex[test/1/0/2]]=)` =
+
+(=[all[]!is[system]type[application/json]getindex[test/1/0/2]]=)
+
+<$list filter="[all[]!is[system]type[application/json]getindex[test/1/0/0]]" variable="value">
+
+`<<value>>` = <<value>>
+
+`(=<<value>> + <<value>>/3 =)` =
+(=<<value>> + <<value>> =)
+</$list>

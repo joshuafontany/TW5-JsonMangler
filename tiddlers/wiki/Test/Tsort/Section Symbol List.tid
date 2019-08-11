@@ -1,0 +1,9 @@
+created: 20190801031220729
+modified: 20190801032345576
+source: https://www.law.cornell.edu/citation/3-100
+tags: 
+title: Test/Tsort/Section Symbol List
+
+<$list variable="section" filter="[tag[Test/Tsort]tsort[]]">
+
+</$list>

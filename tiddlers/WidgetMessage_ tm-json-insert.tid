@@ -1,0 +1,22 @@
+created: 20181201221308972
+modified: 20181201221511841
+tags: JsonManglerWidget Messages
+title: WidgetMessage: tm-json-insert
+type: text/vnd.tiddlywiki
+
+The `tm-json-insert` message is handled by the JsonManglerWidget.
+
+It calls the javascript .splice() method on an array object, but if passed an array of objects it will "insert" them into the array - this joins the two arrays at the position given in the 'index' parameter.
+
+//Note: All ''tm-json-'' messages will perform a deduplication operation and test for 'flattness'. See [[WidgetMessage: tm-json-refresh]].//
+
+''Parameters''
+
+|!Name |!Description |
+|padding|Integer. The number of spaces to indent between object or array items when reformatting. Defaults to 0.|
+|index|The index-path to the target array. If it ends in an integer, this is the array index on which the .splice() is performed (defaults to "/0").|
+|delete|The number of array items to remove from the array. If the 'set' parameter has a valid TextReference, the removed items are written to this location.|
+|value|The value to splice into the array. Will accept valid json objects interpret them. If passed a valid array it will insert all items into the target array starting at the index specified|
+|set|The TextReference used to store any items removed from the array.|
+
+The insert json message is usually generated with the ButtonWidget or an ActionWidget, and is handled by the surrounding JsonManglerWidget.

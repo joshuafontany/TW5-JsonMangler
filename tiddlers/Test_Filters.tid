@@ -1,0 +1,12 @@
+created: 20180725222236883
+modified: 20190214035117399
+tags: Test
+title: Test/Filters
+type: text/vnd.tiddlywiki
+
+<$list filter="[all[]tag[Test]tag[Filter]]" variable="tid">
+<ul>
+<li><$link to=<<tid>>><$text text=<<tid>>/></$link></li>
+<$transclude tiddler=<<tid>> />
+</ul>
+</$list>

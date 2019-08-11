@@ -1,0 +1,7 @@
+created: 20180709234504226
+modified: 20190312001257909
+tags: 
+title: $:/SiteSubtitle
+type: text/vnd.tiddlywiki
+
+a json plugin for TW5, v {{$:/plugins/joshuafontany/jsonmangler!!version}}

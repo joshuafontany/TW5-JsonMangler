@@ -1,0 +1,21 @@
+created: 20181201214018581
+modified: 20190801035935886
+tags: 
+title: HelloThere
+type: text/vnd.tiddlywiki
+
+{{$:/plugins/joshuafontany/jsonmangler/readme}}
+
+!Installation
+
+{{$:/plugins/joshuafontany/jsonmangler/readme/Installation}}
+
+!!Documentation
+
+Currently, the following new features are documented:
+
+[[JsonManglerWidget]]
+
+<$list filter="[all[]!is[system]prefix[WidgetMessage]]" >
+
+</$list>

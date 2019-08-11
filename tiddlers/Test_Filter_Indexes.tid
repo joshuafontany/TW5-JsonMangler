@@ -1,0 +1,26 @@
+created: 20190214031437870
+modified: 20190214035019655
+tags: Filter Test
+title: Test/Filter/Indexes
+
+''indexes[]'':
+
+<$list filter="[all[]!is[system]type[application/json]]" variable="json">
+<ul>
+<li>
+<$wikify name="state" text="""$:/state/showIndexes/<$macrocall $name="qualify" title=<<json>> />""" >
+<$reveal type="nomatch" state=<<state>> text="show">
+<$button set=<<state>> setTo="show">Show</$button> <$link to=<<json>>><$text text=<<json>>/></$link>
+</$reveal>
+<$reveal type="match" state=<<state>> text="show">
+<$button set=<<state>> setTo="hide">Hide</$button> <$link to=<<json>>><$text text=<<json>>/></$link>
+<$list filter="[<json>indexes[]tsort[]]" variable="key">
+<ul>
+<li><<key>> = <$transclude tiddler=<<json>> index=<<key>> /></li>
+</ul></$list>
+</$reveal>
+</$wikify>
+<br/>
+</li>
+</ul>
+</$list>

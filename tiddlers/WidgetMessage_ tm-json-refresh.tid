@@ -1,0 +1,20 @@
+created: 20181130235309025
+modified: 20181201215852981
+tags: JsonManglerWidget Messages
+title: WidgetMessage: tm-json-refresh
+type: text/vnd.tiddlywiki
+
+The `tm-json-refresh` message is handled by the JsonManglerWidget.
+
+It resolves any duplicate values (see below), re-sorts the object by the keys, and then refreshes the json data tiddler's formatting (see below). This message will also test the tiddler for 'flatness' (no nested objects or arrays), and set the 'flat' field of the tiddler to the result.
+
+See [[Deduplication|$:/plugins/joshuafontany/jsonmangler/readme/Deduplication]] for a description of how "duplicate values" are resolved.
+
+//Note: All ''tm-json-'' messages will perform a deduplication operation and test for 'flattness'. See [[WidgetMessage: tm-json-refresh]].//
+
+''Parameters''
+
+|!Name |!Description |
+|padding|Integer. The number of spaces to indent between object or array items when reformatting. Defaults to 4.|
+
+The refresh json message is usually generated with the ButtonWidget or an ActionWidget, and is handled by the surrounding JsonManglerWidget.

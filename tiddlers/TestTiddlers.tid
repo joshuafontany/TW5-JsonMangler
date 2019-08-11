@@ -1,0 +1,18 @@
+created: 20181203060823227
+modified: 20181203191148546
+tags: 
+title: TestTiddlers
+type: text/vnd.tiddlywiki
+
+Tests of various tiddlywiki functions:
+
+<$list filter="[tag[Test]]" >
+
+* <$link to={{!!title}}><$view field="title"/></$link>
+</$list>
+
+Json Data Tiddlers used in the tests:
+<$list filter="[tag[TestData]]" >
+
+* <$link to={{!!title}}><$view field="title"/></$link>
+</$list>

@@ -1,0 +1,39 @@
+created: 20190210052338490
+modified: 20190214091613063
+tags: Test
+title: Examples/CustomReadWrite
+type: text/vnd.tiddlywiki
+
+Select Target: <$select tiddler="$:/state/customTarget">
+<$list filter='[!is[system]type[application/json]tsort[title]]'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+
+<div style="float:left">
+<$button class="tc-btn-invisible tc-tiddlylink">
+<$action-setfield $tiddler="$:/state/customIndex" $field="text" $value="0/index/with/slashes~1like~1this" />
+<$action-setfield $tiddler="$:/state/customValue" $field="text" $value="value here" />
+<$action-setfield $tiddler="$:/state/customTarget" $field="text" $value="Test/CustomReadWrite.json" />
+Reset Example
+</$button>
+<br/>
+<$button setTitle={{$:/state/customTarget}} setIndex={{$:/state/customIndex}} setTo={{$:/state/customValue}} class="tc-btn-invisible tc-tiddlylink">
+Push Value
+</$button>
+<br/>
+<$button class="tc-btn-invisible tc-tiddlylink">
+<$action-setfield $tiddler={{$:/state/customTarget}} $index={{$:/state/customIndex}} />
+Delete Index
+</$button>
+</div>
+<div style="clear:right;"/>
+<div>
+Target: <$link to={{$:/state/customTarget}}><$view field='title' tiddler={{$:/state/customTarget}}/></$link>
+<br/>
+Index: <$edit-text tiddler="$:/state/customIndex" size=30 tag="input"/>
+<br/>
+Value: <$edit-text tiddler="$:/state/customValue" size=30 tag="input"/>
+</div>
+
+<$transclude tiddler={{$:/state/customTarget}} />

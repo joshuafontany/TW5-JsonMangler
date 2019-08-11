@@ -1,0 +1,49 @@
+created: 20180715014116044
+modified: 20190628203349840
+tags: Test
+title: Test/Widget/Formula
+type: text/vnd.tiddlywiki
+
+`50*50 = (=50*50=)`
+
+50*50 = (=50*50=)
+
+`<a title=<<formula {{Test/Complex.json##4/1}}*5>>>This sentence has a title: {{Test/Complex.json##4/1}}*5</a>`
+
+<a title=<<formula {{Test/Complex.json##4/1}}*5>>>This sentence has a title: {{Test/Complex.json##4/1}}*5</a>
+
+```
+Circle 1:
+<svg
+  width=<<formula  10*10>>
+  height=<<formula 
+ 10*10>>
+  viewBox="0 0 100 100">
+<circle cx=50 cy=50 r=<<formula 5*5>> />
+</svg>
+Circle 2:
+<svg
+  width=(= 10*10 =)
+  height=(= 10*10 =)
+  viewBox="0 0 100 100">
+<circle cx=50 cy=50 r=(= 5*5 =) />
+</svg>
+```
+Circle 1:
+<svg
+  width=<<formula  10*10>>
+  height=<<formula 
+ 10*10>>
+  viewBox="0 0 100 100">
+<circle cx=50 cy=50 r=<<formula 5*5>> />
+</svg>
+Circle 2:
+<svg
+  width=(= 10*10 =)
+  height=(= 10*10 =)
+  viewBox="0 0 100 100">
+<circle cx=50 cy=50 r=(= 5*5 =) />
+</svg>
+
+
+`(={{Test/Complex.json##/4/0}} + {{Test/Complex.json##/4/1}} + {{Test/Complex.json##/4/2}} + {{Test/Complex.json##5/0}}=)` = (={{Test/Complex.json##/4/0}} + {{Test/Complex.json##/4/1}} + {{Test/Complex.json##/4/2}} + {{Test/Complex.json##5/0}}=)

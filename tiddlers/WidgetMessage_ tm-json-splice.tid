@@ -1,0 +1,22 @@
+created: 20181201220408042
+modified: 20181201221306794
+tags: JsonManglerWidget Messages
+title: WidgetMessage: tm-json-splice
+type: text/vnd.tiddlywiki
+
+The `tm-json-splice` message is handled by the JsonManglerWidget.
+
+It calls the javascript .splice() method on an array object.
+
+//Note: All ''tm-json-'' messages will perform a deduplication operation and test for 'flattness'. See [[WidgetMessage: tm-json-refresh]].//
+
+''Parameters''
+
+|!Name |!Description |
+|padding|Integer. The number of spaces to indent between object or array items when reformatting. Defaults to 0.|
+|index|The index-path to the target array. If it ends in an integer, this is the array index on which the .splice() is performed (defaults to "/0").|
+|delete|The number of array items to remove from the array. If the 'set' parameter has a valid TextReference, the removed items are written to this location.|
+|value|The value to splice into the array. Will accept valid json objects interpret them.|
+|set|The TextReference used to store any items removed from the array.|
+
+The splice json message is usually generated with the ButtonWidget or an ActionWidget, and is handled by the surrounding JsonManglerWidget.
