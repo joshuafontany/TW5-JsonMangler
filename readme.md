@@ -14,7 +14,7 @@ This plugin changes the methods tiddlywiki uses to retrieve and set values in js
 
 It introduces new features, widgets, and filter operators to manage, edit, and view json tiddlers:
 
-*   Allows [TextReferences](#TextReferences) to target nested values ("complex json").
+*   Allows Tiddlywiki TextReferences to target nested values ("complex json").
 *   An automatic **alert** when calling actions on an invalid json data tiddler, or when plugin tiddlers have been edited.
 *   New buttons in the **editTemplate** for 'application/json' data tiddlers.
 *   **$jsonmangler**, a widget that catches messages to edit json data tiddlers (used in the editTemplate).
@@ -39,7 +39,8 @@ Thanks you two!
 
 Go to the [JsonMangler Example Wiki](https://joshuafontany.github.io/TW5-JsonMangler/).
 Scroll to the $:/plugins/joshuafontany/jsonmangler tiddler.
-Drag and drop the following links to your own wiki to install the plugins, then restart your server and(or) refresh your wiki.
+Drag and drop the following links to your own wiki to install the plugins.
+Restart your server and(or) refresh your wiki.
 
 *   $:/plugins/ebalster/modloader
 *   $:/plugins/matabele/action-maketid
@@ -47,9 +48,9 @@ Drag and drop the following links to your own wiki to install the plugins, then 
 
 ## For Node served from TiddlyWiki's plugin folder (tiddlywiki on node.js, Bob on node.js, etc):
 
-Use Git to clone my `master` repository into a folder in your TiddlyWiki5 repo's plugin folder, then setup folders for the required plugins above.
+Use Git to clone my `master` repository into a folder in your TiddlyWiki5 repo's plugin folder, then setup folders for the required plugins or import them as above.
 
-Alternately, and more simply, you can use single-file `plugin.info` versions under node,js, which are found in the Releases tab.
+Alternately, you can use the minified single-file `plugin.info` versions under node,js, which are found in the Releases tab.
 
 Go to [Json Mangler Github Releases](https://github.com/joshuafontany/TW5-JsonMangler/releases) and download the latest *.zip file.
 
