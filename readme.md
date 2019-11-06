@@ -18,7 +18,7 @@ It introduces new features, widgets, and filter operators to manage, edit, and v
 *   An automatic **alert** when calling actions on an invalid json data tiddler, or when plugin tiddlers have been edited.
 *   New buttons in the **editTemplate** for 'application/json' data tiddlers.
 *   **$jsonmangler**, a widget that catches messages to edit json data tiddlers (used in the editTemplate).
-*   A new [$:/ControlPanel](#%24%3A%2FControlPanel) tab, **Plugin Management** which allows plugin creation and editing using the new json libraries.
+*   A new $:/ControlPanel tab, **Plugin Management** which allows plugin creation and editing using the new json libraries.
 *   New filter operators:
     *   An updated **indexes[] operator** that can show all index paths. If given the argument `verbose`, it will list all paths, including the root path to nested objects and arrays.
     *   A new **hasindex[] operator** that returns only those input tiddlers that have a value at the index path supplied.
@@ -50,13 +50,13 @@ Restart your server and(or) refresh your wiki.
 
 Use Git to clone my `master` repository into a folder in your TiddlyWiki5 repo's plugin folder, then setup folders for the required plugins or import them as above.
 
-Alternately, you can use the minified single-file `plugin.info` versions under node,js, which are found in the Releases tab.
+Alternately, you can use the minified single-file `plugin.info` versions under node.js, which are found in the Releases tab.
 
 Go to [Json Mangler Github Releases](https://github.com/joshuafontany/TW5-JsonMangler/releases) and download the latest *.zip file.
 
-Place the *.zip file in your `.\TiddlyWiki5` directory, right click and select `Extract Here` (7zip) or `Extract to here` (Winzip).
+Place the *.zip file in your `.\TiddlyWiki5` directory (or the root above your custom `.\plugins` folder), right click and select `Extract Here` (7zip) or `Extract to here` (Winzip).
 
-A plugin.info (json) file containing all the tiddlers for each required plugin will then be placed in the right folders within your `.\TiddlyWiki5\plugins` folder.
+A series of folders and a plugin.info (json) file containing all the tiddlers for each required plugin will then be placed in  within your `.\plugins` folder.
 
 Edit any wiki's `tiddlywiki.info` file to include the following in the `plugins` array.
 
