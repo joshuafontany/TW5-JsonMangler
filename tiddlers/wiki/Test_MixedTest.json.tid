@@ -1,8 +1,8 @@
 created: 20180723003752630
 flat: false
-modified: 20190809010656397
+modified: 20191225083003126
 tags: TestData
 title: Test/MixedTest.json
 type: application/json
 
-{"/mixed case/test/4":24,"/mixed case/test/5":25,"/test/0":"This is also a live $edit widget in the EditText test.","mixed case":{"test":[0,1,2,3,4,5]},"mixed case/test/0":10,"mixed case/test/1":11,"mixed case/test/2":12,"mixed case/test/3":13,"mixed case/test/4":14,"mixed case/test/5":15,"test":[[[523,true,false,"five twenty three",null,{"key":"value"}]]],"various other keys":"values"}
+{"/mixed case/test/4":24,"/mixed case/test/5":25,"/test/0":"This is also a live $edit widget in the EditText test!","mixed case":{"test":[0,1,2,3,4,5]},"mixed case/test/0":10,"mixed case/test/1":11,"mixed case/test/2":12,"mixed case/test/3":13,"mixed case/test/4":14,"mixed case/test/5":15,"test":[[[523,true,false,"five twenty three",null,{"key":"value"}]]],"various other keys":"values"}

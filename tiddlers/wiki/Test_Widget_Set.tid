@@ -1,5 +1,5 @@
 created: 20180726172833464
-modified: 20181201043417579
+modified: 20191225082952145
 tags: Test
 title: Test/Widget/Set
 type: text/vnd.tiddlywiki
@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 <$text text=<<myVariable>>/>
 </$set>
 ```
-
+''myVariable: ''
 <$set name="myVariable" tiddler="Test/MixedTest.json" index="test/0">
 <$text text=<<myVariable>>/>
 </$set>
