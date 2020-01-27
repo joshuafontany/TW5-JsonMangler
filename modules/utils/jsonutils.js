@@ -24,6 +24,9 @@ exports.jsonIsEqual = require("$:/plugins/joshuafontany/jsonmangler/modules/libs
 exports.jsonMerge = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/lodash/merge.js");
 exports.jsonXor = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/lodash/xor.js");
 
+/*
+JSON Schema methods
+*/
 exports.jsonSchemaInstance = function(schema) {
 	if (typeof schema == "undefined" ) throw "jsonSchemaInstance: invalid schema";
 	return jsonFactory.instantiate(schema);
@@ -32,8 +35,6 @@ exports.jsonToSchema = function(obj) {
 	if (typeof obj == "undefined" ) throw "jsonToSchema: invalid schema";
 	return toJsonSchema(obj);
 }
-
-
 
 /*
 Displays a Json Error alert to the user.

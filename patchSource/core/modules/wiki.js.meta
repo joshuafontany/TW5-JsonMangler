@@ -1,6 +1,6 @@
-created: 20191227054739706
-modified: 20191227054739706
-modloader-source: $:/core
-modloader-target: $:/core/modules/wiki.js
-title: $:/plugins/joshuafontany/jsonmangler/patch/core/modules/wiki.js
-type: text/x-patch
+created: 20200123001416145
+modified: 20200123001454077
+module-type: wikimethod
+tags: 
+title: $:/plugins/joshuafontany/jsonmangler/patchSource/core/modules/wiki.js
+type: application/javascript
