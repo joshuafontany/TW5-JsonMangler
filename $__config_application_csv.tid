@@ -1,6 +1,6 @@
-title: $:/config/application/csv
+title: $:/config/type/application/csv
 tags:
 debug: no
-preview: 10
+preview: 11
 skip_empty: yes
 text: 

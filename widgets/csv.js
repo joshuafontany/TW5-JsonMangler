@@ -24,7 +24,7 @@ var CsvWidget = function(parseTreeNode,options) {
 	]);
 };
 
-var CSV_CONFIG = "$:/config/application/csv";
+var CSV_CONFIG = "$:/config/type/application/csv";
 
 /*
 Inherit from the base widget class
@@ -44,7 +44,7 @@ CsvWidget.prototype.render = function (parent, nextSibling) {
     // Create a div to contain the CSV table or error message
     var domNode = this.document.createElement("div");
     // Assign class
-    domNode.className = "tc-csv";
+    domNode.className = "tc-csv-widget";
     try {
 		// Generate content into the div
 		if(this.options.debug) {
@@ -54,7 +54,7 @@ CsvWidget.prototype.render = function (parent, nextSibling) {
 			this.renderCsv(domNode);
 		}
 	} catch(ex) {
-		domNode.className = "tc-error";
+		domNode.className = "tc-csv-error";
 		domNode.textContent = ex;
 	}
     //Insert
@@ -75,20 +75,31 @@ CsvWidget.prototype.renderCsv = function(div) {
     var source = this.getAttribute("text",this.parseTreeNode.text || "");
     if (source === "") {
         var tiddler = $tw.wiki.getTiddler(this.options.title);
-        if(tiddler.field.text.length > 1 && source == "") source = tiddler.fields.text;
+        if(tiddler.field.text.length > 0 && source == "") source = tiddler.fields.text;
     }
     
     // Generate a table to display the Csv
     var results = $tw.utils.csvToJson(source, this.options);
+    var cols = results.data[0].length;
+
     // Table framework
     var tree = [{
-		"type": "scrollable", "children": [{
-			"type": "element", "tag": "table", "children": [{
-				"type": "element", "tag": "tbody", "children": []
-			}], "attributes": {
+		"type": "scrollable", "children": [
+            {
+			"type": "element", "tag": "table", "children": [
+            {
+                "type": "element", "tag": "thead", "children": []
+            },
+            {
+                "type": "element", "tag": "tbody", "children": []
+            }
+            ], "attributes": {
 				"class": {"type": "string", "value": "tc-csv-table"}
 			}
-		}]
+		}], "attributes": {
+            "class": {"type": "string", "value": "tc-csv-scrollable"},
+            "fallthrough": "no"
+        }
     }];
     if (results.data && results.data.length > 0) {
         // Add the data to the parseTree
@@ -108,7 +119,29 @@ CsvWidget.prototype.renderCsv = function(div) {
                         });
                 }
                 tag = "td";
-                tree[0].children[0].children[0].children.push(row);
+                if(line == 0){
+                    var controls = {
+                        "type": "element", "tag": "tr", "children": [{
+                            "type": "element", "tag": "th", "children": [{
+                                "type": "transclude", "children": [],
+                                "attributes":{
+                                    "tiddler": { 
+                                        "type": "string", 
+                                        "value": "$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvControls.tid"
+                                    }
+                                }
+                            }],
+                            "attributes": {
+                                "colspan": {"type": "string", "value": cols}
+                            }
+                        }]
+                    };
+                    tree[0].children[0].children[0].children.push(controls);
+                    tree[0].children[0].children[0].children.push(row);
+                }
+                else {
+                    tree[0].children[0].children[1].children.push(row);
+                }
             }
         }
     }    
@@ -126,9 +159,10 @@ CsvWidget.prototype.execute = function() {
     var tiddler = $tw.wiki.getTiddler(this.options.title);
     // Initialise options from the config tiddler or widget attributes
     var config = $tw.wiki.getTiddler(CSV_CONFIG,{});
+    var previewVal = this.getAttribute("preview", tiddler.fields.preview || config.fields.preview || "0");
     this.options = {        
         debug: this.getAttribute("debug", tiddler.fields.debug || config.fields.debug || "no") === "yes",
-        preview: this.getAttribute("preview", tiddler.fields.preview || config.fields.preview || 0),
+        preview: parseInt(previewVal),
         skipEmptyLines: this.getAttribute("skip_empty", tiddler.fields.skip_empty || config.skip_empty || "no") === "yes",
         header: false
     };
