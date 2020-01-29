@@ -1,6 +1,10 @@
 title: $:/config/type/application/csv
 tags:
 debug: no
-preview: 11
+headers: yes
 skip_empty: yes
+per_page: 10
+start_page: 1
+peek: yes
+preview: 250
 text: 

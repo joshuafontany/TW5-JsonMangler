@@ -27,7 +27,9 @@ var JsonManglerWidget = function(parseTreeNode,options) {
         { type: "tm-json-pop", handler: "handleJsonPopEvent" },
         { type: "tm-json-shift", handler: "handleJsonShiftEvent" },
         { type: "tm-json-unshift", handler: "handleJsonUnshiftEvent" },
-        { type: "tm-json-toschema", handler: "handleJsonToSchemaEvent" }
+        { type: "tm-json-toschema", handler: "handleJsonToSchemaEvent" },
+        { type: "tm-json-tocsv", handler: "handleJsonToSchemaCsvEvent" },
+        { type: "tm-json-fromcsv", handler: "handleJsonFromSchemaCsvEvent" }
 	]);
 };
 
@@ -523,6 +525,82 @@ JsonManglerWidget.prototype.handleJsonUnshiftEvent = function(event) {
         return true;
     }
     return false;
+};
+
+JsonManglerWidget.prototype.handleJsonToSchemaEvent = function(event) {
+    var tiddler = this.wiki.getTiddler(this.mangleTitle);
+    var schemaTitle = event.paramObject["schema"];
+    if (!schemaTitle || typeof schemaTitle === "undefined" || schemaTitle == "") {
+        schemaTitle = "$:/schema/"+this.mangleTitle;
+    }
+    if (tiddler && tiddler.fields.text) {
+        var jsonObj,
+            a = tiddler.fields.title,
+            b = this.wiki.getTextReference(a+"!!text");
+        if (!b || 0 == b.length) {
+            b = "{}"
+        }
+        if(!$tw.utils.jsonIsValid(a, b)) {
+            return false;
+        }
+        jsonObj = JSON.parse(b);
+
+        /*Generate the Schema*/
+        var jsonSchema = $tw.utils.jsonToSchema(jsonObj),
+        fields = {},
+		creationFields = this.wiki.getCreationFields(),
+        modificationFields  = this.wiki.getModificationFields();
+        fields["type"] = "application/json";
+        fields["text"] = JSON.stringify(jsonSchema);
+        var tiddler = this.wiki.addTiddler(new $tw.Tiddler(creationFields,fields,modificationFields,{title: schemaTitle}));
+        this.wiki.setTextReference(this.mangleTitle+"!!schema",schemaTitle,this.getVariable("currentTiddler"));
+        this.dispatchEvent({
+            type: "tm-navigate",
+            navigateTo: schemaTitle,
+            navigateFromTitle: this.mangleTitle,
+            navigateFromNode: this,
+            navigateFromClientRect: {}
+        });
+    }
+	return true;
+};
+
+JsonManglerWidget.prototype.handleJsonToCSVEvent = function(event) {
+    var tiddler = this.wiki.getTiddler(this.mangleTitle);
+    var schemaTitle = event.paramObject["schema"];
+    if (!schemaTitle || typeof schemaTitle === "undefined" || schemaTitle == "") {
+        schemaTitle = "$:/schema/"+this.mangleTitle;
+    }
+    if (tiddler && tiddler.fields.text) {
+        var jsonObj,
+            a = tiddler.fields.title,
+            b = this.wiki.getTextReference(a+"!!text");
+        if (!b || 0 == b.length) {
+            b = "{}"
+        }
+        if(!$tw.utils.jsonIsValid(a, b)) {
+            return false;
+        }
+        jsonObj = JSON.parse(b);
+
+        /*Generate the Schema*/
+        var jsonSchema = $tw.utils.jsonToSchema(jsonObj),
+        fields = {},
+		creationFields = this.wiki.getCreationFields(),
+        modificationFields  = this.wiki.getModificationFields();
+        fields["type"] = "application/json";
+        fields["text"] = JSON.stringify(jsonSchema);
+        var tiddler = this.wiki.addTiddler(new $tw.Tiddler(creationFields,fields,modificationFields,{title: schemaTitle}));
+        this.wiki.setTextReference(this.mangleTitle+"!!schema",schemaTitle,this.getVariable("currentTiddler"));
+        this.dispatchEvent({
+            type: "tm-navigate",
+            navigateTo: schemaTitle,
+            navigateFromTitle: this.mangleTitle,
+            navigateFromNode: this,
+            navigateFromClientRect: {}
+        });
+    }
+	return true;
 };
 
 JsonManglerWidget.prototype.handleJsonToSchemaEvent = function(event) {

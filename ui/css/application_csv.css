@@ -2,6 +2,8 @@
     
 }
 
+.tc-csv-table tbody tr:nth-child(odd) {background: #CCC}
+
 .tc-csv-table theader {
     
 }
@@ -9,4 +11,15 @@
 .tc-csv-controls {
     width: 100%;
     text-align: left;
+}
+.tc-csv-control {
+    width: auto;
+    float:left;
+    text-align: left;
+    padding: 0 0.2em 0 0;
+}
+
+.tc-csv-control-final {
+    width: auto;
+    clear: both;
 }
