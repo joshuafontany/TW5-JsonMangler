@@ -5,13 +5,15 @@
         "matabele/action-maketid",
         "ebalster/modloader",
         "ebalster/attribute-modules",
-        "ebalster/formula"
+        "ebalster/formula",
+        "OokTech/Bob",
+        "TheDiveO/FontAwesome"
     ],
     "themes": [
         "tiddlywiki/vanilla",
         "tiddlywiki/snowwhite"
     ],
-   "build": {
+    "build": {
         "index": [
             "--rendertiddler",
             "$:/plugins/tiddlywiki/tiddlyweb/save/offline",
