@@ -603,7 +603,7 @@ JsonManglerWidget.prototype.handleJsonToCSVEvent = function(event) {
 	return true;
 };
 
-JsonManglerWidget.prototype.handleJsonToSchemaEvent = function(event) {
+JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
     var tiddler = this.wiki.getTiddler(this.mangleTitle);
     var schemaTitle = event.paramObject["schema"];
     if (!schemaTitle || typeof schemaTitle === "undefined" || schemaTitle == "") {
