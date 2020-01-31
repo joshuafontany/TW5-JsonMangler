@@ -185,7 +185,16 @@ the value there, else we set the value at the 'nested' location.
 exports.jsonSet= function(obj, index, value) {
 	if(!obj) throw "jsonSet error, no obj";
 	if(!index || index.length == 0 || index == "" || index == "/") throw "jsonSet error, missing or invalid index";
+	if (!(index.charAt( 0 ) == '/')) {
+		index = "/" + index;
+	};
 	if(typeof value == "undefined") value = null;
+
+	//fix for blank root obj and numeral index/array init
+	if (JSON.stringify(obj) === "{}") {
+		var pathArray = pointer.parse(index)
+		if(/^(?:\d+|-)$/.test(pathArray[0])) obj = [];
+	}
 	
 	var setValue;
 	if(String(value) === value && !(value === "")){
@@ -223,9 +232,6 @@ exports.jsonSet= function(obj, index, value) {
 	
 	if (setValue === undefined) { setValue = value };
 	
-	if (!(index.charAt( 0 ) == '/')) {
-		index = "/" + index;
-	};
 	var legacyIndex = index.substring(1);
 	var legacyIndexEsc = "/" + pointer.escape(legacyIndex);
 	var indexEsc = "/" + pointer.escape(index);

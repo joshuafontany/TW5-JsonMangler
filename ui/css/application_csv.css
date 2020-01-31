@@ -1,14 +1,10 @@
-.tc-csv-table tbody {
-    
+.tc-csv-table tbody tr:nth-child(odd) {
+    background: #CCC
 }
 
-.tc-csv-table tbody tr:nth-child(odd) {background: #CCC}
+.tc-csv-options {clear: both;}
 
-.tc-csv-table theader {
-   
-}
-
-.tc-csv-controls {
+.tc-csv-controls, .tc-csv-options {
     width: 100%;
     text-align: left;
 }

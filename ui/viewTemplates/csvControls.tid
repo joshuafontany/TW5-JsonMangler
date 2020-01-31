@@ -3,7 +3,42 @@ tags:
 text:
 
 \define csvControls()
+<div class="tc-csv-options">
+<$reveal type="nomatch" stateTitle=<<csvState>> stateField="show_options" text="yes">
 
+<$button setTitle=<<csvState>> setField="show_options" setTo="yes" class="tc-btn-invisible" tooltip="Csv Options" aria-label="Show the Csv Options">
+<i class="fas fa-file-csv fa-lg fa-fw"/> {{$:/core/images/chevron-right}}
+</$button>
+
+</$reveal>
+<$reveal type="match" stateTitle=<<csvState>> stateField="show_options" text="yes">
+
+<$button setTitle=<<csvState>> setField="show_options" setTo="no" class="tc-btn-invisible" tooltip="Csv Options" aria-label="Hide the Csv Options">
+<i class="fas fa-file-csv fa-lg fa-fw"/> {{$:/core/images/chevron-down}}
+</$button>
+
+Headers Row: <$checkbox tiddler=<<csvState>> field="headers" checked="yes" unchecked="no" default="yes"> <$view tiddler=<<csvState>> field="headers"/></$checkbox><br/>
+~SkipEmptyLines: <$checkbox tiddler=<<csvState>> field="skip_empty" checked="yes" unchecked="no" default="yes"> <$view tiddler=<<csvState>> field="skip_empty"/></$checkbox><br/>
+Preview: <$checkbox tiddler=<<csvState>> field="peek" checked="yes" unchecked="no" default="yes"> <$view tiddler=<<csvState>> field="peek"/></$checkbox>
+<$list variable="showPreview" filter="[<csvState>get[peek]] -[[no]]" emptyMessage="">[ <$edit-text tiddler=<<csvState>> field="preview"/> / <<csvLength>> ]</$list><br/>
+
+<$jsonmangler title=<<currentTiddler>> >
+<!-- /* Convert Csv To Json */ -->
+
+''Import Options''
+Import each row as:
+<$radio tiddler=<<csvState>> field="import_as" value="tiddlers"> Individual Tidders</$radio><br/>
+<$radio tiddler=<<csvState>> field="import_as" value="json"> Individual Json Tiddlers</$radio><br/>
+<$radio tiddler=<<csvState>> field="import_as" value="array"> Json Tiddlers</$radio><br/>
+<$button tooltip="Convert this Csv to Json."  class="tc-btn-invisible tc-tiddlylink" style="float: left; margin-right: 0.5em; padding: 4px;">
+<$action-sendmessage $message="tm-json-fromcsv" />
+''CSV To Json Tiddler(s)''
+</$button>
+
+</$jsonmangler>
+</$reveal>
+</div>
+<div class="tc-csv-controls">
 <div class="tc-csv-control">
 <$button setTitle=<<csvState>> setField="start_page" setTo="1" class="tc-btn-invisible" tooltip="First Page" aria-label="Go to the First Page">
 {{$:/core/images/chevron-left}}
@@ -30,21 +65,8 @@ Page <$view tiddler=<<csvState>> field="start_page"/> / <<csvFinalPage>>
 <div class="tc-csv-control">
 ( Viewing Line <<csvStartLine>> - <<csvEndLine>> / <<csvLastIndex>> )
 </div>
-<div class="tc-csv-control-final">
-Headers: <$checkbox tiddler=<<csvState>> field="headers" checked="yes" unchecked="no" default="yes"> <$view tiddler=<<csvState>> field="headers"/></$checkbox><br/>
-~SkipEmpty: <$checkbox tiddler=<<csvState>> field="skip_empty" checked="yes" unchecked="no" default="yes"> <$view tiddler=<<csvState>> field="skip_empty"/></$checkbox><br/>
-Preview: <$checkbox tiddler=<<csvState>> field="peek" checked="yes" unchecked="no" default="yes"> <$view tiddler=<<csvState>> field="peek"/></$checkbox>
-<$list variable="showPreview" filter="[<csvState>get[peek]] -[[no]]" emptyMessage="">[ <$view tiddler=<<csvState>> field="preview"/> / <<csvLength>> ]</$list><br/>
-<$jsonmangler title=<<currentTiddler>> >
-<!-- /* Convert Csv To Json */ -->
-<$button tooltip="Convert this Csv to Json."  class="tc-btn-invisible tc-tiddlylink" style="float: left; margin-right: 0.5em; padding: 4px;">
-<$action-sendmessage $message="tm-json-fromcsv" />
-<i class="fas fa-file-csv fa-lg fa-fw"/> ''CSV To Json Tiddler(s)''
-</$button>
-</$jsonmangler>
+<div class="tc-csv-control-final"/>
 </div>
 \end
 
-<div class="tc-csv-controls">
 <<csvControls>>
-</div>

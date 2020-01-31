@@ -77,12 +77,6 @@ exports.setText = function(title,field,index,value,options) {
 	if(index) {
 		var data = this.getTiddlerData(title,Object.create(null));
 		if(value !== undefined) {
-			//fix for blank root obj and numeral index/array init
-			if (JSON.stringify(data) === "{}") {
-				if (index.match(/^\/(\d+|-)$/) || index.match(/^(\d+|-)$/)) {
-					data = [];
-				}
-			}
 			$tw.utils.jsonSet(data, index, value);
 		} else {
 			$tw.utils.jsonRemove(data, index);
