@@ -1,0 +1,41 @@
+tags:
+title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport
+
+<$reveal type="nomatch" stateTitle=<<csvState>> stateField="show_import" text="yes">
+<$button setTitle=<<csvState>> setField="show_import" setTo="yes" class="tc-btn-invisible" tooltip="Csv Import Options" aria-label="Show the Csv Import Options">
+{{$:/core/images/import-button}} {{$:/core/images/right-arrow}}
+</$button>
+</$reveal>
+<$reveal type="match" stateTitle=<<csvState>> stateField="show_import" text="yes">
+<$button setTitle=<<csvState>> setField="show_import" setTo="no" class="tc-btn-invisible" tooltip="Csv Import Options" aria-label="Hide the Csv Import Options">
+{{$:/core/images/import-button}} {{$:/core/images/down-arrow}}
+</$button>
+<!-- /* Import Csv */ -->
+<div class="tc-csv-import-options">
+
+!! Import Options
+
+Importing a Csv tiddler converts the data into Tiddlers, or into one or more Json Tiddlers. The results depend on the current options set on the Csv Tiddler (above), as well as the Import specific options (below).
+
+</div>
+Import as: <$select tiddler=<<csvState>> field="import_as">
+<optgroup label='Tiddlers'>
+<option value='tiddlers'>One Tiddler per Row</option>
+</optgroup>
+<optgroup label='Jsonj'>
+<option value='array'>One Json Array Tiddler</option>
+<option value='json'>One Json Tiddler per Row</option>
+</optgroup>
+</$select>
+
+!!! Column Names
+
+Column names are automatically handled (or assigned simple numbered fields/indexes if `Headers: no`).
+
+<$jsonmangler title=<<currentTiddler>> >
+<$button tooltip="Import this Csv" aria-label="Show the Csv Import Options" class="tc-btn-invisible" >
+<$action-sendmessage $message="tm-json-fromcsv" />
+{{$:/core/images/import-button}} ~$:/Import this Csv
+</$button>
+</$jsonmangler>
+</$reveal>

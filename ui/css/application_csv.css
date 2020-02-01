@@ -1,13 +1,38 @@
+.tc-csv-widget button svg {
+    fill: #7897f3;
+}
+
 .tc-csv-table tbody tr:nth-child(odd) {
     background: #CCC
 }
 
-.tc-csv-options {clear: both;}
+.tc-csv-options, .tc-csv-options-table {
+    margin: 0.2em;
+    clear: both;
+}
 
 .tc-csv-controls, .tc-csv-options {
     width: 100%;
     text-align: left;
 }
+
+.tc-csv-options-table, .tc-csv-options-table td {
+   border-collapse: collapse;
+   border: none;
+}
+
+.tc-csv-options-table  td:first-child {
+    text-align: right;
+}
+
+.tc-csv-options-table td:first-child + td {
+    text-align: left;
+}
+
+.tc-csv-options-table td button {
+    padding: 0 0.2em 0 0;
+}
+
 .tc-csv-control {
     width: auto;
     float:left;
@@ -18,4 +43,12 @@
 .tc-csv-control-final {
     width: auto;
     clear: both;
+}
+
+.tc-csv-import-options {
+    font-weight: normal; 
+    display: block; 
+    white-space: normal;
+    width: 22em;
+    text-align: left;
 }

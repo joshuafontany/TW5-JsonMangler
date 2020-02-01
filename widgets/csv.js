@@ -46,7 +46,7 @@ CsvWidget.prototype.render = function (parent, nextSibling) {
     try {
 		// Generate content into the div
 		if(this.options.debug) {
-            console.log("Render CsvWidget");
+            console.log("Render Debug CsvWidget");
 			this.renderDebug(domNode);
 		} else {
 			this.renderCsv(domNode);
@@ -62,10 +62,72 @@ CsvWidget.prototype.render = function (parent, nextSibling) {
 };
 
 CsvWidget.prototype.renderDebug = function(div) {
-	var output = ["<pre>"];
-	output.push(text)
-	output.push("</pre>");
-	div.innerHTML = output.join("");
+    // Get the source text
+    var source = this.getAttribute("text",this.parseTreeNode.text || "");
+    if (source === "") {
+        var tiddler = $tw.wiki.getTiddler(this.state.tiddler);
+        if(tiddler.field.text.length > 0 && source == "") source = tiddler.fields.text;
+    }
+    //set the 'csvState' variable
+    this.setVariable("csvState",this.state); 
+    //Render
+	// Table framework
+    var tree = [{
+		"type": "scrollable", "children": [
+            {
+			"type": "element", "tag": "table", "children": [
+            {
+                "type": "element", "tag": "thead", "children": []
+            },
+            {
+                "type": "element", "tag": "tbody", "children": []
+            }
+            ], "attributes": {
+				"class": {"type": "string", "value": "tc-csv-table"}
+			}
+		}], "attributes": {
+            "class": {"type": "string", "value": "tc-csv-scrollable"},
+            "fallthrough": "no"
+        }
+    }];
+    // Add the controls and headers to the parseTree
+    var cols = 1;
+    var controls = {
+        "type": "element", "tag": "tr", "children": [{
+            "type": "element", "tag": "th", "children": [{
+                "type": "transclude", "children": [],
+                "attributes":{
+                    "tiddler": { 
+                        "type": "string", 
+                        "value": "$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvControls"
+                    }
+                }
+            }],
+            "attributes": {
+                "colspan": {"type": "string", "value": cols}
+            }
+        }]
+    };
+    tree[0].children[0].children[0].children.push(controls);
+    //Table body
+    if(source) {
+        var row = {
+                "type": "element", "tag": "tr", "children": []
+            };
+        row.children.push({
+                "type": "element", "tag": "td", "children": [{
+                    "type": "element", "tag": "pre", "children":[{
+                        "type": "text",
+                        "text": source
+                    }]
+                }]
+            });
+        tree[0].children[0].children[1].children.push(row);
+    }
+        
+    this.parseTreeNode.children = tree;
+    // Construct the child widgets
+	this.makeChildWidgets();
 };
 
 CsvWidget.prototype.renderCsv = function(div) {
@@ -130,7 +192,7 @@ CsvWidget.prototype.renderCsv = function(div) {
                     "attributes":{
                         "tiddler": { 
                             "type": "string", 
-                            "value": "$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvControls.tid"
+                            "value": "$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvControls"
                         }
                     }
                 }],
