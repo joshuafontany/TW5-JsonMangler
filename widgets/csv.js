@@ -145,6 +145,7 @@ CsvWidget.prototype.renderCsv = function(div) {
     var match = source.match(/\r?\n/g);
     var l = match.length;
     var results = $tw.utils.csvToJson(source, this.options);
+    var cols = results.data[0].length;
 
     var x = (stateTiddler.fields.headers === "yes") ? 1 : 0 ;
     var finalPage = Math.ceil((results.data.length-x)/parseInt(stateTiddler.fields.per_page)); //Pages are 1 indexed
@@ -162,6 +163,7 @@ CsvWidget.prototype.renderCsv = function(div) {
     this.setVariable("csvEndLine", (endLine-1).toString());
     this.setVariable("csvLastIndex", (results.data.length-1).toString());
     this.setVariable("csvLength", l.toString());
+    this.setVariable("csvCols", cols.toString());
 
     // Table framework
     var tree = [{
@@ -184,7 +186,6 @@ CsvWidget.prototype.renderCsv = function(div) {
     }];
     if (results.data && results.data.length > 0) {
         // Add the controls and headers to the parseTree
-        var cols = results.data[0].length;
         var controls = {
             "type": "element", "tag": "tr", "children": [{
                 "type": "element", "tag": "th", "children": [{
@@ -248,7 +249,7 @@ CsvWidget.prototype.execute = function() {
     // Get our parameters
     var config = $tw.wiki.getTiddler(CSV_CONFIG,{});
     var title = this.getAttribute("tiddler", this.getVariable("currentTiddler")),
-        stateTitle = "$:/state/tiddler/csv/" + title  + this.getStateQualifier();
+        stateTitle = "$:/widgets/csv/" + title  + this.getStateQualifier();
     var stateTiddler = $tw.wiki.getTiddler(stateTitle);
     if(!stateTiddler){
         var creationFields = this.wiki.getCreationFields(),
