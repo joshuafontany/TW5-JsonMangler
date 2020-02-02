@@ -15,69 +15,37 @@ title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport
 
 !! Import Options
 
-Importing a Csv tiddler converts the data into Tiddlers, or into one or more Json Tiddlers. The results depend on certain options set on the Csv Tiddler (above) such as Headers, Skip Empty Lines, and the Peek / Preview values, as well as the Import rules (below). There are a number of "placeholder variables" used in the import procces as described below. These are not set as tiddlywiki variables, and are only used when the import is performed.
+<$reveal type="nomatch" stateTitle=<<csvState>> stateField="show_help" text="yes">
+<$button setTitle=<<csvState>> setField="show_help" setTo="yes" class="tc-btn-invisible" tooltip="Csv Import Help" aria-label="Show the Csv Import Help">
+{{$:/core/images/help-button}} Import Help {{$:/core/images/right-arrow}}
+</$button>
+</$reveal>
+<$reveal type="match" stateTitle=<<csvState>> stateField="show_help" text="yes">
+<$button setTitle=<<csvState>> setField="show_help" setTo="no" class="tc-btn-invisible" tooltip="Csv Import Help" aria-label="Hide the Csv Import Help">
+{{$:/core/images/help-button}} Import Help {{$:/core/images/down-arrow}}
+</$button>
 
-Import as: <$select tiddler=<<csvState>> field="import_as">
-<optgroup label='Tiddlers'>
-<option value='tiddlers'>One Tiddler per Row</option>
-</optgroup>
-<optgroup label='Json'>
-<option value='json'>One Json Tiddler per Row</option>
-<option value='array'>One Json Array Tiddler</option>
-</optgroup>
-</$select>
+<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/help"/>
 
-<$list variable="importType" filter="[<csvState>get[import_as]] -[[array]] -[[json]]">
-<!-- /* Import Tiddlers */ -->
-!!! Tiddler Names
+</$reveal>
 
-New Tiddlers will be named according to the following subfilter:
+<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/select" />
 
-<$edit-text tiddler="$:/input/type/application/csv/input_tiddlers_title" default={{$(csvState)$!!tiddlers_title_filter}} tag="input" size="20"/>
+<$list variable="importType" filter="[<csvState>get[import_as]match{$:/temp/type/application/csv/import_as}]">
 
-!!! Column Names
+<$set name="importTypeTiddler" filter="[<importType>addprefix[$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/]]">
 
-Column names are handled according to the following filter. Two placeholder variable names may be used in this filter, `[<colName>]` and `[<colNumber>]`, to render a final field name. `<<colName>>` is first automatically 'cleaned' to be a valid tiddler field name, with all alpha characters converted to lowercase, and all illegal characters replaced by underscores `_`. If Headers are not used
+<$transclude tiddler=<<importTypeTiddler>> />
 
-
-</$list>
-<$list variable="importType" filter="[<csvState>get[import_as]] -[[array]] -[[tiddlers]]">
-<!-- /* Import Json Tiddlers */ -->
-!!! Primary Key
-
-The `[<primaryKey>]` variable is automatically set to the row number being proccesed. Selecting a column number as a Primary Key changes `[<primaryKey>]` to the value of that column in the row being proccesed. If these values are not unique IDs, then data may be overwritten when using this variable in the import operation.
-
- Import as: <$select tiddler=<<csvState>> field="import_as">
-<optgroup label='Tiddlers'>
-<option value='tiddlers'>One Tiddler per Row</option>
-</optgroup>
-<optgroup label='Json Tiddlers'>
-<option value='array'>One Json Array Tiddler</option>
-<option value='json'>One Json Tiddler per Row</option>
-</optgroup>
-</$select>
-
-!!! Json Tiddler Names
-
-Each new Json Tiddler will be named according to the following filter:
-
-<$edit-text tiddler="$:/type/application/csv/input_json_title" default={{$(csvState)$!!input_json_title}} tag="input" size="20"/>
+</$set>
 
 </$list>
-<$list variable="importType" filter="[<csvState>get[import_as]] -[[tiddlers]] -[[json]]">
-<!-- /* Import Json Array */ -->
-!!! Json Tiddler Name
+<$list variable="importType" filter="[<csvState>get[import_as]match{$:/temp/type/application/csv/import_as}]">
 
-The new Json Tiddler will be named according to the following filter:
-
-<$edit-text tiddler="$:/type/application/csv/input_array_title" default={{$(csvState)$!!input_array_title}} tag="input" size="20"/>
-
-</$list>
-<$list variable="importType" filter="[<csvState>get[import_as]]">
 <$jsonmangler title=<<currentTiddler>> >
-<$button tooltip="Import this Csv" aria-label="Show the Csv Import Options" class="tc-btn-invisible" >
+<$button tooltip="Import this Csv" aria-label="Show the Csv Import Options" class="tc-btn-invisible tc-tiddlylink" >
 <$action-sendmessage $message="tm-json-fromcsv" />
-{{$:/core/images/import-button}} ~$:/Import <<currentTiddler>>
+{{$:/core/images/import-button}} ~$:/Import - <<currentTiddler>>
 </$button>
 </$jsonmangler>
 </$list>
