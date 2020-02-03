@@ -1,19 +1,20 @@
 tags:
 title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/json
 
-\define importJson()
+\define columnsRange() 0,$(csvCols)$
+
 <!-- /* Import Json Tiddlers */ -->
 !!! Primary Key
 
-The `[<primaryKey>]` variable is automatically set to the row number being proccesed. Selecting a column number as a Primary Key changes `[<primaryKey>]` to the value of that column in the row being proccesed. If these values are not unique IDs, then data may be overwritten when using this variable in the import operation.
-
- Import as: <$select tiddler=<<csvState>> field="import_as">
-<optgroup label='Tiddlers'>
-<option value='tiddlers'>One Tiddler per Row</option>
+Select a Primary Key column:<br/>
+<$select tiddler=<<csvState>> field="primary_key" default="">
+<optgroup label='Default'>
+<option value="" >Row Number</option>
 </optgroup>
-<optgroup label='Json Tiddlers'>
-<option value='json'>One Json Tiddler per Row</option>
-<option value='array'>One Json Array Tiddler</option>
+<optgroup label='Columns'>
+<$list variable="col" filter="[range<columnsRange>">
+<option value=<<col>> >Column <<col>></option>
+</$list>>
 </optgroup>
 </$select>
 
@@ -21,6 +22,18 @@ The `[<primaryKey>]` variable is automatically set to the row number being procc
 
 Each new Json Tiddler will be named according to the following filter:
 
-<$edit-text tiddler="$:/temp/type/application/csv/import_title_json" default={{$(csvState)$!!import_title_json}} tag="input" size="20"/><$button setTitle=<<csvState>> setField="import_title_json" setTo={{$:/temp/type/application/csv/import_title_json}} class="tc-btn-invisible tc-tiddlylink" tooltip="Save the Import Title Filter" aria-label="Save the Import Title Filter">{{$:/core/images/done-button}}</$button><$button class="tc-btn-invisible tc-tiddlylink" tooltip="Reset the Import Title Filter" aria-label="Reset the Import Title Filter"><$action-deletetiddler $tiddler="$:/temp/type/application/csv/import_title_json"/><$action-setfield $tiddler=<<csvState>> $field="import_title_json" $value={{$:/config/type/application/csv!!import_title_json}}/>{{$:/core/images/close-button}}</$button>
-\end
-<<importJson>>
+<$set name="target" value="title">
+<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
+</$set>
+
+!!! Column / Json Index Names
+
+<$list name="jsonNamesToggle" filter="" emptyMessage="""
+Headers equals `no`. Each Json will be an array of values.
+""" >
+Each value from the row being proccessed will be set to an Index according to the following filter:
+
+<$set name="target" value="columns">
+<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
+</$set>
+</$list>

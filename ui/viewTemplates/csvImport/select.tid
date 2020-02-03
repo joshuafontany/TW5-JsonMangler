@@ -2,7 +2,8 @@ tags:
 title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/select
 
 \define selectImport()
-Import as: <$select tiddler="$:/temp/type/application/csv/import_as" default={{$(csvState)$!!import_as}}>
+Import this Csv tidder as: <br/>
+<$select tiddler="$:/temp/type/application/csv/import_as" default={{$(csvState)$!!import_as}}>
 <optgroup label='Tiddlers'>
 <option value='tiddlers'>One Tiddler per Row</option>
 </optgroup>

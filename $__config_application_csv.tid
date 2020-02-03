@@ -8,10 +8,10 @@ start_page: 1
 peek: yes
 preview: 250
 import_as:
-primary_key:
-import_title_array: [<currentTiddler>removeprefix[Csv\]addprefix[Json\]]
-import_title_json: [<currentTiddler>addprefix[JsonData\]addsuffix[\]addsuffix<primaryKey>]
-import_title_tiddlers: [<currentTiddler>addprefix[Data\]addsuffix[\]addsuffix<primaryKey>]
-import_columns_json:
-import_columns_tiddlers:
+primary_key: 0
+import_title_array: [<currentTiddler>removeprefix[Csv/]addprefix[Json/]]
+import_title_json: [<currentTiddler>addprefix[JsonData/]addsuffix[/]addsuffix<primaryKey>]
+import_title_tiddlers: [<currentTiddler>addprefix[Data/]addsuffix[/]addsuffix<primaryKey>]
+import_columns_json: [<columnName>]
+import_columns_tiddlers: [<columnNumber>addprefix[field_]]
 
