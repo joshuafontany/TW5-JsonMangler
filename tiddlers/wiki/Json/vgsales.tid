@@ -1,0 +1,18 @@
+flat: true
+modified: 20200204211420138
+title: Json/vgsales
+type: application/json
+
+{
+    "Rank": "10",
+    "Name": "Duck Hunt",
+    "Platform": "NES",
+    "Year": "1984",
+    "Genre": "Shooter",
+    "Publisher": "Nintendo",
+    "NA_Sales": "26.93",
+    "EU_Sales": "0.63",
+    "JP_Sales": "0.28",
+    "Other_Sales": "0.47",
+    "Global_Sales": "28.31"
+}

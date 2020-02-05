@@ -11,8 +11,7 @@
   "modified": "2019-02-19T01:15:59.693Z",
   "plugin-type": "plugin",
   "version": "0.0.2",
-  
-    "tiddlers": {
+  "tiddlers": {
         "$:/plugins/matabele/action-maketid/filter": {
             "created": "20160125090842763",
             "text": "Provides the filter `[maketid[]]` to create one or more unique titles.\n\n; Placeholders\n: `%date%` — a datestamp of the current time (format: `YYYY0MM0DD0hh0mm0ss`)\n: `%count%` — current count (see options: ''min'', ''inc'', ''max'')\n: `%max%` — max number generated\n: `%tiddler%` — defined ''tiddler'' or current\n: `%title%` — input title\n: when not operating on input titles, the (current) tiddler title\n\n: `<<variable>>`\n: `{{text!!reference}}`\n; Options\n: `min:1` — starting number\n: `inc:1` — increment\n: `max:2` — max number\n: `sep:-` — separator before unique count\n: `date-format:<dateFormatString>` — for `%date%`\n: `pad:max` — zero-pad count to length of max\n: `pad:5` — zero-pad count to 5 digits: 00001",
