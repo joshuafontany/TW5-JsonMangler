@@ -266,11 +266,13 @@ CsvWidget.prototype.execute = function() {
                 debug: this.getAttribute("debug", config.fields.debug || "no"),
                 headers: this.getAttribute("headers", config.fields.headers || "yes"),
                 per_page: this.getAttribute("per_page", config.fields.per_page || "10"),
+                import_as: this.getAttribute("import_as", config.fields.import_as || ""),
+                primary_key: this.getAttribute("primary_key", config.fields.primary_key || "-1"),
                 import_title_array: this.getAttribute("import_title_array", config.fields.import_title_array),
                 import_title_json: this.getAttribute("import_title_json", config.fields.import_title_json),
                 import_title_tiddlers: this.getAttribute("import_title_tiddlers", config.fields.import_title_tiddlers),
-                import_columns_json: this.getAttribute("import_columns_json", config.fields.import_columns_json),
-                import_columns_tiddlers: this.getAttribute("import_columns_tiddlers", config.fields.import_columns_tiddlers)
+                import_named_tiddlers: this.getAttribute("import_named_tiddlers", config.fields.import_named_tiddlers),
+                import_numbered_tiddlers: this.getAttribute("import_numbered_tiddlers", config.fields.import_numbered_tiddlers)
             };
         this.stateTiddler = new $tw.Tiddler(creationFields,fields,modificationFields,{title: stateTitle});
         this.wiki.addTiddler(this.stateTiddler);
@@ -301,7 +303,8 @@ CsvWidget.prototype.refresh = function(changedTiddlers) {
     var changedState = false;
     if(changedTiddlers[this.state]){
         var newState = $tw.wiki.getTiddler(this.state);
-        changedState = !$tw.utils.jsonIsEqual(this.stateTiddler.fields, newState.fields);
+        if (newState) changedState = !$tw.utils.jsonIsEqual(this.stateTiddler.fields, newState.fields);
+        else changedState= true;
     }
     var refreshTiddler = Boolean(
         changedAttributes.text || changedTiddlers[CSV_CONFIG] || changedState

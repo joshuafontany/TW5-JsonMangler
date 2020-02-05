@@ -12,6 +12,8 @@ Various csv utility functions added to $tw.utils
 /*global $tw: false */
 "use strict";
 
+$tw.utils.registerFileType("application/csv","utf8",".csv");
+
 var pointer = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/json-pointer.js");
 var alphanum = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/alphanum.js");
 

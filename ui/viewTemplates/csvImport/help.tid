@@ -21,9 +21,11 @@ The `[<primaryKey>]` placeholder variable is automatically set to the row number
 
 !!! Column Names
 
-Column names are only used when Headers Row equals `yes`. Two placeholder variables may be used in this filter, `[<colName>]` and `[<colNumber>]`, to render a final field name. When importing as Tiddlers `[<colName>]` is first automatically 'cleaned' to be a valid tiddler field name - with all alpha characters converted to lowercase, and all illegal characters replaced by underscores `_`.
+''Tiddlers mode only:'' If Headers Row equals `no`, then the `[<columnNumber>]` variable is used to generate field names. Column names are only used when Headers Row equals `yes`. When importing named fields on tiddlers `[<columnName>]` is first automatically 'slugged' to be a valid field name - with all alpha characters converted to lowercase, and all illegal characters replaced by underscores `_`.
 
-If Headers Row equals `no`, then the `[<colName>]` variable defaults to the column number. It may be useful to uncheck Header Row when importing data as individual Tiddlers, thus storing those values into it's own tiddler. This can help manage complex column names and retains a 1:1 mapping with the rest of the data's fields.
+The import also generates a tiddler with `[<primaryKey>]` set to "Headers_Tiddler", which will use each "slugged" fieldname to store the original "unslugged" text as its value. This can help manage complex column names and retain a 1:1 mapping with the rest of the imported tiddlers' fields.
+
+If this causes errors or unexpected results, import this Csv with Headers unchecked and set `[<primaryKey>]` equal to Row Number. Then reference the tiddler with `[<primaryKey>]` equal to 0 (zero) using the numbered field names to get the original column names.
 
 !!! Saving these filters
 

@@ -11,7 +11,7 @@ Complex JSON Support & Tools by [[Joshua Fontany|https://github.com/joshuafontan
 
 This tiddlywiki plugin changes the methods tiddlywiki uses to retrieve and set values in json data tiddlers. It does so in a way that aims for //backwards compatibility//.
 
-It introduces new features, widgets, and filter operators to manage, edit, and view json tiddlers:
+It introduces new features, widgets, and filter operators to manage, edit, and view json and csv tiddlers:
 
 * Allows all TextReferences to target nested values ("complex json, i.e. `/this/is/a/nested/index/5`").
 * An automatic ''alert'' when calling actions on an invalid json data tiddler, or when plugin tiddlers have been edited.
@@ -24,6 +24,7 @@ It introduces new features, widgets, and filter operators to manage, edit, and v
 ** A new ''hasindex[] operator'' that returns only those input tiddlers that have a value at the index path supplied.
 ** A new pair of filter operators: ''encodeindex[]'' and ''decodeindex[]''. These are used to "escape" or "unescape" the index path separation character ` / ` (and the encoding character ` ~ `). This can be used to build paths with literal `/`s in a key name token. This is very useful and must be studied closely.
 ** A new ''encodetiddler[]'' operator, which returns each tiddler in the input as a full json object. Used with the previous pair of operators, this can be used to pack plugin tiddlers.
+* New Csv (Character Seperate Value) tiddler and import features!
 
 Further documentation is available in the example wiki: <br/>
 https://joshuafontany.github.io/TW5-JsonMangler/

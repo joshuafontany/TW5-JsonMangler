@@ -28,8 +28,8 @@ var JsonManglerWidget = function(parseTreeNode,options) {
         { type: "tm-json-shift", handler: "handleJsonShiftEvent" },
         { type: "tm-json-unshift", handler: "handleJsonUnshiftEvent" },
         { type: "tm-json-toschema", handler: "handleJsonToSchemaEvent" },
-        { type: "tm-json-tocsv", handler: "handleJsonToSchemaCsvEvent" },
-        { type: "tm-json-fromcsv", handler: "handleJsonFromSchemaCsvEvent" }
+        { type: "tm-json-tocsv", handler: "handleJsonToCsvEvent" },
+        { type: "tm-json-fromcsv", handler: "handleJsonFromCSVEvent" }
 	]);
 };
 
@@ -604,39 +604,121 @@ JsonManglerWidget.prototype.handleJsonToCSVEvent = function(event) {
 };
 
 JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
-    var tiddler = this.wiki.getTiddler(this.mangleTitle);
-    var schemaTitle = event.paramObject["schema"];
-    if (!schemaTitle || typeof schemaTitle === "undefined" || schemaTitle == "") {
-        schemaTitle = "$:/schema/"+this.mangleTitle;
-    }
-    if (tiddler && tiddler.fields.text) {
-        var jsonObj,
-            a = tiddler.fields.title,
-            b = this.wiki.getTextReference(a+"!!text");
-        if (!b || 0 == b.length) {
-            b = "{}"
-        }
-        if(!$tw.utils.jsonIsValid(a, b)) {
-            return false;
-        }
-        jsonObj = JSON.parse(b);
-
-        /*Generate the Schema*/
-        var jsonSchema = $tw.utils.jsonToSchema(jsonObj),
-        fields = {},
-		creationFields = this.wiki.getCreationFields(),
-        modificationFields  = this.wiki.getModificationFields();
-        fields["type"] = "application/json";
-        fields["text"] = JSON.stringify(jsonSchema);
-        var tiddler = this.wiki.addTiddler(new $tw.Tiddler(creationFields,fields,modificationFields,{title: schemaTitle}));
-        this.wiki.setTextReference(this.mangleTitle+"!!schema",schemaTitle,this.getVariable("currentTiddler"));
-        this.dispatchEvent({
-            type: "tm-navigate",
-            navigateTo: schemaTitle,
-            navigateFromTitle: this.mangleTitle,
-            navigateFromNode: this,
-            navigateFromClientRect: {}
+    var CSV_CONFIG = "$:/config/type/application/csv";
+    var title = event.paramObject["title"] || this.mangleTitle;
+    var tiddler = this.wiki.getTiddler(title);
+    var optionsTitle = event.paramObject["options"] || CSV_CONFIG;
+    var optionsTiddler = this.wiki.getTiddler(optionsTitle);
+    if (tiddler && optionsTiddler) {
+        var options = $tw.utils.jsonMerge({}, optionsTiddler.fields, {
+            header: (optionsTiddler.fields.headers === "yes") || false,
+            skipEmptyLines: (optionsTiddler.fields.skip_empty === "yes") || true,
+            primary_key: parseInt(optionsTiddler.fields.primary_key)
         });
+        var importText = "[]";
+        var results = $tw.utils.csvToJson(tiddler.fields.text, options);
+        //grab row 0 as an array to use as headers if needed
+        var headers = $tw.utils.csvToJson(tiddler.fields.text, {header: false, preview: 1, skipEmptyLines: true}).data[0];
+        if (results.data) {
+            if (optionsTiddler.fields["import_as"] == "array") {
+                var tiddlersArray = [];
+                var tidNameFilter = optionsTiddler.fields["import_title_array"];
+                var tidName = this.wiki.filterTiddlers(tidNameFilter, this)[0] || "Json/Data/"+tiddler.fields.title;
+                var tid = {
+                    title: tidName,
+                    type: "application/json",
+                    text: JSON.stringify(results.data)
+                };
+                tiddlersArray[0] = tid;
+                importText = JSON.stringify(tiddlersArray);
+            }
+            if (optionsTiddler.fields["import_as"] == "json") {
+                var tiddlersArray = [];
+                for (let i = 0; i < results.data.length; i++) {
+                    var row = results.data[i];
+                    var tidNameFilter = optionsTiddler.fields["import_title_json"];
+                    var pk = i.toString();
+                    if(options.primary_key >= 0 && !options.header) pk = row[options.primary_key];
+                    if(options.primary_key >= 0 && options.header) {
+                        var path = headers[options.primary_key];
+                        pk = row[path];
+                    }
+                    this.parentWidget.setVariable("primaryKey", pk);
+                    var tidName = this.wiki.filterTiddlers(tidNameFilter, this)[0] || "Json/Data/"+tiddler.fields.title+"/"+i.toString();
+                    var tid = {
+                        title: tidName,
+                        type: "application/json",
+                        text: JSON.stringify(row)
+                    }; 
+                    tiddlersArray[i] = tid;
+                }
+                importText = JSON.stringify(tiddlersArray);
+            }
+            if (optionsTiddler.fields["import_as"] == "tiddlers") {
+                var tiddlersArray = [];
+                for (let i = 0; i < results.data.length; i++) {
+                    var row = results.data[i];
+                    var tidNameFilter = optionsTiddler.fields["import_title_json"];
+                    var pk = i.toString();
+                    if(options.primary_key >= 0 && !options.header) pk = row[options.primary_key];
+                    if(options.primary_key >= 0 && options.header) {
+                        var path = headers[options.primary_key];
+                        pk = row[path];
+                    }
+                    this.parentWidget.setVariable("primaryKey", pk);
+                    var tidName = this.wiki.filterTiddlers(tidNameFilter, this)[0] || "Json/Data/"+tiddler.fields.title+"/"+i.toString();
+                    var tid = {
+                        title: tidName
+                    };
+                    for (let f = 0; f < headers.length; f++) {
+                        var fString = $tw.utils.slugifyText(this.wiki, headers[f]);
+                        var importType = (options.header) ? "named" : "numbered";
+                        var fPath = "import_" + importType + "_tiddlers";
+                        var colFilter = optionsTiddler.fields[fPath];
+                        if (!options.header){
+                            this.parentWidget.setVariable("columnNumber", f);
+                        }
+                        if (options.header){
+                            this.parentWidget.setVariable("columnName", fString);
+                        }                        
+                        var val, fName = this.wiki.filterTiddlers(colFilter, this)[0] || "field_"+i.toString();
+                        if(!options.header) val = row[f];
+                        if(options.header) {
+                            var path = headers[f];
+                            val = row[path];
+                        }
+                        tid[fName] = val
+                        tiddlersArray[i] = tid;
+                    }
+                }
+                if (options.header) {
+                    this.parentWidget.setVariable("primaryKey", "Headers_Tiddler");
+                    var tidName = this.wiki.filterTiddlers(tidNameFilter, this)[0] || "Json/Data/"+tiddler.fields.title+"/Headers_Tiddler";
+                    var tid = {
+                        title: tidName
+                    };
+                    for (let f = 0; f < headers.length; f++) {
+                        var fString = $tw.utils.slugifyText(this.wiki, headers[f]);
+                        var importType = (options.header) ? "named" : "numbered";
+                        var fPath = "import_" + importType + "_tiddlers";
+                        var colFilter = optionsTiddler.fields[fPath];
+                        if (!options.header){
+                            this.parentWidget.setVariable("columnNumber", f);
+                        }
+                        if (options.header){
+                            this.parentWidget.setVariable("columnName", fString);
+                        }                        
+                        var val = headers[f], fName = this.wiki.filterTiddlers(colFilter, this)[0] || "field_"+i.toString();
+                        tid[fName] = val
+                    }
+                    tiddlersArray.push(tid)
+                }
+                importText = JSON.stringify(tiddlersArray);
+            }
+        }
+        
+        /* Send the Import Message */
+        this.dispatchEvent({type: "tm-import-tiddlers", param: importText});
     }
 	return true;
 };

@@ -1,10 +1,26 @@
 tags:
 title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/tiddlers
 
+\define columnsRange() 0,$(csvCols)$
+
 <!-- /* Import Tiddlers */ -->
+!!! Primary Key
+
+Select a Primary Key column:<br/>
+<$select tiddler=<<csvState>> field="primary_key" default="-1">
+<optgroup label='Default'>
+<option value="-1" >Row Number</option>
+</optgroup>
+<optgroup label='Columns'>
+<$list variable="col" filter="[range<columnsRange>]">
+<option value=<<col>> >Column <<col>></option>
+</$list>>
+</optgroup>
+</$select>
+
 !!! Tiddler Names
 
-New Tiddlers will be named according to the following subfilter:
+New Tiddlers will be named according to the following filter:
 
 <$set name="target" value="title">
 <$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
@@ -12,6 +28,9 @@ New Tiddlers will be named according to the following subfilter:
 
 !!! Column / Field Names
 
-<$set name="target" value="columns">
-<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
-</$set>
+<$list name="jsonNamesToggle" filter="[<csvState>get[headers]] -[[no]]" emptyMessage="""Headers equals `no`. Each tiddler will have fields named based on the below filter:
+<$set name="target" filter="numbered"><$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" mode="block"/></$set>""" >
+Headers equals `yes`. A "Headers_Row" tiddler will be genereated. See the help section for details. Each tiddler will have fields named based on the below filter:
+<$set name="target" filter="named"><$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit"  mode="block"/></$set>
+</$list>
+

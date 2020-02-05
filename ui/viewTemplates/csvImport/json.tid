@@ -7,12 +7,12 @@ title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/json
 !!! Primary Key
 
 Select a Primary Key column:<br/>
-<$select tiddler=<<csvState>> field="primary_key" default="">
+<$select tiddler=<<csvState>> field="primary_key" default="-1">
 <optgroup label='Default'>
-<option value="" >Row Number</option>
+<option value="-1" >Row Number</option>
 </optgroup>
 <optgroup label='Columns'>
-<$list variable="col" filter="[range<columnsRange>">
+<$list variable="col" filter="[range<columnsRange>]">
 <option value=<<col>> >Column <<col>></option>
 </$list>>
 </optgroup>
@@ -25,15 +25,3 @@ Each new Json Tiddler will be named according to the following filter:
 <$set name="target" value="title">
 <$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
 </$set>
-
-!!! Column / Json Index Names
-
-<$list name="jsonNamesToggle" filter="" emptyMessage="""
-Headers equals `no`. Each Json will be an array of values.
-""" >
-Each value from the row being proccessed will be set to an Index according to the following filter:
-
-<$set name="target" value="columns">
-<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
-</$set>
-</$list>

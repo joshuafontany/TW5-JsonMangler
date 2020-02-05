@@ -1,6 +1,17 @@
 tags:
 title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport
 
+\define importButton()
+<$set name="primaryKey" value="primaryKey">
+<$set name="importText" filter={{$(csvState)$!!import_title_$(importType)$}}>
+<$wikify name="importTitleText" text="""$:/Import <<importText>>""">
+<$action-sendmessage $message="tm-json-fromcsv" options=<<csvState>> />
+{{$:/core/images/import-button}}  <$text text=<<importTitleText>> />
+</$wikify>
+</$set>
+</$set>
+\end
+
 <$reveal type="nomatch" stateTitle=<<csvState>> stateField="show_import" text="yes">
 <$button setTitle=<<csvState>> setField="show_import" setTo="yes" class="tc-btn-invisible" tooltip="Csv Import Options" aria-label="Show the Csv Import Options">
 {{$:/core/images/import-button}} {{$:/core/images/right-arrow}}
@@ -17,18 +28,12 @@ title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport
 <$list variable="importType" filter="[<csvState>get[import_as]match{$:/temp/type/application/csv/import_as}]">
 
 <$set name="importTypeTiddler" filter="[<importType>addprefix[$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/]]">
-
-<$transclude tiddler=<<importTypeTiddler>> />
-
+<$transclude tiddler=<<importTypeTiddler>> mode="block"/>
 </$set>
 
-</$list>
-<$list variable="importType" filter="[<csvState>get[import_as]match{$:/temp/type/application/csv/import_as}]">
-
 <$jsonmangler title=<<currentTiddler>> >
-<$button tooltip="Import this Csv" aria-label="Show the Csv Import Options" class="tc-btn-invisible tc-tiddlylink" >
-<$action-sendmessage $message="tm-json-fromcsv" />
-{{$:/core/images/import-button}} ~$:/Import - <<currentTiddler>>
+<$button tooltip="Import this Csv" aria-label="Import this Csv" class="tc-btn-invisible tc-tiddlylink" >
+<<importButton>>
 </$button>
 </$jsonmangler>
 </$list>
