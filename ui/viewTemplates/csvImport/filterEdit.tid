@@ -4,7 +4,5 @@ title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdi
 \define filterEdit()
 <$button setTitle=<<csvState>> setField="import_$(target)$_$(importType)$" setTo={{$:/temp/type/application/csv/import_$(target)$_$(importType)$}} class="tc-btn-invisible tc-tiddlylink" tooltip="Save the Import Title Filter" aria-label="Save the Import Title Filter">Save Filter {{$:/core/images/done-button}}</$button> <$button class="tc-btn-invisible tc-tiddlylink" tooltip="Reset the Import Title Filter" aria-label="Reset the Import Title Filter"><$action-deletetiddler $tiddler="$:/temp/type/application/csv/import_$(target)$_$(importType)$"/><$action-setfield $tiddler=<<csvState>> $field="import_$(target)$_$(importType)$" $value={{$:/config/type/application/csv!!import_$(target)$_$(importType)$}}/>Reset Filter {{$:/core/images/close-button}}</$button><br/>
 <$edit-text tiddler="$:/temp/type/application/csv/import_$(target)$_$(importType)$" default={{$(csvState)$!!import_$(target)$_$(importType)$}} tag="textarea" class="filter-textarea" />
-
-<<target>> <<importType>>
 \end
 <<filterEdit>>

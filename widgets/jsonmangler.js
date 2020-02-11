@@ -613,7 +613,8 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
         var options = $tw.utils.jsonMerge({}, optionsTiddler.fields, {
             header: (optionsTiddler.fields.headers === "yes") || false,
             skipEmptyLines: (optionsTiddler.fields.skip_empty === "yes") || true,
-            primary_key: parseInt(optionsTiddler.fields.primary_key)
+            primary_key: parseInt(optionsTiddler.fields.primary_key),
+            preview: (optionsTiddler.fields.peek === "yes")? parseInt(optionsTiddler.fields.preview) : 0
         });
         var importText = "[]";
         var results = $tw.utils.csvToJson(tiddler.fields.text, options);
@@ -658,7 +659,7 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
                 var tiddlersArray = [];
                 for (let i = 0; i < results.data.length; i++) {
                     var row = results.data[i];
-                    var tidNameFilter = optionsTiddler.fields["import_title_json"];
+                    var tidNameFilter = optionsTiddler.fields["import_title_tiddlers"];
                     var pk = i.toString();
                     if(options.primary_key >= 0 && !options.header) pk = row[options.primary_key];
                     if(options.primary_key >= 0 && options.header) {
