@@ -13,22 +13,21 @@ title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/help
 {{$:/core/images/help}} Import Help {{$:/core/images/down-arrow}}
 </$button>
 
-Importing a Csv tiddler converts the data into Tiddlers, or into one or more Json Tiddlers. The results depend on certain options set on the Csv Tiddler (above) such as Headers, Skip Empty Lines, the Peek / Preview values, etc - as well as the Import rules (below). There are a number of "placeholder variables" used in the import procces as described below. These are not set as tiddlywiki variables, and are only used when the import is performed.
+Importing a Csv tiddler converts the data into Tiddlers (or into one or more Json Tiddlers).
 
-!!! Individual Tiddlers|Json Tiddlers
+The results depend on certain options set on the Csv Tiddler (above) such as Headers, Skip Empty Lines, the Peek / Preview values, etc - as well as the Import rules (below). There are a number of "placeholder variables" used in the import procces as described below. These are not set as normal tiddlywiki variables, and are only used when the import is performed.
 
-The `[<primaryKey>]` placeholder variable is automatically set to the row number being proccesed during import of individual jsons or tiddlers (not used during array import). When Headers Row equals `yes`, you can override this by selecting a column number from a dropdown. Columns are zero indexed, and the contents of each row will be used as the `[<primaryKey>]` variable while the row is proccessed. If the values in this column are not unique IDs, then data may be overwritten during the import operation.
+!!! Individual Row Tiddlers | Json Row Tiddlers
+
+In these modes each individual row is rendered to a tiddler, then these tiddlers are packaged as shadow-tiddlers into a plugin - with `plugin-type` set to `bundle`. This takes advantage of the shadow-tiddler features such as replaceing an import all-at-once, comparing multiple snapshots, overwriting and restoring shadow tiddlers, etc.
+
+The `[<primaryKey>]` placeholder variable is automatically set to the row number being proccesed during import of individual jsons or tiddlers (not used during array import). When Headers Row equals `yes`, you can override this by selecting a column number from a dropdown. Columns are zero indexed, and the contents of this column in each row will be used as the `[<primaryKey>]` variable while that row is proccessed. If the values in this column are not unique IDs, then data may be overwritten during the import operation.
 
 !!! Column Names
 
-''Tiddlers mode only:'' If Headers Row equals `no`, then the `[<columnNumber>]` variable is used to generate field names. Column names are only used when Headers Row equals `yes`. When importing named fields on tiddlers `[<columnName>]` is first automatically 'slugged' to be a valid field name - with all alpha characters converted to lowercase, and all illegal characters replaced by underscores `_`.
+''Tiddlers mode only:'' If Headers Row equals `no`, then the `[<columnNumber>]` variable is used to generate field names. Custom field names are only used when Headers Row equals `yes`. When importing named fields, the Header text for that columnis automatically 'slugged' to be a valid field name - with all alpha characters converted to lowercase and all illegal characters replaced by dash `-`, or underscore `_`, before being stored as `[<columnName>]`.
 
-The import also generates a tiddler with `[<primaryKey>]` set to "Headers_Tiddler", which will use each "slugged" fieldname to store the original "unslugged" text as its value. This can help manage complex column names and retain a 1:1 mapping with the rest of the imported tiddlers' fields.
+This import type also generates a subtiddler using the chosen filter with `[<primaryKey>]` set to "Headers_Tiddler". This tiddler will use each "slugged" fieldname to store the original "unslugged" text as its value. This can help manage complex column names and retains a 1:1 mapping with the rest of the imported data fields.
 
-If this causes errors or unexpected results, import this Csv with Headers unchecked and set `[<primaryKey>]` equal to Row Number. Then reference the tiddler with `[<primaryKey>]` equal to 0 (zero) using the numbered field names to get the original column names.
-
-!!! Saving these filters
-
-The filters shown below will be reset to [[defaults|$:/config/application/csv]] when the tiddler is re-rendered unless they are saved by clicking the checkmark next to the input.
-
+If this causes errors or unexpected results, import this Csv with Headers unchecked. Then reference the tiddler with `[<primaryKey>]` equal to 0 (zero) using the numbered field names to get the original column header values.
 </$reveal>

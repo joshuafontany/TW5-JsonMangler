@@ -64,6 +64,29 @@ exports.csvFromJson = function (csv_text, papa_config) {
 	if (results){return results;}
 };
 
+/*
+Displays a Csv Import alert to the user.
+*/
+exports.csvImportAlert = function(title, import_type){
+	if(!title) title = "unknown tiddler";
+	var csvAlert = "$:/temp/csvAlert/"+title.replace(/^(\$\:\/)/,"");
+	var alert = $tw.wiki.getTiddler(csvAlert);
+	if (typeof alert == "undefined") {
+		var alert = new $tw.Tiddler($tw.wiki.getCreationFields(),{},{
+			title: csvAlert,
+			"draft.title": undefined,
+			"draft.of": undefined
+		},$tw.wiki.getModificationFields());
+	}
+	var modification = $tw.wiki.getModificationFields();
+	modification.text = "<div class='cav-alert'>{{$:/core/images/warning}} ''Csv Import''</div>\n\n"+
+	"[["+title+"]]\n\n"+
+	"Importing Csv. Delete this alert to cancle the import.";
+	modification.tags = "$:/tags/Alert"
+	$tw.wiki.addTiddler(new $tw.Tiddler(alert, modification));
+	return csvAlert;
+}
+
 // Room here for implementing the other PapaParse methods
 // Remote reads for database-exports?
 // https://www.papaparse.com/docs

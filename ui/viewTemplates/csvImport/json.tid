@@ -4,7 +4,21 @@ title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/json
 \define columnsRange() 0,$(csvCols)$
 
 <!-- /* Import Json Tiddlers */ -->
-!!! Primary Key
+!! Bundle Tiddler Name
+The new `bundle` tiddler will be name according to the following filter:
+<$set name="target" value="title">
+<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
+</$set>
+
+!!! Json Tiddler Names
+Shadow Tiddlers will be named according to the following filter:
+
+<$set name="target" value="subtitle">
+<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
+</$set>
+<$list variable="showKey" filter="[<csvState>get[headers]] +[[yes]]">
+
+!!!! Primary Key
 
 Select a Primary Key column:<br/>
 <$select tiddler=<<csvState>> field="primary_key" default="-1">
@@ -17,11 +31,4 @@ Select a Primary Key column:<br/>
 </$list>>
 </optgroup>
 </$select>
-
-!!! Json Tiddler Names
-
-Each new Json Tiddler will be named according to the following filter:
-
-<$set name="target" value="title">
-<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
-</$set>
+</$list>

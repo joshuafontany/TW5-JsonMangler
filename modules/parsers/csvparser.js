@@ -3,8 +3,9 @@ title: $:/plugins/joshuafontany/jsonmangler/modules/parsers/csvparser.js
 type: application/javascript
 module-type: parser
 
-The CSV text parser processes CSV files into a table wrapped in a scrollable widget
-by calling $tw.utils.csvToJson - which calls the PaaParse library
+The CSV text parser inserts a $csv widget into the parse-tree, which
+processes CSV files into a table wrapped in a scrollable div using
+the PapaParse library
 
 \*/
 (function(){
@@ -17,8 +18,7 @@ var AppCsvParser = function(type,text,options) {
     // Invoke the widget into the parse-tree
     var element = {
         type: "csv",
-        tag: "$csv",
-        text: text
+        tag: "$csv"
     };
     this.tree = [element];
 };

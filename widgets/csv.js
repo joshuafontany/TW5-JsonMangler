@@ -20,6 +20,7 @@ var CsvWidget = function(parseTreeNode,options) {
     this.state = null;
     this.stateTiddler = null;
     this.options = {};
+    this.results = {};
 	this.initialise(parseTreeNode,options);
 	//this.addEventListeners([]);
 };
@@ -41,6 +42,33 @@ CsvWidget.prototype.render = function (parent, nextSibling) {
     this.computeAttributes();
     //Execute logic
     this.execute();
+    // Initialise options from the state tiddler
+    this.options = {  
+        header: false, //Controls the PapaParse output - false as we are rendering the html from an array
+        peek: this.stateTiddler.fields.peek === "yes",
+        debug: this.stateTiddler.fields.debug  === "yes",
+        preview: 0,
+        skipEmptyLines: this.stateTiddler.fields.skip_empty === "yes",
+        delimiter: this.stateTiddler.fields.delimiter,
+        newline: this.stateTiddler.fields.newline,
+        quoteChar: this.stateTiddler.fields.quote_char,
+        escapeChar: this.stateTiddler.fields.escape_char
+    };
+    if (this.options.peek) {
+        this.options.preview = parseInt(this.stateTiddler.fields.preview);
+        this.options.preview += (this.stateTiddler.fields.headers) ? 1 : 0;
+    }
+    //Check source
+    var source,
+        tiddler = this.wiki.getTiddler(this.csvSource);
+    if(!tiddler) {
+        // The source isn't the title of a tiddler, so we'll assume it's text
+        source = this.csvSource;      
+    } else if(tiddler.fields.type == "application/csv" && !!tiddler.fields.text){
+        source = tiddler.fields.text;
+    }        
+
+    this.results = $tw.utils.csvToJson(source, this.options);
     // Create a div to contain the CSV table or error message
     var domNode = this.document.createElement("div");
     // Assign class
@@ -49,7 +77,7 @@ CsvWidget.prototype.render = function (parent, nextSibling) {
 		// Generate content into the div
 		if(this.options.debug) {
             console.log("Render Debug CsvWidget");
-			this.renderDebug(domNode);
+			this.renderDebug(domNode, source);
 		} else {
 			this.renderCsv(domNode);
 		}
@@ -63,13 +91,7 @@ CsvWidget.prototype.render = function (parent, nextSibling) {
     this.domNodes.push(domNode);    
 };
 
-CsvWidget.prototype.renderDebug = function(div) {
-    // Get the source text
-    var source = this.getAttribute("text",this.parseTreeNode.text || "");
-    if (source === "") {
-        var tiddler = $tw.wiki.getTiddler(this.state.tiddler);
-        if(tiddler.field.text.length > 0 && source == "") source = tiddler.fields.text;
-    }
+CsvWidget.prototype.renderDebug = function(div, source) {
     //set the 'csvState' variable
     this.setVariable("csvState",this.state); 
     //Render
@@ -133,37 +155,26 @@ CsvWidget.prototype.renderDebug = function(div) {
 };
 
 CsvWidget.prototype.renderCsv = function(div) {
-    // Get the source text
-    var source = this.getAttribute("text",this.parseTreeNode.text || "");
-    if (source === "") {
-        var tiddler = $tw.wiki.getTiddler(this.state.tiddler);
-        if(tiddler.field.text.length > 0 && source == "") source = tiddler.fields.text;
-    }
-
-    //Calculate table specific variable
-    var match = source.match(/\r?\n/g);
-    var l = match.length;
-    var results = $tw.utils.csvToJson(source, this.options);
-    var cols = results.data[0].length;
-
+    var cols = this.results.data[0].length;
     var x = (this.stateTiddler.fields.headers === "yes") ? 1 : 0 ;
-    var finalPage = Math.ceil((results.data.length-x)/parseInt(this.stateTiddler.fields.per_page)); //Pages are 1 indexed
+    var finalPage = Math.ceil((this.results.data.length-x)/parseInt(this.stateTiddler.fields.per_page)); //Pages are 1 indexed
     var prevPage = (parseInt(this.stateTiddler.fields.start_page) <= 1) ? 1 : parseInt(this.stateTiddler.fields.start_page)-1;
     var nextPage = (parseInt(this.stateTiddler.fields.start_page) >= finalPage) ? finalPage : parseInt(this.stateTiddler.fields.start_page)+1;
     var startLine = ((parseInt(this.stateTiddler.fields.start_page)-1)*parseInt(this.stateTiddler.fields.per_page))+x; //Pages are 1 indexed, lines are 0 indexed
     if (startLine < 0) startLine == 0
     var endLine = startLine + parseInt(this.stateTiddler.fields.per_page);
-    if (endLine >= results.data.length) endLine = results.data.length;
-    this.setVariable("csvState",this.state);       
+    if (endLine >= this.results.data.length) endLine = this.results.data.length;
+    //set the 'csvState' & 'csvImport' variables
+    this.setVariable("csvImport",this.import); 
+    this.setVariable("csvState",this.state);    
     this.setVariable("csvFinalPage", finalPage.toString());
     this.setVariable("csvPrevPage", prevPage.toString());
     this.setVariable("csvNextPage", nextPage.toString());
     this.setVariable("csvStartLine", startLine.toString());
     this.setVariable("csvEndLine", (endLine-1).toString());
-    this.setVariable("csvLastIndex", (results.data.length-1).toString());
-    this.setVariable("csvLength", l.toString());
+    this.setVariable("csvLastIndex", (this.results.data.length-1).toString());
+    this.setVariable("csvLength", this.results.data.length.toString());
     this.setVariable("csvCols", cols.toString());
-
     // Table framework
     var tree = [{
 		"type": "scrollable", "children": [
@@ -183,7 +194,7 @@ CsvWidget.prototype.renderCsv = function(div) {
             "fallthrough": "no"
         }
     }];
-    if (results.data && results.data.length > 0) {
+    if (this.results.data && this.results.data.length > 0) {
         // Add the controls and headers to the parseTree
         var controls = {
             "type": "element", "tag": "tr", "children": [{
@@ -203,7 +214,7 @@ CsvWidget.prototype.renderCsv = function(div) {
         };
         tree[0].children[0].children[0].children.push(controls);
         if (this.stateTiddler.fields.headers === "yes") {
-            var lineArr = results.data[0];
+            var lineArr = this.results.data[0];
             var row = {
                 "type": "element", "tag": "tr", "children": []
             };
@@ -219,7 +230,7 @@ CsvWidget.prototype.renderCsv = function(div) {
         }
         //Table body
         for(var line=startLine; line<endLine; line++) {
-            var lineArr = results.data[line];
+            var lineArr = this.results.data[line];
             if(lineArr) {
                 var row = {
                         "type": "element", "tag": "tr", "children": []
@@ -245,53 +256,53 @@ CsvWidget.prototype.renderCsv = function(div) {
 Compute the internal state of the widget
 */
 CsvWidget.prototype.execute = function() {
-    // Get our parameters
     var config = $tw.wiki.getTiddler(CSV_CONFIG,{});
-    var title = this.getAttribute("tiddler", this.getVariable("currentTiddler")),
-        stateTitle = "$:/widgets/csv/" + title + this.getStateQualifier();
-    this.stateTiddler = $tw.wiki.getTiddler(stateTitle);
+    // Get our parameters
+    this.csvSource = this.getAttribute("source", this.getVariable("currentTiddler")),
+    this.state = this.getAttribute("state","$:/csv/widget/" + encodeURIComponent(this.csvSource) + this.getStateQualifier()),
+    this.import = this.getAttribute("state","$:/csv/import/" + encodeURIComponent(this.csvSource) + this.getStateQualifier());
+    this.stateTiddler = $tw.wiki.getTiddler(this.state);
+    var importTiddler = $tw.wiki.getTiddler(this.import);
     if(!this.stateTiddler){
+        var config = $tw.wiki.getTiddler(CSV_CONFIG,{}),
+            creationFields = this.wiki.getCreationFields(),
+            modificationFields = this.wiki.getModificationFields(),
+            fields = {
+                //render state
+                headers: config.fields.headers || "yes",
+                peek: config.fields.peek || "no",
+                per_page: config.fields.per_page || "10",
+                start_page: config.fields.start_page || "1",
+                //parse options
+                debug: config.fields.debug || "no",
+                preview: config.fields.preview || "0",
+                skip_empty: config.fields.skip_empty || "no",
+                delimiter: config.delimiter || "",	// "" = auto-detect
+                newline: config.newline || "",	// "" = auto-detect
+                quote_char: config.quote_char || '"',
+                escape_char: config.escape_char || '"'            };
+        this.stateTiddler = new $tw.Tiddler(creationFields,fields,modificationFields,{title: this.state});
+        this.wiki.addTiddler(this.stateTiddler);
+    }
+    if(!importTiddler){
         var creationFields = this.wiki.getCreationFields(),
             modificationFields = this.wiki.getModificationFields(),
             fields = {
-                tiddler: title,
-                start_page: this.getAttribute("start_page", config.fields.start_page || "1"),
-                delimiter: this.getAttribute("delimiter", config.delimiter || ""),	// "" = auto-detect
-                newline: this.getAttribute("newline", config.newline || ""),	// "" = auto-detect
-                quoteChar: this.getAttribute("quote_char", config.quote_char || '"'),
-                escapeChar: this.getAttribute("escape_char", config.escape_char || '"'),
-                peek: this.getAttribute("peek", config.fields.peek || "no"),
-                preview: this.getAttribute("preview", config.fields.preview || "0"),
-                skip_empty: this.getAttribute("skip_empty", config.fields.skip_empty || "no"),
-                debug: this.getAttribute("debug", config.fields.debug || "no"),
-                headers: this.getAttribute("headers", config.fields.headers || "yes"),
-                per_page: this.getAttribute("per_page", config.fields.per_page || "10"),
-                import_as: this.getAttribute("import_as", config.fields.import_as || ""),
-                primary_key: this.getAttribute("primary_key", config.fields.primary_key || "-1"),
-                import_title_array: this.getAttribute("import_title_array", config.fields.import_title_array),
-                import_title_json: this.getAttribute("import_title_json", config.fields.import_title_json),
-                import_title_tiddlers: this.getAttribute("import_title_tiddlers", config.fields.import_title_tiddlers),
-                import_named_tiddlers: this.getAttribute("import_named_tiddlers", config.fields.import_named_tiddlers),
-                import_numbered_tiddlers: this.getAttribute("import_numbered_tiddlers", config.fields.import_numbered_tiddlers)
+                //import options
+                import_type: config.fields.import_type || "",
+                primary_key: config.fields.primary_key || "-1",
+                import_columns: config.fields.import_columns || "named",
+                import_title_tiddlers: config.fields.import_title_tiddlers,
+                import_title_json: config.fields.import_title_json,
+                import_title_array: config.fields.import_title_array,
+                import_subtitle_tiddlers: config.fields.import_subtitle_tiddlers,
+                import_subtitle_json: config.fields.import_subtitle_json,
+                import_named_columns: config.fields.import_named_columns,
+                import_numbered_columns: config.fields.import_numbered_columns
             };
-        this.stateTiddler = new $tw.Tiddler(creationFields,fields,modificationFields,{title: stateTitle});
-        this.wiki.addTiddler(this.stateTiddler);
+        importTiddler = new $tw.Tiddler(creationFields,fields,modificationFields,{title: this.import});
+        this.wiki.addTiddler(importTiddler);
     }
-    this.state = stateTitle;
-
-    // Initialise options from the config tiddler or widget attributes
-    this.options = {  
-        header: false, //Controls the PapaParse output
-        peek: this.stateTiddler.fields.peek === "yes",
-        debug: this.stateTiddler.fields.debug  === "yes",
-        skipEmptyLines: this.stateTiddler.fields.skip_empty === "yes",
-        preview: 0
-    };
-    if (this.options.peek) {
-        this.options.preview = parseInt(this.stateTiddler.fields.preview);
-        this.options.preview += (this.stateTiddler.fields.headers) ? 1 : 0;
-    }
-
 };
 
 /*

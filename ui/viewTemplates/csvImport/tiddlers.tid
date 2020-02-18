@@ -4,7 +4,21 @@ title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/tiddlers
 \define columnsRange() 0,$(csvCols)$
 
 <!-- /* Import Tiddlers */ -->
-!!! Primary Key
+!! Bundle Tiddler Name
+The new `bundle` tiddler will be name according to the following filter:
+<$set name="target" value="title">
+<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
+</$set>
+
+!!! Tiddler Names
+Shadow Tiddlers will be named according to the following filter:
+
+<$set name="target" value="subtitle">
+<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
+</$set>
+<$list variable="showKey" filter="[<csvState>get[headers]] +[[yes]]">
+
+!!!! Primary Key
 
 Select a Primary Key column:<br/>
 <$select tiddler=<<csvState>> field="primary_key" default="-1">
@@ -17,20 +31,13 @@ Select a Primary Key column:<br/>
 </$list>>
 </optgroup>
 </$select>
-
-!!! Tiddler Names
-
-New Tiddlers will be named according to the following filter:
-
-<$set name="target" value="title">
-<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
-</$set>
+</$list>
 
 !!! Column / Field Names
 
-<$list name="jsonNamesToggle" filter="[<csvState>get[headers]] -[[no]]" emptyMessage="""Headers equals `no`. Each tiddler will have fields named based on the below filter:
-<$set name="target" filter="numbered"><$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" mode="block"/></$set>""" >
+<$list name="jsonNamesToggle" filter="[<csvState>get[headers]] +[[yes]]" emptyMessage="""Headers equals `no`. Each tiddler will have fields named based on the below filter:
+<$set name="target" value="numbered"><$set name="importType" value="columns"><$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" mode="block"/></$set></$set>""" >
 Headers equals `yes`. A "Headers_Row" tiddler will be genereated. See the help section for details. Each tiddler will have fields named based on the below filter:
-<$set name="target" filter="named"><$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit"  mode="block"/></$set>
+<$set name="target" value="named"><$set name="importType" value="columns"><$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit"  mode="block"/></$set></$set>
 </$list>
 

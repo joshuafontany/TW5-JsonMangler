@@ -604,62 +604,22 @@ JsonManglerWidget.prototype.handleJsonToCSVEvent = function(event) {
 };
 
 JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
-    var CSV_CONFIG = "$:/config/type/application/csv";
     var title = event.paramObject["title"] || this.mangleTitle;
     var tiddler = this.wiki.getTiddler(title);
-    var optionsTitle = event.paramObject["options"] || CSV_CONFIG;
-    var optionsTiddler = this.wiki.getTiddler(optionsTitle);
-    if (tiddler && optionsTiddler) {
-        var options = $tw.utils.jsonMerge({}, optionsTiddler.fields, {
-            header: (optionsTiddler.fields.headers === "yes") || false,
-            skipEmptyLines: (optionsTiddler.fields.skip_empty === "yes") || true,
-            primary_key: parseInt(optionsTiddler.fields.primary_key),
-            preview: (optionsTiddler.fields.peek === "yes")? parseInt(optionsTiddler.fields.preview) : 0
-        });
-        var importText = "[]";
-        var results = $tw.utils.csvToJson(tiddler.fields.text, options);
-        //grab row 0 as an array to use as headers if needed
-        var headers = $tw.utils.csvToJson(tiddler.fields.text, {header: false, preview: 1, skipEmptyLines: true}).data[0];
-        if (results.data) {
-            if (optionsTiddler.fields["import_as"] == "array") {
-                var tiddlersArray = [];
-                var tidNameFilter = optionsTiddler.fields["import_title_array"];
-                var tidName = this.wiki.filterTiddlers(tidNameFilter, this)[0] || "Json/Data/"+tiddler.fields.title;
-                var tid = {
-                    title: tidName,
-                    type: "application/json",
-                    text: JSON.stringify(results.data)
-                };
-                tiddlersArray[0] = tid;
-                importText = JSON.stringify(tiddlersArray);
-            }
-            if (optionsTiddler.fields["import_as"] == "json") {
+    var stateTitle = event.paramObject["state"];
+    var importTitle = event.paramObject["options"];
+    var stateTiddler = this.wiki.getTiddler(stateTitle);
+    var importTiddler = this.wiki.getTiddler(importTitle);
+    if (tiddler && stateTiddler && importTiddler) {
+        /* Create the alert tiddler */
+        var csvAlert = $tw.utils.csvImportAlert(title);
+        var tiddlersArray = [];
+        var importStep = (row) => {
+            var importTiddlers = function(row){
                 var tiddlersArray = [];
                 for (let i = 0; i < results.data.length; i++) {
                     var row = results.data[i];
-                    var tidNameFilter = optionsTiddler.fields["import_title_json"];
-                    var pk = i.toString();
-                    if(options.primary_key >= 0 && !options.header) pk = row[options.primary_key];
-                    if(options.primary_key >= 0 && options.header) {
-                        var path = headers[options.primary_key];
-                        pk = row[path];
-                    }
-                    this.parentWidget.setVariable("primaryKey", pk);
-                    var tidName = this.wiki.filterTiddlers(tidNameFilter, this)[0] || "Json/Data/"+tiddler.fields.title+"/"+i.toString();
-                    var tid = {
-                        title: tidName,
-                        type: "application/json",
-                        text: JSON.stringify(row)
-                    }; 
-                    tiddlersArray[i] = tid;
-                }
-                importText = JSON.stringify(tiddlersArray);
-            }
-            if (optionsTiddler.fields["import_as"] == "tiddlers") {
-                var tiddlersArray = [];
-                for (let i = 0; i < results.data.length; i++) {
-                    var row = results.data[i];
-                    var tidNameFilter = optionsTiddler.fields["import_title_tiddlers"];
+                    var tidNameFilter = importTiddler.fields["import_title_tiddlers"];
                     var pk = i.toString();
                     if(options.primary_key >= 0 && !options.header) pk = row[options.primary_key];
                     if(options.primary_key >= 0 && options.header) {
@@ -675,7 +635,7 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
                         var fString = $tw.utils.slugifyText(this.wiki, headers[f]);
                         var importType = (options.header) ? "named" : "numbered";
                         var fPath = "import_" + importType + "_tiddlers";
-                        var colFilter = optionsTiddler.fields[fPath];
+                        var colFilter = stateTiddler.fields[fPath];
                         if (!options.header){
                             this.parentWidget.setVariable("columnNumber", f);
                         }
@@ -702,7 +662,7 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
                         var fString = $tw.utils.slugifyText(this.wiki, headers[f]);
                         var importType = (options.header) ? "named" : "numbered";
                         var fPath = "import_" + importType + "_tiddlers";
-                        var colFilter = optionsTiddler.fields[fPath];
+                        var colFilter = stateTiddler.fields[fPath];
                         if (!options.header){
                             this.parentWidget.setVariable("columnNumber", f);
                         }
@@ -715,11 +675,81 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
                     tiddlersArray.push(tid)
                 }
                 importText = JSON.stringify(tiddlersArray);
+            };
+            var importJson = function(row){
+                var tiddlersArray = [];
+                for (let i = 0; i < results.data.length; i++) {
+                    var row = results.data[i];
+                    var tidNameFilter = importTiddler.fields["import_title_json"];
+                    var pk = i.toString();
+                    if(options.primary_key >= 0 && !options.header) pk = row[options.primary_key];
+                    if(options.primary_key >= 0 && options.header) {
+                        var path = headers[options.primary_key];
+                        pk = row[path];
+                    }
+                    this.parentWidget.setVariable("primaryKey", pk);
+                    var tidName = this.wiki.filterTiddlers(tidNameFilter, this)[0] || "Json/Data/"+tiddler.fields.title+"/"+i.toString();
+                    var tid = {
+                        title: tidName,
+                        type: "application/json",
+                        text: JSON.stringify(row)
+                    }; 
+                    tiddlersArray[i] = tid;
+                }
+                importText = JSON.stringify(tiddlersArray);
+            };
+            var importArray = function(row){
+                /* Build the import */
+                tiddlersArray.push(row.data);
+            };
+            if(importTiddler.fields.import_type === "tiddlers") importTiddlers(row)
+            else if(importTiddler.fields.import_type === "json") importJson(row)
+            else if(importTiddler.fields.import_type === "array") importArray(row);
+            //console.log("Row:", row.data);
+        };
+        var importComplete = () => {         
+            if(!$tw.wiki.tiddlerExists(csvAlert)) return;
+            if( importTiddler.fields.import_type === "array"){
+                var tidNameFilter = importTiddler.fields["import_title_array"];
+                //this.parentWidget.setVariable("currentTiddler",title); 
+                var filterResult = this.wiki.filterTiddlers(tidNameFilter, this);
+                var tidName = filterResult[0] || "Json/"+title;
+                var tid = {
+                    title: tidName,
+                    type: "application/json",
+                    text: JSON.stringify(tiddlersArray)
+                };
+                tiddlersArray[0] = tid;
+            }            
+            /* Send the Import Message  if the alter tiddler has not been deleted*/
+            var importText = JSON.stringify(tiddlersArray);
+            this.dispatchEvent({type: "tm-import-tiddlers", param: importText});
+            this.wiki.deleteTiddler(csvAlert);
+        };
+
+        var options = {
+            header: (stateTiddler.fields.headers === "yes") || false,
+            skipEmptyLines: (stateTiddler.fields.skip_empty === "yes") || true,
+            primary_key: parseInt(stateTiddler.fields.primary_key) || -1,
+            preview: (stateTiddler.fields.peek === "yes")? parseInt(stateTiddler.fields.preview) : 0,
+            delimiter: stateTiddler.fields.delimiter,
+            newline: stateTiddler.fields.newline,
+            quoteChar: stateTiddler.fields.quote_char,
+            escapeChar: stateTiddler.fields.escape_char,
+            worker: false,
+            step: (row, parser) => {
+                if(options.preview == 0 || tiddlersArray.length < options.preview) importStep(row)
+                else parser.abort();
+            },
+            complete: (result) => {
+                importComplete();
+                //console.log("All done!");
             }
         }
         
-        /* Send the Import Message */
-        this.dispatchEvent({type: "tm-import-tiddlers", param: importText});
+        //grab row 0 as an array to use as headers if needed
+        var headers = $tw.utils.csvToJson(tiddler.fields.text, {header: false, preview: 1, skipEmptyLines: true}).data[0];
+        var results = $tw.utils.csvToJson(tiddler.fields.text, options);
     }
 	return true;
 };

@@ -1,0 +1,14 @@
+tags:
+title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvParse
+
+<$list variable="showParse" filter="[<csvState>get[show_parse]] -[[no]]" emptyMessage="""<tr><td style="vertical-align: top;">Parse Options: </td><td><$button setTitle=<<csvState>> setField="show_parse" setTo="yes" class="tc-btn-invisible" tooltip="Csv Parse Options" aria-label="Show the Csv Pasrse Options">
+{{$:/core/images/advanced-search-button}} {{$:/core/images/right-arrow}}
+</$button></td></tr>""" >
+<tr><td style="vertical-align: top;">Parse Options: </td><td><$button setTitle=<<csvState>> setField="show_parse" setTo="no" class="tc-btn-invisible" tooltip="Csv Parse Options" aria-label="Hide the Csv Pasrse Options">
+{{$:/core/images/advanced-search-button}} {{$:/core/images/down-arrow}}
+</$button></td></tr>
+<tr><td colspan="2">
+<!-- /* Csv Parse Options */ -->
+TABLE
+</td></tr>
+</$list>

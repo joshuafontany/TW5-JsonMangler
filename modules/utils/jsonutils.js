@@ -51,8 +51,8 @@ exports.jsonError = function(e, title){
 		},$tw.wiki.getModificationFields());
 	}
 	var modification = $tw.wiki.getModificationFields();
-	modification.text = "<div class='json-error'>{{$:/core/images/warning}}<br/>''JSON Error''</div>\n\n"+
-	"[["+title+"]]\n\n~"+e.toString();
+	modification.text = "<div class='json-error'>{{$:/core/images/warning}} ''JSON Error''</div>\n\n"+
+	"[["+title+"]]\n\n"+e.toString();
 	modification.tags = "$:/tags/Alert"
 	$tw.wiki.addTiddler(new $tw.Tiddler(error, modification));
 }
