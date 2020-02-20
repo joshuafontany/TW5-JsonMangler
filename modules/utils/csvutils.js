@@ -80,8 +80,7 @@ exports.csvImportAlert = function(title, import_type){
 	}
 	var modification = $tw.wiki.getModificationFields();
 	modification.text = "<div class='cav-alert'>{{$:/core/images/warning}} ''Csv Import''</div>\n\n"+
-	"[["+title+"]]\n\n"+
-	"Importing Csv. Delete this alert to cancle the import.";
+	"[["+title+"]]\n\n"+"Importing Csv. If this alert remains on-screen then something has gone wrong. Please check the devtools console.";
 	modification.tags = "$:/tags/Alert"
 	$tw.wiki.addTiddler(new $tw.Tiddler(alert, modification));
 	return csvAlert;

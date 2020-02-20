@@ -23,10 +23,13 @@
 
 .tc-csv-options-table  td:first-child {
     text-align: right;
+    vertical-align: top;
 }
 
 .tc-csv-options-table td:first-child + td {
     text-align: left;
+    vertical-align: top;
+    font-weight: normal;
 }
 
 .tc-csv-options-table td button {

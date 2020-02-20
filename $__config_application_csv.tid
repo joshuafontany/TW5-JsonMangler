@@ -6,12 +6,11 @@ start_page: 1
 peek: yes
 import_type: tiddlers
 primary_key: -1
-import_columns: named
-import_title_tiddlers: [<currentTiddler>removeprefix[Csv/]removesuffix[.csv]addprefix[Data/]]
-import_title_json: [<currentTiddler>removeprefix[Csv/]removesuffix[.csv]addprefix[JsonData/]]
+import_title_tiddlers: [<currentTiddler>split[.csv]limit[1]split[/]!match:caseinsensitive[csv]join[/]addprefix[Data/]]
+import_title_json: [<currentTiddler>split[.csv]limit[1]split[/]!match:caseinsensitive[csv]join[/]addprefix[JsonData/]]
 import_title_array: [<currentTiddler>split[.csv]limit[1]split[/]!match:caseinsensitive[csv]join[/]addprefix[Json/]]
-import_subtitle_tiddlers: [<currentTiddler>removeprefix[Csv/]removesuffix[.csv]addprefix[Data/]addsuffix[/]addsuffix<primaryKey>]
-import_subtitle_json: [<currentTiddler>removeprefix[Csv/]removesuffix[.csv]addprefix[JsonData/]addsuffix[/]addsuffix<primaryKey>]
+import_subtitle_tiddlers: [<currentTiddler>split[.csv]limit[1]split[/]!match:caseinsensitive[csv]join[/]addprefix[Data/]addsuffix[/]addsuffix<primaryKey>]
+import_subtitle_json: [<currentTiddler>split[.csv]limit[1]split[/]!match:caseinsensitive[csv]join[/]addprefix[JsonData/]addsuffix[/]addsuffix<primaryKey>]
 import_named_columns: [<columnName>]
 import_numbered_columns: [<columnNumber>addprefix[field_]]
 debug: no

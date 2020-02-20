@@ -2,7 +2,6 @@ tags:
 title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit
 
 \define filterEdit()
-import_$(target)$_$(importType)$
 <$edit-text tiddler=<<csvImport>> field="import_$(target)$_$(importType)$" tag="textarea" class="filter-textarea" />
 \end
 <<filterEdit>>

@@ -614,9 +614,11 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
         /* Create the alert tiddler */
         var csvAlert = $tw.utils.csvImportAlert(title);
         var tiddlersArray = [], tiddlersObj = {tiddlers:{}}, dataArray = [];
+        //grab row 0 as an array to use as headers as needed
+        var headers = $tw.utils.csvToJson(tiddler.fields.text, {header: false, preview: 1, skipEmptyLines: true}).data[0];
         var importStep = (row) => {
             var importTiddlers = (row) => {
-                var tidNameFilter = importTiddler.fields["import_title_tiddlers"];
+                var tidNameFilter = importTiddler.fields["import_subtitle_tiddlers"];
                 var pk = Object.keys(tiddlersObj.tiddlers).length;
                 if(options.primary_key >= 0 && !options.header) pk = row.data[options.primary_key];
                 if(options.primary_key >= 0 && options.header) {
@@ -624,7 +626,7 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
                     pk = row.data[path];
                 }
                 this.parentWidget.setVariable("primaryKey", pk);
-                var tidName = this.wiki.filterTiddlers(tidNameFilter, this)[0] || "Json/Data/"+title+"/"+Object.keys(tiddlersObj.tiddlers).length;
+                var tidName = this.wiki.filterTiddlers(tidNameFilter, this)[0] || "Data/"+title+"/"+Object.keys(tiddlersObj.tiddlers).length;
                 var tid = {
                     title: tidName
                 };
@@ -646,8 +648,8 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
                         val = row.data[path];
                     }
                     tid[fName] = val;
-                    tiddlersObj[tidName] = tid;
                 }
+                tiddlersObj.tiddlers[tidName] = tid;
             };
             var importJson = (row) => {
                 var tidNameFilter = importTiddler.fields["import_subtitle_json"];
@@ -690,6 +692,7 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
             }
             else {
                 if (importTiddler.fields.import_type == "tiddlers" && options.header) {
+                    var tidNameFilter = importTiddler.fields["import_subtitle_tiddlers"];
                     this.parentWidget.setVariable("primaryKey", "Headers_Tiddler");
                     var tidName = this.wiki.filterTiddlers(tidNameFilter, this)[0] || "Data/"+title+"/Headers_Tiddler";
                     var tid = {
@@ -707,13 +710,15 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
                 }
                 var tidNameFilter = importTiddler.fields["import_title_"+importTiddler.fields.import_type];
                 var filterResult = this.wiki.filterTiddlers(tidNameFilter, this);
-                var tidName = filterResult[0] || (importTiddler.fields.import_type == "tiddlers" )? "Data/"+title : "JsonData/" +title;
+                var tidName = filterResult[0];
+                if(!tidName) tidName = (importTiddler.fields.import_type == "tiddlers" )? "Data/"+title : "JsonData/" +title;
                 var tid = {
                     title: tidName,
                     type: "application/json",
                     "plugin-type": "plugin",
-                    source: title,
-                    caption: "Imported Csv Data",
+                    "bundle-date": $tw.utils.formatDateString(new Date(), "[UTC]YYYY0MM0DD0hh0mm0ssXXX"),
+                    "source-tiddler": title,
+                    description: "Csv Imported "+$tw.utils.formatDateString(new Date(), "DDth MMM YYYY 0hh:0mm"),
                     text: JSON.stringify(tiddlersObj)
                 };
                 tiddlersArray[0] = tid;
@@ -746,9 +751,6 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
                 console.log("Csv import done!\n"+result.toString()+"\n");
             }
         }
-        
-        //grab row 0 as an array to use as headers as needed
-        var headers = $tw.utils.csvToJson(tiddler.fields.text, {header: false, preview: 1, skipEmptyLines: true}).data[0];
         var results = $tw.utils.csvToJson(tiddler.fields.text, options);
     }
 	return true;

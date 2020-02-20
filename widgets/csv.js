@@ -291,7 +291,6 @@ CsvWidget.prototype.execute = function() {
                 //import options
                 import_type: config.fields.import_type || "",
                 primary_key: config.fields.primary_key || "-1",
-                import_columns: config.fields.import_columns || "named",
                 import_title_tiddlers: config.fields.import_title_tiddlers,
                 import_title_json: config.fields.import_title_json,
                 import_title_array: config.fields.import_title_array,

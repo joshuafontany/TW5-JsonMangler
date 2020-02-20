@@ -15,25 +15,25 @@ title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvControls
 <i class="fas fa-file-csv fa-lg fa-fw"/> {{$:/core/images/chevron-down}}
 </$button>
 <table class="tc-csv-options-table"><tbody>
-<$list variable="csvDebug" filter="[<csvState>get[debug]] -[[yes]]" emptyMessage="""
-<tr><td>Debug Csv: </td><td><$checkbox tiddler=<<csvState>> field="debug" checked="yes" unchecked="no" default="no"> <$view tiddler=<<csvState>> field="debug"/></$checkbox></td></tr>
-""" >
-<tr><td>Debug Csv: </td><td><$checkbox tiddler=<<csvState>> field="debug" checked="yes" unchecked="no" default="no"> <$view tiddler=<<csvState>> field="debug"/></$checkbox></td></tr>
-<tr><td>Headers Row: </td><td><$checkbox tiddler=<<csvState>> field="headers" checked="yes" unchecked="no" default="yes"> <$view tiddler=<<csvState>> field="headers"/></$checkbox></td></tr>
-<tr><td>Skip Empty Lines: </td><td><$checkbox tiddler=<<csvState>> field="skip_empty" checked="yes" unchecked="no" default="yes"> <$view tiddler=<<csvState>> field="skip_empty"/></$checkbox></td></tr>
-<tr><td>Peek / Preview: </td><td><$checkbox tiddler=<<csvState>> field="peek" checked="yes" unchecked="no" default="yes"> <$view tiddler=<<csvState>> field="peek"/></$checkbox></td></tr>
-<$list variable="showPreview" filter="[<csvState>get[peek]] -[[no]]" emptyMessage="">
-<tr><td>[ <$view tiddler=<<csvState>> field="preview" size="3"/> / <<csvLength>> ]</td><td><$edit-text tiddler="$:/temp/type/application/csv/preview" default={{$(csvState)$!!preview}} size="3" tag="input"/> <$button setTitle=<<csvState>> setField="preview" setTo={{$:/temp/type/application/csv/preview}} class="tc-btn-invisible tc-tiddlylink" tooltip="Update the Preview Value" aria-label="Update the Preview Value">{{$:/core/images/done-button}}</$button><$button class="tc-btn-invisible tc-tiddlylink" tooltip="Reset the Preview Value" aria-label="Reset the Preview Value"><$action-deletetiddler $tiddler="$:/temp/type/application/csv/preview"/><$action-setfield $tiddler=<<csvState>> $field="preview" $value={{$:/config/type/application/csv!!preview}}/>{{$:/core/images/close-button}}</$button></td></tr></$list>
-<tr><td>Rows per Page: </td><td><$edit-text tiddler="$:/temp/type/application/csv/per_page" default={{$(csvState)$!!per_page}} size="3" tag="input"/> <$button setTitle=<<csvState>> setField="per_page" setTo={{$:/temp/type/application/csv/per_page}} class="tc-btn-invisible tc-tiddlylink" tooltip="Update the Per-Page Value" aria-label="Update the Per-Page Value">{{$:/core/images/done-button}}</$button><$button class="tc-btn-invisible tc-tiddlylink" tooltip="Reset the per-Page Value" aria-label="Reset the Per-Page Value"><$action-deletetiddler $tiddler="$:/temp/type/application/csv/per_page"/><$action-setfield $tiddler=<<csvState>> $field="per_page" $value={{$:/config/type/application/csv!!per_page}}/>{{$:/core/images/close-button}}</$button></td></tr>
-<tr><td>Skip to Page: </td><td><$edit-text tiddler="$:/temp/type/application/csv/start_page" default={{$(csvState)$!!start_page}} size="3" tag="input"/> <$button setTitle=<<csvState>> setField="start_page" setTo={{$:/temp/type/application/csv/start_page}} class="tc-btn-invisible tc-tiddlylink" tooltip="Skip to a Page" aria-label="Skip to a Page">{{$:/core/images/done-button}}</$button><$button class="tc-btn-invisible tc-tiddlylink" tooltip="Reset the Start Page Value" aria-label="Reset the Start Page Value"><$action-deletetiddler $tiddler="$:/temp/type/application/csv/start_page"/><$action-setfield $tiddler=<<csvState>> $field="start_page" $value={{$:/config/type/application/csv!!start_page}}/>{{$:/core/images/close-button}}</$button></td></tr>
-<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvParse" />
-<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport" />
-</$list>
 <tr><td>Reset Csv: </td><td><$button setTitle=<<csvState>> class="tc-btn-invisible" tooltip="Reset Csv Options" aria-label="Reset the Csv Options">
 <$action-deletetiddler $tiddler=<<csvState>>/>
 <$action-deletetiddler $tiddler=<<csvImport>>/>
 {{$:/core/images/delete-button}} ''Reset State''
-</$button></td></tr>
+</$button></td><td></td></tr>
+<$list variable="csvDebug" filter="[<csvState>get[debug]] -[[yes]]" emptyMessage="""
+<tr><td>Debug Csv: </td><td><$checkbox tiddler=<<csvState>> field="debug" checked="yes" unchecked="no" default="no"> <$view tiddler=<<csvState>> field="debug"/></$checkbox></td><td></td></tr>
+""" >
+<tr><td>Debug Csv: </td><td><$checkbox tiddler=<<csvState>> field="debug" checked="yes" unchecked="no" default="no"> <$view tiddler=<<csvState>> field="debug"/></$checkbox></td><td></td></tr>
+<tr><td>Headers Row: </td><td><$checkbox tiddler=<<csvState>> field="headers" checked="yes" unchecked="no" default="yes"> <$view tiddler=<<csvState>> field="headers"/></$checkbox></td><td></td></tr>
+<tr><td>Skip Empty Lines: </td><td><$checkbox tiddler=<<csvState>> field="skip_empty" checked="yes" unchecked="no" default="yes"> <$view tiddler=<<csvState>> field="skip_empty"/></$checkbox></td><td></td></tr>
+<tr><td>Peek / Preview: </td><td><$checkbox tiddler=<<csvState>> field="peek" checked="yes" unchecked="no" default="yes"> <$view tiddler=<<csvState>> field="peek"/></$checkbox></td><td></td></tr>
+<$list variable="showPreview" filter="[<csvState>get[peek]] -[[no]]" emptyMessage="">
+<tr><td>[ <$view tiddler=<<csvState>> field="preview" size="3"/> / <<csvLength>> ]</td><td><$edit-text tiddler="$:/temp/type/application/csv/preview" default={{$(csvState)$!!preview}} size="3" tag="input"/> <$button setTitle=<<csvState>> setField="preview" setTo={{$:/temp/type/application/csv/preview}} class="tc-btn-invisible tc-tiddlylink" tooltip="Update the Preview Value" aria-label="Update the Preview Value">{{$:/core/images/done-button}}</$button><$button class="tc-btn-invisible tc-tiddlylink" tooltip="Reset the Preview Value" aria-label="Reset the Preview Value"><$action-deletetiddler $tiddler="$:/temp/type/application/csv/preview"/><$action-setfield $tiddler=<<csvState>> $field="preview" $value={{$:/config/type/application/csv!!preview}}/>{{$:/core/images/close-button}}</$button></td><td></td></tr></$list>
+<tr><td>Rows per Page: </td><td><$edit-text tiddler="$:/temp/type/application/csv/per_page" default={{$(csvState)$!!per_page}} size="3" tag="input"/> <$button setTitle=<<csvState>> setField="per_page" setTo={{$:/temp/type/application/csv/per_page}} class="tc-btn-invisible tc-tiddlylink" tooltip="Update the Per-Page Value" aria-label="Update the Per-Page Value">{{$:/core/images/done-button}}</$button><$button class="tc-btn-invisible tc-tiddlylink" tooltip="Reset the per-Page Value" aria-label="Reset the Per-Page Value"><$action-deletetiddler $tiddler="$:/temp/type/application/csv/per_page"/><$action-setfield $tiddler=<<csvState>> $field="per_page" $value={{$:/config/type/application/csv!!per_page}}/>{{$:/core/images/close-button}}</$button></td><td></td></tr>
+<tr><td>Skip to Page: </td><td><$edit-text tiddler="$:/temp/type/application/csv/start_page" default={{$(csvState)$!!start_page}} size="3" tag="input"/> <$button setTitle=<<csvState>> setField="start_page" setTo={{$:/temp/type/application/csv/start_page}} class="tc-btn-invisible tc-tiddlylink" tooltip="Skip to a Page" aria-label="Skip to a Page">{{$:/core/images/done-button}}</$button><$button class="tc-btn-invisible tc-tiddlylink" tooltip="Reset the Start Page Value" aria-label="Reset the Start Page Value"><$action-deletetiddler $tiddler="$:/temp/type/application/csv/start_page"/><$action-setfield $tiddler=<<csvState>> $field="start_page" $value={{$:/config/type/application/csv!!start_page}}/>{{$:/core/images/close-button}}</$button></td><td></td></tr>
+<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvParse" />
+<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport" />
+</$list>
 </tbody></table>
 </$reveal>
 </div>

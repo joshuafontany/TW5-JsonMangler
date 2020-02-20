@@ -2,7 +2,7 @@ tags:
 title: $:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/select
 
 \define selectImport()
-Import as: <$select tiddler=<<csvImport>> field="import_type">
+<$select tiddler=<<csvImport>> field="import_type">
 <optgroup label='Tiddlers'>
 <option value='tiddlers'>One Tiddler per Row</option>
 </optgroup>
@@ -12,4 +12,8 @@ Import as: <$select tiddler=<<csvImport>> field="import_type">
 </optgroup>
 </$select>
 \end
+
+<tr><td>Import As: </td>
+<td colspan="2">
 <<selectImport>>
+</td></tr>
