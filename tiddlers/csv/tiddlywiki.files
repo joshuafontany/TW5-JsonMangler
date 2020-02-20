@@ -1,0 +1,16 @@
+{
+    "directories": [
+        {
+            "path": "./",
+            "filesRegExp": "^.*\\.csv$",
+            "isTiddlerFile": false,
+            "fields": {
+                "title": {"source": "basename-uri-decoded", "prefix": "Csv/"},
+                "created": {"source": "created"},
+                "modified": {"source": "modified"},
+                "type": "application/csv",
+                "tags": ""
+            }
+        }
+    ]
+}
