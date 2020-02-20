@@ -3,4 +3,4 @@ title: $:/plugins/joshuafontany/jsonmangler/readme/csvHelp
 
 !! ''Csv Widget''
 
-Csv tiddlers, where `type` equals `application/csv`, are now rendered through a new $csv widget. This widget exposes options for the [ext[https://www.papaparse.com/docs|PapaParse library]], automatically parses and renders the csv data as an html table (with "page-ination" options), and allow you to import the csv data as other tiddlywiki-data-schemes: one tiddler per row, one json tiddler per row, or one json tiddler of the entire array. See [[$:/plugins/joshuafontany/jsonmangler/readme/csvImportHelp|Import Help]] for more information.
+Csv tiddlers, where `type` equals `application/csv`, are now rendered through a new $csv widget. This widget exposes options for the [ext[PapaParse library|https://www.papaparse.com/docs]], automatically parses and renders the csv data as an html table (with "page-ination" options), and allow you to import the csv data as other tiddlywiki-data-schemes: one tiddler per row, one json tiddler per row, or one json tiddler of the entire array. See [[Import Help|$:/plugins/joshuafontany/jsonmangler/readme/csvImportHelp]] for more information.
