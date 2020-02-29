@@ -731,7 +731,7 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
         var options = {
             header: (stateTiddler.fields.headers === "yes") || false,
             skipEmptyLines: (stateTiddler.fields.skip_empty === "yes") || true,
-            primary_key: parseInt(stateTiddler.fields.primary_key) || -1,
+            primary_key: !isNaN(parseInt(importTiddler.fields.primary_key))? parseInt(importTiddler.fields.primary_key) : -1,
             preview: 0, //avoids a bug that aborts when headers==false when using step and complete functions
             previewVal: (stateTiddler.fields.peek === "yes")? parseInt(stateTiddler.fields.preview) : 0,
             delimiter: stateTiddler.fields.delimiter,

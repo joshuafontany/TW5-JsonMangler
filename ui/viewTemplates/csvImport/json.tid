@@ -21,7 +21,7 @@ Shadow Tiddlers name filter:<br/>
 <$list variable="showKey" filter="[<csvState>get[headers]] +[[yes]]">
 <tr><td>Primary Key: </td>
 <td colspan="2">
-<$select tiddler=<<csvState>> field="primary_key" default="-1">
+<$select tiddler=<<csvImport>> field="primary_key" default="-1">
 <optgroup label='Default'>
 <option value="-1" >Row Number</option>
 </optgroup>
