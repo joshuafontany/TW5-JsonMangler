@@ -1,0 +1,6 @@
+title: $:/plugins/joshuafontany/jsonmangler/history
+
+* 2.1.0
+    * Improved the `indexes` filter operator. See the documentation in the example wiki.
+* 2.0 - 2.0.10
+    * See the [ext[https://github.com/joshuafontany/TW5-JsonMangler/releases|GitHub release history...]

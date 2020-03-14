@@ -11,13 +11,6 @@ Tiddler name filter:<br/>
 <$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
 </$set>
 </td></tr>
-<tr><td>Json Names: </td>
-<td colspan="2">
-Shadow Tiddlers name filter:<br/>
-<$set name="target" value="subtitle">
-<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
-</$set>
-</td></tr>
 <$list variable="showKey" filter="[<csvState>get[headers]] +[[yes]]">
 <tr><td>Primary Key: </td>
 <td colspan="2">
@@ -33,3 +26,10 @@ Shadow Tiddlers name filter:<br/>
 </$select>
 </td></tr>
 </$list>
+<tr><td>Json Names: </td>
+<td colspan="2">
+Shadow Tiddlers name filter:<br/>
+<$set name="target" value="subtitle">
+<$transclude tiddler="$:/plugins/joshuafontany/jsonmangler/ui/viewTemplates/csvImport/filterEdit" />
+</$set>
+</td></tr>

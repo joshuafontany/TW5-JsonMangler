@@ -1,0 +1,5 @@
+module-type: filteroperator
+revision: 0
+tags: 
+title: $:/plugins/joshuafontany/jsonmangler/modules/filters/slugify.js
+type: application/javascript

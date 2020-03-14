@@ -1,9 +1,9 @@
 .tc-csv-widget button svg {
-    fill: #7897f3;
+    fill: <<colour primary>>;
 }
 
 .tc-csv-table tbody tr:nth-child(odd) {
-    background: #CCC
+    background: <<colour page-background>>;
 }
 
 .tc-csv-options, .tc-csv-options-table {

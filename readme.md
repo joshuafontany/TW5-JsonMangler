@@ -20,7 +20,7 @@ It introduces new features, widgets, and filter operators to manage, edit, and v
 *   **$jsonmangler**, a widget that catches messages to edit json data tiddlers (used in the editTemplate).
 *   A new $:/ControlPanel tab, **Plugin Management** which allows plugin creation and editing using the new json libraries.
 *   New filter operators:
-    *   An updated **indexes[] operator** that can show all index paths. If given the argument `verbose`, it will list all paths, including the root path to nested objects and arrays.
+    *   An updated **indexes[] operator** that can show all or a filtered list of index paths. See the documentation for the new operator syntax.
     *   A new **hasindex[] operator** that returns only those input tiddlers that have a value at the index path supplied.
     *   A new **tsort[] operator** that uses a _tokenized sorting method_ to resolve pesky sorting problems.
     *   A new pair of filter operators: **encodeindex[]** and **decodeindex[]**. These are used to "escape" or "unescape" the index path separation character `/` (and the encoding character `~` ). This can be used to build paths with literal `/`s in a key name token. This is very useful and must be studied closely.
