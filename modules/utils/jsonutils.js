@@ -350,9 +350,9 @@ Returns a list of all keys on the object.
 Top level keys are returned as-is.
 Nested keys are returned as an index/pointer.
 */
-exports.jsonIndexes = function (data) {
+exports.jsonIndexes = function (data, decend) {
 
-    var objKeys = Object.keys(pointer.dict(data)),
+    var objKeys = Object.keys(pointer.dict(data, decend)),
         results = [];
     if (objKeys) { 
 		// Convert top level keys with '~1' back into their literal form.
