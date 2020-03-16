@@ -350,10 +350,12 @@ Returns a list of all keys on the object.
 Top level keys are returned as-is.
 Nested keys are returned as an index/pointer.
 */
-exports.jsonIndexes = function (data, decend) {
-
-    var objKeys = Object.keys(pointer.dict(data, decend)),
+exports.jsonIndexes = function (data, descend) {
+	var objKeys = [],
         results = [];
+	if (descend == false) objKeys = Object.keys(pointer.dict(data, function(){return false;}));
+	else objKeys = Object.keys(pointer.dict(data));
+    
     if (objKeys) { 
 		// Convert top level keys with '~1' back into their literal form.
         objKeys.forEach(function (key) {
@@ -368,7 +370,6 @@ exports.jsonIndexes = function (data, decend) {
 			}
         })
 	}
-	results.sort(alphanum.alphanumCS);
     return results;
 };
 
