@@ -154,7 +154,8 @@ Reads and returns data from an index path, prefers leading "/" (optional)
 Tests to see if literal key exists at the top level, and returns that value
 Else, returns 'nested' data located at index via json-pointer get().
 */
-exports.jsonGet= function(obj, index) {
+exports.jsonGet= function(obj, index, stringify) {
+	stringify = typeof(stringify) == "boolean" ? stringify : true;
 	if(!obj) throw "jsonGet error, no object";
 	if(!index || index.length == 0 || index == "" || index == "/") throw "jsonGet error, missing or invalid index";
 
@@ -172,7 +173,8 @@ exports.jsonGet= function(obj, index) {
 		value = pointer.get(obj,index); 
 	}
 	else {value = "";}
-	return String(value) === value ? value : JSON.stringify(value, null, 2);	
+	if (stringify) return String(value) === value ? value : JSON.stringify(value, null, 2)
+	else return value;	
 };
 
 /*
@@ -353,8 +355,7 @@ Nested keys are returned as an index/pointer.
 exports.jsonIndexes = function (data, descend) {
 	var objKeys = [],
         results = [];
-	if (descend == false) objKeys = Object.keys(pointer.dict(data, function(){return false;}));
-	else objKeys = Object.keys(pointer.dict(data));
+	objKeys = Object.keys(pointer.dict(data, descend));
     
     if (objKeys) { 
 		// Convert top level keys with '~1' back into their literal form.

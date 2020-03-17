@@ -18,16 +18,15 @@ var pointer = require("$:/plugins/joshuafontany/jsonmangler/modules/libs/json-po
 Export our filter function
 */
 exports.indexes = function(source,operator,options) {
-	var results = [], descend = true, path = operator.operand || "";
+	var results = [], descend = null, path = operator.operand || "";
 	source(function(tiddler,title) {
 		var data = options.wiki.getTiddlerDataCached(title);
 		if(data) {
-			if (path !== "") data = $tw.utils.jsonGet(data, path);
 			//descend defaults to true
 			if(operator.suffixes) {
-				if ((operator.suffixes[0] || []).indexOf("root") !== -1 ) descend = false;
+				if ((operator.suffixes[0] || []).indexOf("root") !== -1 ) descend = function(){return false;}
 			}
-			var pointers = $tw.utils.jsonIndexes(data, descend);
+			var pointers = (path.length !== 0)? $tw.utils.jsonIndexes($tw.utils.jsonGet(data, path, false), descend): $tw.utils.jsonIndexes(data, descend);
 			$tw.utils.pushTop(results, pointers);
 			}
 		});
