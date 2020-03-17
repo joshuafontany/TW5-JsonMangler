@@ -12,6 +12,11 @@ type: text/vnd.tiddlywiki
 
 Currently, the following new features are documented:
 
+!!!Filter Operators
+[[indexes Operator]]
+
+!!!Widgets
+
 [[JsonManglerWidget]]
 
 <$list filter="[all[]!is[system]prefix[WidgetMessage]]" >

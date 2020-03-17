@@ -1,0 +1,23 @@
+caption: indexes
+modified: NaNNaNNaNNaNNaNNaNNaN
+op-input: a [[selection of titles|Title Selection]]
+op-output: the property names or indices found at the tiddler or path location provided (only immediate properties are returned if the ":root" suffix is used)
+op-parameter: (optional) an index-path to a property in the data tiddler
+op-purpose: select all data properties of the input titles (see output)
+op-suffix: the <<.op indexes>> operator uses a rich suffix, see below for details
+tags: [[Filter Operators]]
+title: indexes Operator
+type: text/vnd.tiddlywiki
+
+Each input title is processed in turn, and is ignored if it does not denote a [[data tiddler|DataTiddlers]]. The list of property names is retrieved from the data tiddler (in no particular order) and then [[dominantly appended|Dominant Append]] to the operator's output.
+
+Where a tiddler's [[content is JSON|JSONTiddlers]], the <<.op indexes>> operator uses an extended syntax:
+
+```
+[indexes:root[<path>]]
+```
+
+* ''root'': a flag to only retrieve the immediate ("root") indexes from the tiddler or path location
+* ''path'': a slash-delimited index path (see [[the Read Me|$:/plugins/joshuafontany/jsonmangler/readme]])
+
+<<.operator-examples "indexes">>

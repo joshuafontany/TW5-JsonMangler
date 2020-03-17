@@ -1,9 +1,7 @@
-created: 20200229003459666
 debug: no
 delimiter: 
 escape_char: "
 headers: yes
-modified: 20200229003513986
 newline: 
 peek: yes
 per_page: 10

@@ -1,0 +1,15 @@
+debug: no
+delimiter: 
+escape_char: "
+headers: yes
+newline: 
+peek: yes
+per_page: 10
+preview: 250
+quote_char: "
+show_import: yes
+show_options: no
+show_parse: no
+skip_empty: yes
+start_page: 6
+title: $:/csv/widget/Csv%2Fvgsales-2054821778
