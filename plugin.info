@@ -3,7 +3,7 @@
 	"description": "Complex JSON Support & Tools",
     "dependents": "$:/plugins/ebalster/modloader $:/plugins/matabele/action-maketid",
 	"author": "Joshua Fontany",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"core-version": ">=5.1.22-pre",
 	"source": "https://github.com/joshuafontany/TW5-JsonMangler",
 	"plugin-type": "plugin",

@@ -8,7 +8,7 @@
 
 TW5-JsonMangler
 
-Complex JSON Support & Tools by [Joshua Fontany](https://github.com/joshuafontany), v 2.0.9
+Complex JSON Support & Tools by [Joshua Fontany](https://github.com/joshuafontany), v 2.1.1
 
 This plugin changes the methods tiddlywiki uses to retrieve and set values in json data tiddlers. It does so in a way that aims for _backwards compatibility_.
 
