@@ -6,10 +6,10 @@ type: text/vnd.tiddlywiki
 
 <<.operator-example 1 "[{$:/palette}indexes[]sort[title]]" "all the colours defined in the current [[colour palette|ColourPalettes]]">>
 
-<<.operator-example 2 "[[$:/HistoryList]indexes:root[]]" "integer output because the [[history list|$:/HistoryList]] is an array">>
+<<.operator-example 2 "[[$:/HistoryList]indexes[]]" "integer output because the [[history list|$:/HistoryList]] is an array">>
 
-<<.operator-example 3 "[[$:/HistoryList]indexes[]]" "select all index paths the [[history list|$:/HistoryList]]">>
+<<.operator-example 3 "[[$:/HistoryList]indexes:all[]]" "select all index paths the [[history list|$:/HistoryList]]">>
 
-<<.operator-example 4 "[[$:/HistoryList]indexes:root[0]]" "select all immediate index names from the first item in [[history list|$:/HistoryList]]">>
+<<.operator-example 4 "[[$:/HistoryList]indexes[0]]" "select all immediate index names from the first item in [[history list|$:/HistoryList]]">>
 
-<<.operator-example 5 "[[$:/HistoryList]indexes[0]]" "select all index paths from the first item in [[history list|$:/HistoryList]]">>
+<<.operator-example 5 "[[$:/HistoryList]indexes:all[0]]" "select all index paths from the first item in [[history list|$:/HistoryList]]">>
