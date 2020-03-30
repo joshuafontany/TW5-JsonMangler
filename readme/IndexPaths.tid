@@ -17,7 +17,7 @@ This plugin changes the methods tiddlywiki uses to retrieve and set values in js
 
 Example: `/key1/5` refers to the sixth index of an array found in the root object's "key1" property. In the below object, this value would be "FooBar".
 
-```
+```json
 {"key1":[0,1,2,3,4,"FooBar",6,7,8,9]}
 ```
 

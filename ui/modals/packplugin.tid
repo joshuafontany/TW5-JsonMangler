@@ -64,7 +64,7 @@ title: $:/plugins/joshuafontany/jsonmangler/ui/modals/packplugin
 <div class="plugin-table">
 <$tiddler tiddler=<<draft>>>
 
-<div style="float:left; margin-right: 2em;;">
+<div style="float:left; margin-right: 2em;">
 
 !!<$button class="tc-btn-invisible tc-tiddlylink" tooltip="Commits all changes. YOU CANNOT UNDO THIS." message="tm-close-tiddler" param="$:/plugins/joshuafontany/jsonmangler/ui/modals/packplugin" actions=<<commitActions>> >
 {{$:/core/images/save-button}} Commit
