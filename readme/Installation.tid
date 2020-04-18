@@ -5,28 +5,26 @@ tags:
 title: $:/plugins/joshuafontany/jsonmangler/readme/Installation
 type: text/vnd.tiddlywiki
 
-[[JsonMangler|$:/plugins/joshuafontany/jsonmangler]] requires the following excellent plugins:
+[[JsonMangler|$:/plugins/joshuafontany/jsonmangler]] requires the following excellent plugin:
 
 * [[ModLoader|$:/plugins/ebalster/modloader]] by Evan Balster
-* [[Action-MakeTid|$:/plugins/matabele/action-maketid]] by Matabele.
 
-Thanks you two!
+Thanks Evan!
 
 !! Single-file .html wikis / Node served tid files saved to wiki folder
 
 Drag and drop the following links to install the plugins, then restart your server and(or) refresh your wiki.
 
 * $:/plugins/ebalster/modloader
-* $:/plugins/matabele/action-maketid
 * $:/plugins/joshuafontany/jsonmangler
 
 !! Node served from TiddlyWiki's plugin folder
 
-Use Git to clone my `master` repository into a folder in your TiddlyWiki5 repo's plugin folder, `./plugins/joshuafontany/jsonmangler/` .
+Use Git to clone my `master` repository into a folder in your TiddlyWiki5 repo's plugin folder, `./plugins/joshuafontany/jsonmangler/`, then setup folders for the required ModLoader plugin or import it as above.
 
-Alternately, you can use single-file `plugin.info` versions under node,js, which are found in the Releases tab.
+Alternately, it may be simpler to use single-file `plugin.info` versions under node.js, which are packaged into the *.zip files found in the Releases tab.
 
-Go to <$link $to="https://github.com/joshuafontany/TW5-JsonMangler/releases">Json Mangler Github Releases</$link> and download the latest *.zip file.
+Go to [ext[Json Mangler Github Releases|https://github.com/joshuafontany/TW5-JsonMangler/releases]] and download the latest *.zip file.
 
 Place the *.zip file in your `.\TiddlyWiki5` directory, right click and select `Extract Here` (7zip) or `Extract to here` (Winzip).
 
@@ -36,8 +34,16 @@ Edit any wiki's `tiddlywiki.info` file to include the following in the `plugins`
 
 ```
 "joshuafontany/jsonmangler",
-"matabele/action-maketid",
 "ebalster/modloader"
 ```
 
 Finally, restart your server.
+
+!!Related Plugins
+
+This wiki comes pre-loaded with a couple of non-required plugins useful in testing.
+
+If you would like to install them from here, drag and drop these links to your wiki:
+
+* $:/plugins/ebalster/formula
+* $:/plugins/ebalster/attribute-modules

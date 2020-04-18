@@ -29,12 +29,11 @@ It introduces new features, widgets, and filter operators to manage, edit, and v
 
 # Installation
 
-[JsonMangler](https://joshuafontany.github.io/TW5-JsonMangler/) requires the following excellent plugins:
+[JsonMangler](https://joshuafontany.github.io/TW5-JsonMangler/) requires the following excellent plugin:
 
 *   ModLoader by Evan Balster
-*   Action-MakeTid by Matabele.
 
-Thanks you two!
+Thanks Evan!
 
 ## For Single-file .html wikis / Node served tid files saved to wiki folder:
 
@@ -44,14 +43,13 @@ Drag and drop the following links to your own wiki to install the plugins.
 Restart your server and(or) refresh your wiki.
 
 *   $:/plugins/ebalster/modloader
-*   $:/plugins/matabele/action-maketid
 *   $:/plugins/joshuafontany/jsonmangler
 
 ## For Node served from TiddlyWiki's plugin folder (tiddlywiki on node.js, Bob on node.js, etc):
 
-Use Git to clone my `master` repository into a folder in your TiddlyWiki5 repo's plugin folder, then setup folders for the required plugins or import them as above.
+Use Git to clone my `master` repository into a folder in your TiddlyWiki5 repo's plugin folder, `./plugins/joshuafontany/jsonmangler/`, then setup folders for the required ModLoader plugin or import it as above.
 
-Alternately, you can use the minified single-file `plugin.info` versions under node.js, which are found in the Releases tab.
+Alternately, it may be simpler to use single-file `plugin.info` versions under node.js, which are packaged into the *.zip files found in the Releases tab.
 
 Go to [Json Mangler Github Releases](https://github.com/joshuafontany/TW5-JsonMangler/releases) and download the latest *.zip file.
 
@@ -62,7 +60,6 @@ A series of folders and a plugin.info (json) file containing all the tiddlers fo
 Edit any wiki's `tiddlywiki.info` file to include the following in the `plugins` array.
 
     "joshuafontany/jsonmangler",
-    "matabele/action-maketid",
     "ebalster/modloader"
 
 Finally, restart your server.
