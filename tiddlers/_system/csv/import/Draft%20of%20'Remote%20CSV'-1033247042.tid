@@ -1,4 +1,4 @@
-created: 20200317020959538
+created: NaNNaNNaNNaNNaNNaNNaN
 import_named_columns: [<columnName>]
 import_numbered_columns: [<columnNumber>addprefix[field_]]
 import_subtitle_json: [<currentTiddler>split[.csv]limit[1]split[/]!match:caseinsensitive[csv]join[/]addprefix[JsonData/]addsuffix[/]addsuffix<primaryKey>]
@@ -7,6 +7,6 @@ import_title_array: [<currentTiddler>split[.csv]limit[1]split[/]!match:caseinsen
 import_title_json: [<currentTiddler>split[.csv]limit[1]split[/]!match:caseinsensitive[csv]join[/]addprefix[JsonData/]]
 import_title_tiddlers: [<currentTiddler>split[.csv]limit[1]split[/]!match:caseinsensitive[csv]join[/]addprefix[Data/]]
 import_type: tiddlers
-modified: 20200317020959538
+modified: NaNNaNNaNNaNNaNNaNNaN
 primary_key: -1
 title: $:/csv/import/Draft%20of%20'Remote%20CSV'-1033247042

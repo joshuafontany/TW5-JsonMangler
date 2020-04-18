@@ -1,0 +1,14 @@
+author: test
+core-version: v
+created: 20200417215312279
+dependents: 
+description: as
+draft-of: Test/MockPlugin.json
+draft-title: Test/MockPlugin.json
+flat: false
+modified: 20200417215336532
+name: sdv
+padding: 
+tags: TestData
+title: $:/drafts/plugin/Test/MockPlugin.json
+type: application/json

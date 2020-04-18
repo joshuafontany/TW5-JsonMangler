@@ -1,0 +1,16 @@
+created: NaNNaNNaNNaNNaNNaNNaN
+modified: NaNNaNNaNNaNNaNNaNNaN
+tags: Filter Test
+title: Test/Filter/Has
+
+''has:index[]'':
+
+`[all[]!is[system]type[application/json]has:index[test]]` =
+<$list filter="[all[]!is[system]type[application/json]has:index[test]]" variable="value">
+
+</$list>
+
+`[all[]!is[system]type[application/json]has:index[test/0]]` =
+<$list filter="[all[]!is[system]type[application/json]has:index[test/0]]" variable="value">
+
+</$list>

@@ -1,3 +1,5 @@
+created: NaNNaNNaNNaNNaNNaNNaN
+modified: NaNNaNNaNNaNNaNNaNNaN
 tags: Filter Test
 title: Test/Filter/Encode(Decode)Index
 
@@ -12,7 +14,7 @@ title: Test/Filter/Encode(Decode)Index
 </$reveal>
 <$reveal type="match" state=<<state>> text="show">
 <$button set=<<state>> setTo="hide">Hide</$button> <$link to=<<json>>><$text text=<<json>>/></$link>
-<$list filter="[<json>indexes[]encodeindex[]tsort[]]" variable="key">
+<$list filter="[<json>indexes:all[]encodeindex[]tsort[]]" variable="key">
 <ul>
 <li><<key>> = <$transclude tiddler=<<json>> index={{{[<key>decodeindex[]]}}} /></li>
 </ul></$list>

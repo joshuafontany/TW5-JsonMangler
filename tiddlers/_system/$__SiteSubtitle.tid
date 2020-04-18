@@ -1,5 +1,7 @@
+created: NaNNaNNaNNaNNaNNaNNaN
+modified: NaNNaNNaNNaNNaNNaNNaN
 tags: 
 title: $:/SiteSubtitle
 type: text/vnd.tiddlywiki
 
-a json plugin for TW5, v {{$:/plugins/joshuafontany/jsonmangler!!version}}
+a json plugin for TW5, v{{$:/plugins/joshuafontany/jsonmangler!!version}}

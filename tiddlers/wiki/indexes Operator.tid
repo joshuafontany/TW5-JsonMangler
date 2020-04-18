@@ -1,6 +1,6 @@
 caption: indexes
-created: 20200317234934972
-modified: 20200317234941854
+created: NaNNaNNaNNaNNaNNaNNaN
+modified: NaNNaNNaNNaNNaNNaNNaN
 op-input: a [[selection of titles|Title Selection]]
 op-output: the  immediate (root) property names or indices found at the tiddler or path location provided (all property paths are returned if the ":all" suffix is used)
 op-parameter: (optional) an index-path to a property in the data tiddler

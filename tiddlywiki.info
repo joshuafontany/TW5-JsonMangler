@@ -2,12 +2,10 @@
     "description": "JsonMangler Plugin Wiki",
     "plugins": [
         "joshuafontany/jsonmangler",
-        "matabele/action-maketid",
         "ebalster/modloader",
-        "ebalster/attribute-modules",
         "ebalster/formula",
-        "OokTech/Bob",
-        "TheDiveO/FontAwesome"
+        "ebalster/attribute-modules",
+        "OokTech/Bob"
     ],
     "themes": [
         "tiddlywiki/vanilla",
