@@ -129,7 +129,7 @@ is a valid json-pointer path in the object.
 */
 exports.jsonHas= function(obj, index) {
 	if(!obj) throw "jsonHas error, no object";
-	if(!index || index.length == 0 || index == "" || index == "/") throw "jsonHas error, missing or invalid index";
+	if(!index || index.length == 0 || index == "" || index == "/")  return false;//throw "jsonHas error, missing or invalid index";
 
 	if (!(index.charAt( 0 ) == '/')) {
 		index = "/" + index;

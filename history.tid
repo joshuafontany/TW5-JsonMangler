@@ -1,5 +1,11 @@
 title: $:/plugins/joshuafontany/jsonmangler/history
 
+* 2.2.0
+    ** TW 5.1.22 Release Sync-up.
+    ** Moved the Plugin Management Control Panel tab to its own plugin (seperate github repo).
+    ** Updated `has` filter operator that can use json pointers with the `index` suffix.
+    ** Improved CSV (Character Seperated Value) tiddler handling and importing.
+    ** Bugfixes (various).
 * 2.1.1
     ** Changed the `indexes` operator to return only the immediate (root) properties by default. Now accepts an `:all` suffix to return all paths.
 * 2.1.0

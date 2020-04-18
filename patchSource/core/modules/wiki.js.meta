@@ -1,6 +1,8 @@
 created: 20200123001416145
 modified: 20200123001454077
-module-type: wikimethod
+module-type: _wikimethod
+source: $:/core/modules/wiki.js
 tags: 
 title: $:/plugins/joshuafontany/jsonmangler/patchSource/core/modules/wiki.js
-type: application/javascript
+type: _application/javascript
+version: 5.1.22
