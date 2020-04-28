@@ -12,6 +12,13 @@
 
 
         # These files are text and should be normalized (Convert crlf => lf)
+        *.tid text
+        *.meta text
+        *.tw text
+        *.tw5 text
+        *.info text
+        *.files tex
+        *.md text
         *.php text
         *.css text
         *.js text
