@@ -1,5 +1,12 @@
 title: $:/plugins/joshuafontany/jsonmangler/history
 
+* 2.2.2
+    ** Improved the `slugify Operator`
+    ** Resolved a bug where alerts were displayed when editing a json tiddler.
+
+* 2.2.1
+    ** TW 5.1.22 Release bugfixes (LF/CRLF) for patch file.
+
 * 2.2.0
     ** TW 5.1.22 Release Sync-up.
     ** Moved the Plugin Management Control Panel tab to its own plugin (seperate github repo).

@@ -4,7 +4,7 @@
 	"description": "Complex JSON and CSV Support",
     "dependents": "$:/plugins/ebalster/modloader",
 	"author": "Joshua Fontany",
-	"version": "2.2.1",
+	"version": "2.2.2",
 	"core-version": ">=5.1.22",
 	"source": "https://github.com/joshuafontany/TW5-JsonMangler",
 	"plugin-type": "plugin",

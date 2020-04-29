@@ -68,7 +68,7 @@ exports.jsonIsValid = function(titleOrTiddler, data) {
 	if(!(data)){
 		data = tiddler.fields.text;
 	}
-	if(tiddler && data) {
+	if(tiddler && data  && !tiddler.fields["draft.of"]) {
 		try {
 			if(/^\s*[{[]/.test(data.toString())){
 				JSON.parse(data);
