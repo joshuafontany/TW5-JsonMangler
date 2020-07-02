@@ -157,7 +157,10 @@ Else, returns 'nested' data located at index via json-pointer get().
 exports.jsonGet= function(obj, index, stringify) {
 	stringify = typeof(stringify) == "boolean" ? stringify : true;
 	if(!obj) throw "jsonGet error, no object";
-	if(!index || index.length == 0 || index == "" || index == "/") throw "jsonGet error, missing or invalid index";
+	if(!index || index.length == 0 || index == "" || index == "/") {
+		console.log( "jsonGet error - Missing or invalid index: "+index);
+		return;
+	}
 
 	var value;
 	if (!(index.charAt( 0 ) == '/')) {
@@ -354,7 +357,11 @@ Nested keys are returned as an index/pointer.
 */
 exports.jsonIndexes = function (data, descend) {
 	var objKeys = [],
-        results = [];
+		results = [];
+	if(!data) {
+		console.log("jsonIndexes error - no data");
+		return;
+	}
 	objKeys = Object.keys(pointer.dict(data, descend));
     
     if (objKeys) { 
