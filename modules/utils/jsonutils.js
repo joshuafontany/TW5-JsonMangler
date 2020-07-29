@@ -110,14 +110,14 @@ exports.jsonIsPlugin = function(tiddler, context) {
 	if($tw.wiki.getTiddlerText("$:/config/JsonPluginChangeAlerts") == "no") return;
 	var target = $tw.wiki.getTiddler(tiddler);
     try {
-	   if(!(target.fields["draft.of"]) && (target.fields.type == 'application/json' && target.fields["plugin-type"])) throw ""+
+	   if(target && !(target.fields["draft.of"]) && (target.fields.type == 'application/json' && target.fields["plugin-type"])) throw ""+
 	   "JsonMangler just modified a plugin tiddler.\n\n"+
 	   "If you did not intend this to happen, it may be time to revert to a backup,"+
 	   "or manually inspect the affected plugin tiddler.\n\nYour wiki will error on loading "+
 	   "if it does not have valid Json syntax in the text field.\n\n"+
 	   "Context: "+context;
     } catch (e) {
-		$tw.utils.jsonError(e, target.fields.title);
+		$tw.utils.jsonError(e, tiddler);
     }	
 };
 
