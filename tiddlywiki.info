@@ -5,7 +5,9 @@
         "ebalster/modloader",
         "ebalster/formula",
         "ebalster/attribute-modules",
-        "OokTech/Bob"
+        "tiddlywiki/filesystem",
+        "tiddlywiki/tiddlyweb",
+        "tiddlywiki/internals"
     ],
     "themes": [
         "tiddlywiki/vanilla",

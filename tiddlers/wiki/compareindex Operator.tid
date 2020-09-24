@@ -1,0 +1,49 @@
+caption: compareindex
+created: 20200924022619847
+modified: 20200924022632812
+op-input: a [[selection of titles|Title Selection]]
+op-neg-output: those input titles <<.em not>> matching the specified comparison
+op-output: those input titles matching the specified comparison
+op-parameter: the value to compare
+op-purpose: filter the input by comparing each item against the operand
+op-suffix: the <<.op compareindex>> operator uses a rich suffix, see below for details
+tags: [[Filter Operators]] [[Mathematics Operators]] [[String Operators]] [[Negatable Operators]]
+title: compareindex Operator
+type: text/vnd.tiddlywiki
+
+<<.from-version "5.1.22">>The <<.op compareindex>> filter allows numerical, string and date comparisons to be performed.
+
+The <<.op compareindex>> operator uses an extended syntax to specify all the options:
+
+```
+[compare:<index>:<type>:<mode>[<operand>]]
+```
+
+The ''index'' should be a legal Json Mangloer index "path". NOTE: as the ':' character is used to seperate prefix flags, the index cannot have a ':' symbol in it.
+
+The ''type'' can be:
+
+* "number" - invalid numbers are interpreted as zero
+* "integer" - invalid integers are interpreted as zero
+* "string"
+* "date" - invalid dates are interpreted as 1st January 1970
+* "version" - invalid versions are interpreted as "v0.0.0"
+
+The ''mode'' can be:
+
+* "eq" - equal to
+* "ne" - not equal ot
+* "gteq" - greater than or equal to
+* "gt" - greater than
+* "lteq" - less than or equal to
+* "lt" - less than
+
+The operator gets the value of the given index for each tiddler, then compares it against the value of the parameter, retaining only those titles that pass the specified condition.
+
+For example, given a json-tiddler "Test" that has an index "/data" with the value "2":
+
+```
+[[Test]compareindex:/data:number:eq[3]] returns nothing
+[[Test]compareindex:/data:number:lt[3]] returns "2"
+[[Test]compareindex:/data:number:eq[2]] returns "2"
+```

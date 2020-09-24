@@ -1,0 +1,49 @@
+caption: comparefield
+created: 20200924022533740
+modified: 20200924022600075
+op-input: a [[selection of titles|Title Selection]]
+op-neg-output: those input titles <<.em not>> matching the specified comparison
+op-output: those input titles matching the specified comparison
+op-parameter: the value to compare
+op-purpose: filter the input by comparing each item against the operand
+op-suffix: the <<.op comparefield>> operator uses a rich suffix, see below for details
+tags: [[Filter Operators]] [[Mathematics Operators]] [[String Operators]] [[Negatable Operators]]
+title: comparefield Operator
+type: text/vnd.tiddlywiki
+
+<<.from-version "5.1.22">>The <<.op comparefield>> filter allows numerical, string and date comparisons to be performed.
+
+The <<.op comparefield>> operator uses an extended syntax to specify all the options:
+
+```
+[comparefield:<field>:<type>:<mode>[<operand>]]
+```
+
+The ''field'' should be a legal TiddlyWiki field name.
+
+The ''type'' can be:
+
+* "number" - invalid numbers are interpreted as zero
+* "integer" - invalid integers are interpreted as zero
+* "string"
+* "date" - invalid dates are interpreted as 1st January 1970
+* "version" - invalid versions are interpreted as "v0.0.0"
+
+The ''mode'' can be:
+
+* "eq" - equal to
+* "ne" - not equal ot
+* "gteq" - greater than or equal to
+* "gt" - greater than
+* "lteq" - less than or equal to
+* "lt" - less than
+
+The operator gets the value of the given field for each tiddler, then compares it against the value of the parameter, retaining only those titles that pass the specified condition.
+
+For example, given a tiddler "Test" that has an field named "data" with the value "2":
+
+```
+[[Test]comparefield:data:number:eq[3]] returns nothing
+[[Test]comparefield:data:number:lt[3]] returns "2"
+[[Test]comparefield:data:number:eq[2]] returns "2"
+```
