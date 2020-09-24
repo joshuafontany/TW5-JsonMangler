@@ -25,6 +25,7 @@ It introduces new features, widgets, and filter operators to manage, edit, and v
     *   A new **tsort[] operator** that uses a _tokenized sorting method_ to resolve pesky sorting problems.
     *   A new pair of filter operators: **encodeindex[]** and **decodeindex[]**. These are used to "escape" or "unescape" the index path separation character `/` (and the encoding character `~` ). This can be used to build paths with literal `/`s in a key name token. This is very useful and must be studied closely.
     *   A new **encodetiddler[]** operator, which returns each tiddler in the input as a full json object. Used with the previous pair of operators, this can be used to pack plugin tiddlers.
+    *    New **comparefield[]** and **compareindex[]** operators that function as **compare[]** on a specific field or index.
 *   New Csv (Character Seperated Value) tiddler and import features! See the demo wiki for more information.
 
 # Installation

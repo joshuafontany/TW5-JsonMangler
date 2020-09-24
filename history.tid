@@ -1,5 +1,13 @@
 title: $:/plugins/joshuafontany/jsonmangler/history
 
+* 2.2.3
+    ** Added the `comparefield Operator`
+    ** Added the `compareindex Operator`
+    ** These work just like the [ext[compare Operator|https://tiddlywiki.com/#compare%20Operator]], except the first part of the suffix is now the field or index to retrieve a value from, the second is the compare "type", and the third now the compare "mode".
+    *** Example: `[comparefield:value:number:gte[100]]`
+    *** Example: `[compareindex:/0/value:number:gte[100]]`
+    ** An invalid field or index, or a blank value, will cause that title to be skipped.
+
 * 2.2.2
     ** Improved the `slugify Operator`
     ** Resolved a bug where alerts were displayed when editing a json tiddler.

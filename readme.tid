@@ -24,6 +24,7 @@ It introduces new features, widgets, and filter operators to manage, edit, and v
 ** An updated ''has[] operator'' that parses paths when the `index` suffix is used.
 ** A new pair of filter operators: ''encodeindex[]'' and ''decodeindex[]''. These are used to "escape" or "unescape" the index path separation character ` / ` (and the encoding character ` ~ `). This can be used to build paths with literal `/`s in a key name token. This is very useful and must be studied closely.
 ** A new ''encodetiddler[]'' operator, which returns each tiddler in the input as a full json object. Used with the previous pair of operators, this can be used to pack plugin tiddlers.
+** New ''comparefield[]'' and ''compareindex[]'' operators that function as ''compare[]'' on a specific field or index.
 * New Csv (Character Seperated Value) tiddler and import features!
 
 Further documentation is available in the example wiki: <br/>
