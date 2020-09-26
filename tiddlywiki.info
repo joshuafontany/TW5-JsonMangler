@@ -4,10 +4,7 @@
         "joshuafontany/jsonmangler",
         "ebalster/modloader",
         "ebalster/formula",
-        "ebalster/attribute-modules",
-        "tiddlywiki/filesystem",
-        "tiddlywiki/tiddlyweb",
-        "tiddlywiki/internals"
+        "ebalster/attribute-modules"
     ],
     "themes": [
         "tiddlywiki/vanilla",
@@ -16,7 +13,7 @@
     "build": {
         "index": [
             "--rendertiddler",
-            "$:/plugins/tiddlywiki/tiddlyweb/save/offline",
+            "$:/core/save/all",
             "index.html",
             "text/plain"
         ]
