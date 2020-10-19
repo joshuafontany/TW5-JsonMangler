@@ -631,7 +631,7 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
                     title: tidName
                 };
                 for (let f = 0; f < headers.length; f++) {
-                    var fString = $tw.utils.slugifyText(this.wiki, headers[f]);
+                    var fString = this.wiki.slugify(headers[f]);
                     var importType = (options.header) ? "named" : "numbered";
                     var fPath = "import_" + importType + "_columns";
                     var colFilter = importTiddler.fields[fPath];
@@ -678,7 +678,7 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
             //console.log("Row:", row.data);
         };
         var importComplete = () => {         
-            if(!$tw.wiki.tiddlerExists(csvAlert)) return;
+            if(!this.wiki.tiddlerExists(csvAlert)) return;
             if( importTiddler.fields.import_type === "array"){
                 var tidNameFilter = importTiddler.fields["import_title_array"];
                 var filterResult = this.wiki.filterTiddlers(tidNameFilter, this);
@@ -699,7 +699,7 @@ JsonManglerWidget.prototype.handleJsonFromCSVEvent = function(event) {
                         title: tidName
                     };
                     for (let f = 0; f < headers.length; f++) {
-                        var fString = $tw.utils.slugifyText(this.wiki, headers[f]);
+                        var fString = this.wiki.slugify(headers[f]);
                         var fPath = "import_named_columns";
                         var colFilter = importTiddler.fields[fPath];
                         this.parentWidget.setVariable("columnName", fString);                     
