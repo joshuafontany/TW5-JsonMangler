@@ -1,7 +1,7 @@
-created: 20201208034711634
+created: 20201208040405564
 creator: Joshua Fontany
-list: $:/plugins/ebalster/modloader HelloThere TestTiddlers Test/Widget/Formula $:/plugins/joshuafontany/jsonmangler/readme/Installation $:/plugins/joshuafontany/jsonmangler Csv/vgsales
-modified: 20201208034917100
+list: HelloThere TestTiddlers $:/plugins/joshuafontany/jsonmangler/readme/Installation $:/plugins/joshuafontany/jsonmangler Csv/vgsales
+modified: 20201208040409928
 modifier: Joshua Fontany
 title: $:/StoryList
 type: text/vnd.tiddlywiki
