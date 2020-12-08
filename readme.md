@@ -1,6 +1,6 @@
 ## readme.md
 
-20th Feb 2020 at 11:00am
+07 December 2020 at 8:009pm
 
 <div class="tc-tiddler-body tc-reveal">
 
@@ -8,7 +8,7 @@
 
 TW5-JsonMangler
 
-Complex JSON Support & Tools by [Joshua Fontany](https://github.com/joshuafontany), v 2.2.0
+Complex JSON Support & Tools by [Joshua Fontany](https://github.com/joshuafontany), v 2.2.5
 
 This plugin changes the methods tiddlywiki uses to retrieve and set values in json data tiddlers. It does so in a way that aims for _backwards compatibility_.
 

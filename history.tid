@@ -1,5 +1,11 @@
 title: $:/plugins/joshuafontany/jsonmangler/history
 
+* 2.2.4
+    ** TW 5.1.23 Release Sync-up.
+
+* 2.2.4
+    ** Cleanup
+
 * 2.2.3
     ** Added the `comparefield Operator`
     ** Added the `compareindex Operator`
