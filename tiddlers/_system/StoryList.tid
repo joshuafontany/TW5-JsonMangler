@@ -1,5 +1,7 @@
-created: 20200924022335533
-list: HelloThere TestTiddlers $:/plugins/joshuafontany/jsonmangler Csv/vgsales
-modified: 20200924022822310
+created: 20201208034711634
+creator: Joshua Fontany
+list: $:/plugins/ebalster/modloader HelloThere TestTiddlers Test/Widget/Formula $:/plugins/joshuafontany/jsonmangler/readme/Installation $:/plugins/joshuafontany/jsonmangler Csv/vgsales
+modified: 20201208034917100
+modifier: Joshua Fontany
 title: $:/StoryList
 type: text/vnd.tiddlywiki
