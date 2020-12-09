@@ -1,6 +1,6 @@
 ## readme.md
 
-07 December 2020 at 8:009pm
+07 December 2020 at 8:00 pm
 
 <div class="tc-tiddler-body tc-reveal">
 
