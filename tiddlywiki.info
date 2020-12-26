@@ -1,8 +1,6 @@
 {
     "description": "JsonMangler Plugin Wiki",
     "plugins": [
-        "tiddlywiki/filesystem",
-        "tiddlywiki/tiddlyweb",
         "tiddlywiki/internals",
         "joshuafontany/jsonmangler",
         "ebalster/modloader",

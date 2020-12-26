@@ -1,7 +1,12 @@
+created: 20201226000551301
+creator: Joshua Fontany
+modified: 20201226000637965
+modifier: Joshua Fontany
 tags: 
 title: $:/config/FileSystemPaths
 type: text/vnd.tiddlywiki
 
-[is[system]removeprefix[$:/]addprefix[_system/]]
-[has[draft.of]addprefix[drafts/]]
-[!is[system]!has[draft.of]addprefix[wiki/]]
+[is[system]!has[draft.of]removeprefix[$:/]addprefix[_system/]]
+[is[draft]search-replace:g:regexp[/|\\],[_]addprefix[drafts/]]
+[suffix[.json]removesuffix[.json]addprefix[wiki/]]
+[addprefix[wiki/]]

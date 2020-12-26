@@ -1,0 +1,21 @@
+created: 20201225231702036
+creator: Joshua Fontany
+modified: 20201225231704793
+modifier: Joshua Fontany
+tags: Filter Test
+title: Test/Filter/GetIndex
+type: text/vnd.tiddlywiki
+
+''getindex[]'':
+
+`(=[all[]!is[system]type[application/json]getindex[test/1/0/2]]=)` =
+
+(=[all[]!is[system]type[application/json]getindex[test/1/0/2]]=)
+
+<$list filter="[all[]!is[system]type[application/json]getindex[test/1/0/0]]" variable="value">
+
+`<<value>>` = <<value>>
+
+`(=<<value>> + <<value>>/3 =)` =
+(=<<value>> + <<value>>/3 =)
+</$list>
